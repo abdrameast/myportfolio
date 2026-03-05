@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>ASKILLS - Plateforme de gestion des compétences</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --beige-ivory: #faf9f7;
+      --beige-light: #f5f3f0;
+      --warm-grey-light: #e8e6e1;
+      --warm-grey-medium: #a8a59e;
+      --anthracite-dark: #2c2c2c;
+      --anthracite-medium: #4a4a4a;
+      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--beige-ivory);
+      color: var(--anthracite-medium);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      color: var(--anthracite-dark);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+    
+    .lead {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--anthracite-medium);
+      line-height: 1.7;
+    }
+    
+    /* Minimal Card Design */
+    .minimal-card {
+      background: var(--beige-light);
+      border-radius: 24px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      border: none;
+      transition: var(--transition-smooth);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .minimal-card:hover {
+      transform: translateY(-4px);
+      background: var(--warm-grey-light);
+    }
+    
+    .minimal-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--warm-grey-medium) 50%, 
+        transparent 100%
+      );
+      opacity: 0.3;
+    }
+    
+    /* Metric Cards */
+    .metric-card-minimal {
+      background: transparent;
+      padding: 1.5rem;
+      text-align: center;
+      border-radius: 20px;
+      border: 1px solid var(--warm-grey-light);
+      transition: var(--transition-smooth);
+    }
+    
+    .metric-card-minimal:hover {
+      border-color: var(--warm-grey-medium);
+    }
+    
+    .metric-value-minimal {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--anthracite-dark);
+      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Feature Cards */
+    .feature-card-minimal {
+      height: 100%;
+      padding: 2rem;
+      border-radius: 20px;
+      background: var(--beige-light);
+      border: 1px solid transparent;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .feature-card-minimal:hover {
+      border-color: var(--warm-grey-light);
+      transform: translateY(-2px);
+    }
+    
+    .feature-icon-minimal {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--beige-ivory);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--anthracite-dark);
+      font-size: 1.5rem;
+      border: 1px solid var(--warm-grey-light);
+    }
+    
+    /* Architecture Elements */
+    .architecture-minimal {
+      background: var(--beige-light);
+      border-radius: 20px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+    
+    .layer-item-minimal {
+      padding: 1rem 1.5rem;
+      margin: 0.5rem 0;
+      background: var(--beige-ivory);
+      border-radius: 14px;
+      border-left: 3px solid var(--warm-grey-medium);
+      display: flex;
+      align-items: center;
+      transition: var(--transition-smooth);
+    }
+    
+    .layer-item-minimal:hover {
+      transform: translateX(8px);
+      border-left-color: var(--anthracite-dark);
+    }
+    
+    .layer-item-minimal i {
+      color: var(--warm-grey-medium);
+      margin-right: 1rem;
+      font-size: 1.25rem;
+    }
+    
+    /* Tech Badges */
+    .tech-badge-minimal {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      margin: 0.25rem;
+      background: var(--beige-light);
+      color: var(--anthracite-medium);
+      border-radius: 12px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      border: 1px solid var(--warm-grey-light);
+      transition: var(--transition-smooth);
+    }
+    
+    .tech-badge-minimal:hover {
+      background: var(--warm-grey-light);
+      color: var(--anthracite-dark);
+      transform: translateY(-2px);
+    }
+    
+    /* Typography Enhancements */
+    .text-beige {
+      color: var(--beige-ivory);
+    }
+    
+    .text-anthracite {
+      color: var(--anthracite-dark);
+    }
+    
+    .text-warm-grey {
+      color: var(--warm-grey-medium);
+    }
+    
+    /* Spacing and Layout */
+    .section-spacing {
+      margin: 4rem 0;
+    }
+    
+    .content-spacing {
+      margin: 3rem 0;
+    }
+    
+    /* Custom Swiper */
+    .portfolio-details-slider {
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+    
+    .portfolio-details-slider img {
+      border-radius: 0;
+    }
+    
+    /* Subtle Animations */
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes subtle-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    .float-animation {
+      animation: subtle-float 6s ease-in-out infinite;
+    }
+    
+    /* Sidebar */
+    .sidebar-minimal {
+      background: var(--beige-light);
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--warm-grey-light);
+    }
+    
+    .sidebar-minimal h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--warm-grey-light);
+    }
+    
+    /* Project Header */
+    .project-header-minimal {
+      padding: 3rem 0;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--warm-grey-light);
+    }
+    
+    .breadcrumbs {
+      margin-bottom: 1.5rem;
+    }
+    
+    .breadcrumbs a {
+      color: var(--warm-grey-medium);
+      text-decoration: none;
+    }
+    
+    .breadcrumbs .current {
+      color: var(--anthracite-dark);
+      font-weight: 500;
+    }
+    
+    /* Button Style */
+    .btn-minimal {
+      padding: 0.75rem 1.5rem;
+      background: var(--beige-light);
+      border: 1px solid var(--warm-grey-light);
+      color: var(--anthracite-dark);
+      border-radius: 12px;
+      font-weight: 500;
+      transition: var(--transition-smooth);
+    }
+    
+    .btn-minimal:hover {
+      background: var(--warm-grey-light);
+      border-color: var(--warm-grey-medium);
+      transform: translateY(-2px);
+    }
+    
+    /* Impact List */
+    .impact-list {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .impact-list li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--warm-grey-light);
+      display: flex;
+      align-items: center;
+    }
+    
+    .impact-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .impact-list i {
+      color: var(--anthracite-medium);
+      margin-right: 1rem;
+      font-size: 1.25rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 992px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .minimal-card {
+        padding: 1.5rem;
+      }
+      
+      .metric-value-minimal {
+        font-size: 2rem;
+      }
+      
+      .section-spacing {
+        margin: 2rem 0;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      
+      h2 {
+        font-size: 1.75rem;
+      }
+      
+      .lead {
+        font-size: 1.125rem;
+      }
+      
+      .feature-card-minimal {
+        margin-bottom: 1rem;
+      }
+      
+      .architecture-minimal {
+        padding: 1.5rem;
+      }
+    }
+    
+    /* Custom AOS animations */
+    [data-aos] {
+      opacity: 0;
+      transition-property: opacity, transform;
+    }
+    
+    [data-aos].aos-animate {
+      opacity: 1;
+    }
+  </style>
+
+</head>
+
+<body class="portfolio-details-page">
+
+  <header id="header" class="header d-flex flex-column justify-content-center">
+    <i class="header-toggle d-xl-none bi bi-list"></i>
+    <nav id="navmenu" class="navmenu">
+      <ul>
+        <li><a href="#hero"><i class="bi bi-house navicon"></i><span>Accueil</span></a></li>
+        <li><a href="#about"><i class="bi bi-person navicon"></i><span>À propos</span></a></li>
+        <li><a href="#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Expérience</span></a></li>
+        <li><a href="#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
+        <li><a href="#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
+        <li><a href="#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="container">
+        <nav class="breadcrumbs">
+          <ol>
+            <li><a href="index.html">Accueil</a></li>
+            <li class="current">ASKILLS - Plateforme de gestion des compétences</li>
+          </ol>
+        </nav>
+        <h1>ASKILLS</h1>
+        <p class="lead text-warm-grey">Plateforme harmonisant le suivi des compétences, projets et ressources humaines en environnement technique complexe</p>
+      </div>
+    </div>
+
+    <!-- Portfolio Details Section -->
+    <section id="portfolio-details" class="portfolio-details section">
+      <div class="container" data-aos="fade-up">
+
+        <!-- Project Gallery -->
+        <div class="portfolio-details-slider swiper init-swiper">
+          <script type="application/json" class="swiper-config">
+            {
+              "loop": true,
+              "speed": 600,
+              "autoplay": {
+                "delay": 5000
+              },
+              "slidesPerView": "auto",
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
+              },
+              "pagination": {
+                "el": ".swiper-pagination",
+                "type": "bullets",
+                "clickable": true
+              }
+            }
+          </script>
+          <div class="swiper-wrapper align-items-center">
+            <div class="swiper-slide">
+              <img src="assets/img/portfolio/app-1.png" alt="Interface ASKILLS - Dashboard">
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/portfolio/product-1.png" alt="Gestion des compétences">
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/portfolio/branding-1.png" alt="Profils utilisateurs">
+            </div>
+            <div class="swiper-slide">
+              <img src="assets/img/portfolio/books-1.png" alt="Interface d'administration">
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- Project Overview -->
+        <div class="row justify-content-between gy-5">
+          <div class="col-lg-8">
+            <!-- Overview Card -->
+            <div class="minimal-card" data-aos="fade-up">
+              <h2>Transformation Digitale pour Assystem</h2>
+              <p class="lead mb-4">
+                Application moderne conçue pour centraliser la gestion des compétences, 
+                des projets et des utilisateurs dans un environnement technique complexe.
+              </p>
+              <p>
+                Développée sur <strong class="text-anthracite">12 mois</strong>, ASKILLS modernise la gestion 
+                des talents au sein d'un leader mondial de l'ingénierie, créant une source 
+                de vérité unique pour les compétences techniques avec une interface fluide 
+                et réactive pensée pour simplifier le quotidien des équipes.
+              </p>
+            </div>
+
+            <!-- Key Metrics -->
+            <div class="row mb-5" data-aos="fade-up" data-aos-delay="100">
+              <div class="col-md-3 col-6 mb-4">
+                <div class="metric-card-minimal float-animation">
+                  <div class="metric-value-minimal">-70%</div>
+                  <p class="text-warm-grey small">Temps de gestion</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-6 mb-4">
+                <div class="metric-card-minimal float-animation" style="animation-delay: 1s;">
+                  <div class="metric-value-minimal">&lt;200ms</div>
+                  <p class="text-warm-grey small">Réponse API</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-6 mb-4">
+                <div class="metric-card-minimal float-animation" style="animation-delay: 2s;">
+                  <div class="metric-value-minimal">100%</div>
+                  <p class="text-warm-grey small">Données centralisées</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Architecture -->
+            <div class="section-spacing" data-aos="fade-up" data-aos-delay="150">
+              <h3 class="mb-4">Architecture Technique</h3>
+              <div class="architecture-minimal">
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <h5 class="mb-3 text-warm-grey">Frontend Moderne</h5>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-braces"></i>
+                      <span>React 18 + TypeScript</span>
+                    </div>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-lightning"></i>
+                      <span>Vite (Build Ultra-Rapide)</span>
+                    </div>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-layers"></i>
+                      <span>Context API State Management</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <h5 class="mb-3 text-warm-grey">Backend Robust</h5>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-server"></i>
+                      <span>Node.js + Express</span>
+                    </div>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-database"></i>
+                      <span>PostgreSQL + Prisma ORM</span>
+                    </div>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-shield-check"></i>
+                      <span>JWT Authentication</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div class="section-spacing" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="mb-4">Fonctionnalités Principales</h3>
+              <div class="swiper features-swiper mb-5">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="feature-card-minimal">
+                      <div class="feature-icon-minimal">
+                        <i class="bi bi-person-badge"></i>
+                      </div>
+                      <h5 class="mb-2">Gestion des Compétences</h5>
+                      <p class="text-warm-grey small">Création, validation et hiérarchisation des compétences techniques avec workflow à deux niveaux</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="feature-card-minimal">
+                      <div class="feature-icon-minimal">
+                        <i class="bi bi-diagram-3"></i>
+                      </div>
+                      <h5 class="mb-2">Profils Utilisateurs</h5>
+                      <p class="text-warm-grey small">Profils enrichis avec auto-évaluation et validation par les pairs</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="feature-card-minimal">
+                      <div class="feature-icon-minimal">
+                        <i class="bi bi-kanban"></i>
+                      </div>
+                      <h5 class="mb-2">Gestion de Projets</h5>
+                      <p class="text-warm-grey small">Matching automatique compétences/projets et affectation optimisée</p>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="feature-card-minimal">
+                      <div class="feature-icon-minimal">
+                        <i class="bi bi-graph-up"></i>
+                      </div>
+                      <h5 class="mb-2">Tableaux de Bord</h5>
+                      <p class="text-warm-grey small">Analytics et reporting en temps réel sur les compétences disponibles</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="swiper-pagination mt-4"></div>
+              </div>
+            </div>
+
+            <!-- Technical Challenges -->
+            <div class="section-spacing" data-aos="fade-up" data-aos-delay="250">
+              <h3 class="mb-4">Défis Techniques Relevés</h3>
+              <div class="minimal-card">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="d-flex align-items-start mb-3">
+                      <i class="bi bi-arrow-repeat text-warm-grey me-3 mt-1"></i>
+                      <div>
+                        <h6 class="mb-1">Synchronisation Temps Réel</h6>
+                        <p class="text-warm-grey small mb-0">Implémentation d'un système de refresh automatique avec Context API</p>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start mb-3">
+                      <i class="bi bi-shield-check text-warm-grey me-3 mt-1"></i>
+                      <div>
+                        <h6 class="mb-1">Sécurité Multi-niveaux</h6>
+                        <p class="text-warm-grey small mb-0">RBAC avec 3 niveaux de permissions (Admin, Manager, Collaborateur)</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="d-flex align-items-start mb-3">
+                      <i class="bi bi-speedometer2 text-warm-grey me-3 mt-1"></i>
+                      <div>
+                        <h6 class="mb-1">Performance Optimisée</h6>
+                        <p class="text-warm-grey small mb-0">Code splitting avec Vite et lazy loading des routes React</p>
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-start">
+                      <i class="bi bi-box-seam text-warm-grey me-3 mt-1"></i>
+                      <div>
+                        <h6 class="mb-1">Déploiement Containerisé</h6>
+                        <p class="text-warm-grey small mb-0">Architecture Docker avec Caddy reverse proxy</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Technologies -->
+            <div class="section-spacing" data-aos="fade-up" data-aos-delay="300">
+              <h4 class="mb-3">Stack Technologique</h4>
+              <div class="mb-5">
+                <span class="tech-badge-minimal">React 18</span>
+                <span class="tech-badge-minimal">TypeScript</span>
+                <span class="tech-badge-minimal">Vite</span>
+                <span class="tech-badge-minimal">Node.js</span>
+                <span class="tech-badge-minimal">Express</span>
+                <span class="tech-badge-minimal">PostgreSQL</span>
+                <span class="tech-badge-minimal">Prisma ORM</span>
+                <span class="tech-badge-minimal">Docker</span>
+                <span class="tech-badge-minimal">JWT</span>
+                <span class="tech-badge-minimal">Caddy</span>
+                <span class="tech-badge-minimal">Bootstrap 5</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sidebar -->
+          <div class="col-lg-3">
+            <div class="sidebar-minimal" data-aos="fade-up" data-aos-delay="100">
+              <h3>Informations du Projet</h3>
+              <ul class="list-unstyled">
+                <li class="mb-3">
+                  <strong class="d-block text-anthracite mb-1">Client</strong>
+                  <span class="text-warm-grey">Assystem</span>
+                </li>
+                <li class="mb-3">
+                  <strong class="d-block text-anthracite mb-1">Durée</strong>
+                  <span class="text-warm-grey">12+ mois</span>
+                </li>
+                <li class="mb-3">
+                  <strong class="d-block text-anthracite mb-1">Rôle</strong>
+                  <span class="text-warm-grey">Développeur Full-Stack</span>
+                </li>
+                <li class="mb-3">
+                  <strong class="d-block text-anthracite mb-1">Statut</strong>
+                  <span class="text-warm-grey">En Production</span>
+                </li>
+                <li class="mb-3">
+                  <strong class="d-block text-anthracite mb-1">Équipe</strong>
+                  <span class="text-warm-grey">1 Développeur</span>
+                </li>
+                <li>
+                  <strong class="d-block text-anthracite mb-1">Méthodologie</strong>
+                  <span class="text-warm-grey">Agile</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="sidebar-minimal" data-aos="fade-up" data-aos-delay="150">
+              <h5 class="mb-3">Impact Business</h5>
+              <ul class="impact-list">
+                <li>
+                  <i class="bi bi-check-circle"></i>
+                  <span>Centralisation des données compétences</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle"></i>
+                  <span>Optimisation des affectations projets</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle"></i>
+                  <span>Visibilité accrue sur les talents</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle"></i>
+                  <span>Décisionnel amélioré</span>
+                </li>
+                <li>
+                  <i class="bi bi-check-circle"></i>
+                  <span>Formation minimale nécessaire</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer position-relative light-background">
+    <div class="container">
+      <h3 class="sitename">Dramé Aly</h3>
+      <p>Étudiant en BTS SIO (Services Informatiques aux Organisations), en
+          alternance chez Assystem, passionné par l'innovation et le
+          développement de solutions numériques.</p>
+      <div class="social-links d-flex justify-content-center">
+        <a href=""><i class="bi bi-twitter-x"></i></a>
+        <a href=""><i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll Top -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Features swiper
+      new Swiper('.features-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        speed: 600,
+        autoplay: {
+          delay: 4000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2,
+          },
+          992: {
+            slidesPerView: 3,
+          }
+        }
+      });
+      
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fade-in-up 0.6s ease forwards';
+          }
+        });
+      }, observerOptions);
+      
+      // Observe all cards and sections
+      document.querySelectorAll('.minimal-card, .metric-card-minimal, .feature-card-minimal, .architecture-minimal').forEach(el => {
+        observer.observe(el);
+      });
+      
+      // Add hover effect to tech badges
+      document.querySelectorAll('.tech-badge-minimal').forEach(badge => {
+        badge.addEventListener('mouseenter', function() {
+          this.style.transform = 'translateY(-2px)';
+        });
+        
+        badge.addEventListener('mouseleave', function() {
+          this.style.transform = 'translateY(0)';
+        });
+      });
+    });
+  </script>
+
+</body>
+
+</html>
