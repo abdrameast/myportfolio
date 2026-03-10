@@ -174,7 +174,7 @@
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
-                      <strong>Email:</strong> <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="04607665696165687d6665446369656d682a676b69">[email&#160;protected]</a></span>
+                      <strong>Email:</strong> <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1a7e687b777f7b7663787b5a7d777b737634797577">[email&#160;protected]</a></span>
                     </li>
                     <li>
                       <i class="bi bi-chevron-right"></i>
@@ -304,7 +304,7 @@
                 <ul>
                   <li>7 Rue du Clos Garnier, 95240 Cormeilles-en-Parisis, France</li>
                   <li>07 82 30 65 35</li>
-                  <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1c0c3c5d3c0ccc4e1c0d2d2d8d2d5c4cc8fc2cecc">[email&#160;protected]</a></li>
+                  <li><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c6a7a4a2b4a7aba386a7b5b5bfb5b2a3abe8a5a9ab">[email&#160;protected]</a></li>
                 </ul>
               </div>
               <!-- Edn Resume Item -->
@@ -720,113 +720,7 @@
         </div>
       </section>
 
-      <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Script amélioré pour Google Alerts avec Swiper
-        (async () => {
-          try {
-            // Appel à l'API Vercel serverless (remplace rss2json)
-            const res = await fetch("/api/alerts");
-            const data = await res.json();
-
-            // Vérifier si nous avons des données
-            if (!data.items || data.items.length === 0) {
-              document.getElementById("alerts-container").innerHTML = `
-        <div class="swiper-slide">
-          <div class="no-alerts">
-            <i class="bi bi-newspaper"></i>
-            <h3>Aucune actualité disponible</h3>
-            <p>Vérifiez votre configuration Google Alerts</p>
-          </div>
-        </div>
-      `;
-              return;
-            }
-
-            // Créer le HTML pour chaque élément d'alerte
-            const alertsHTML = data.items
-              .slice(0, 5)
-              .map(
-                (item, index) => `
-      <div class="swiper-slide" data-aos="fade-up" data-aos-delay="${
-        100 + index * 100
-      }">
-        <article class="alert-card">
-          <div class="alert-header">
-            <div class="alert-badge">
-              <i class="bi bi-megaphone"></i>
-            </div>
-            <div class="alert-meta">
-              <span class="alert-date">${new Date(
-                item.pubDate
-              ).toLocaleDateString("fr-FR", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}</span>
-              <span class="alert-source">Google Alerts</span>
-            </div>
-          </div>
-          <div class="alert-content">
-            <h3 class="alert-title">${item.title}</h3>
-            <p class="alert-description">${item.description
-              .replace(/<[^>]*>/g, "")
-              .substring(0, 150)}...</p>
-          </div>
-          <div class="alert-footer">
-            <a href="${item.link}" target="_blank" class="alert-link">
-              Lire l'article
-              <i class="bi bi-arrow-up-right"></i>
-            </a>
-          </div>
-        </article>
-      </div>
-    `
-              )
-              .join("");
-
-            // Injecter le HTML dans le conteneur
-            document.getElementById("alerts-container").innerHTML = alertsHTML;
-
-            // Initialiser Swiper après l'injection du contenu
-            const swiper = new Swiper(".alerts-carousel", {
-              slidesPerView: 1,
-              spaceBetween: 30,
-              loop: true,
-              autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-              },
-              pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-              },
-              navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              },
-              breakpoints: {
-                768: {
-                  slidesPerView: 2,
-                },
-                1200: {
-                  slidesPerView: 3,
-                },
-              },
-            });
-          } catch (error) {
-            console.error("Erreur lors du chargement des alertes:", error);
-            document.getElementById("alerts-container").innerHTML = `
-      <div class="swiper-slide">
-        <div class="error-alert">
-          <i class="bi bi-exclamation-triangle"></i>
-          <h3>Erreur de chargement</h3>
-          <p>Impossible de récupérer les actualités</p>
-        </div>
-      </div>
-    `;
-          }
-        })();
-      </script>
+      <!-- Google Alerts script loaded below after Swiper -->
 
       <style>
         /* Styles pour la section Google Alerts */
@@ -1121,7 +1015,7 @@
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3>Email</h3>
-                  <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="583c2a39353d3934213a39183f35393134763b3735">[email&#160;protected]</a></p>
+                  <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8beff9eae6eeeae7f2e9eacbece6eae2e7a5e8e4e6">[email&#160;protected]</a></p>
                 </div>
               </div>
               <!-- End Info Item -->
@@ -1224,7 +1118,125 @@
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
-    <script src="asset
+    <script src="assets/vendor/typed.js/typed.umd.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Script amélioré pour Google Alerts avec Swiper
+        (async () => {
+          try {
+            // Appel à l'API Vercel serverless
+            const res = await fetch("/api/alerts");
+            const data = await res.json();
+
+            // Vérifier si nous avons des données
+            if (!data.items || data.items.length === 0) {
+              document.getElementById("alerts-container").innerHTML = `
+        <div class="swiper-slide">
+          <div class="no-alerts">
+            <i class="bi bi-newspaper"></i>
+            <h3>Aucune actualité disponible</h3>
+            <p>Vérifiez votre configuration Google Alerts</p>
+          </div>
+        </div>
+      `;
+              return;
+            }
+
+            // Créer le HTML pour chaque élément d'alerte
+            const alertsHTML = data.items
+              .slice(0, 5)
+              .map(
+                (item, index) => `
+      <div class="swiper-slide" data-aos="fade-up" data-aos-delay="${
+        100 + index * 100
+      }">
+        <article class="alert-card">
+          <div class="alert-header">
+            <div class="alert-badge">
+              <i class="bi bi-megaphone"></i>
+            </div>
+            <div class="alert-meta">
+              <span class="alert-date">${new Date(
+                item.pubDate
+              ).toLocaleDateString("fr-FR", {
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}</span>
+              <span class="alert-source">Google Alerts</span>
+            </div>
+          </div>
+          <div class="alert-content">
+            <h3 class="alert-title">${item.title}</h3>
+            <p class="alert-description">${item.description
+              .replace(/<[^>]*>/g, "")
+              .substring(0, 150)}...</p>
+          </div>
+          <div class="alert-footer">
+            <a href="${item.link}" target="_blank" class="alert-link">
+              Lire l'article
+              <i class="bi bi-arrow-up-right"></i>
+            </a>
+          </div>
+        </article>
+      </div>
+    `
+              )
+              .join("");
+
+            // Injecter le HTML dans le conteneur
+            document.getElementById("alerts-container").innerHTML = alertsHTML;
+
+            // Initialiser Swiper après l'injection du contenu
+            const swiper = new Swiper(".alerts-carousel", {
+              slidesPerView: 1,
+              spaceBetween: 30,
+              loop: true,
+              autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+              },
+              pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+              },
+              navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+              },
+              breakpoints: {
+                768: {
+                  slidesPerView: 2,
+                },
+                1200: {
+                  slidesPerView: 3,
+                },
+              },
+            });
+          } catch (error) {
+            console.error("Erreur lors du chargement des alertes:", error);
+            document.getElementById("alerts-container").innerHTML = `
+      <div class="swiper-slide">
+        <div class="error-alert">
+          <i class="bi bi-exclamation-triangle"></i>
+          <h3>Erreur de chargement</h3>
+          <p>Impossible de récupérer les actualités</p>
+        </div>
+      </div>
+    `;
+          }
+        })();
+    </script>
+  </body>
+</html>
