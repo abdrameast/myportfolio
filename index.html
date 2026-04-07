@@ -1264,12 +1264,6 @@
           loading.style.display = 'none';
           sentMessage.style.display = 'block';
           contactForm.reset();
-        } {
-          // Error
-          const data = await response.json();
-          loading.style.display = 'none';
-          errorMessage.textContent = data.error || 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
-          errorMessage.style.display = 'block';
         }
       } catch (error) {
         // Network error
