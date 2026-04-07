@@ -1233,7 +1233,7 @@
         })();
     </script>
 <script>
-  // Formspree form handling
+  // Formspree form handling - sans affichage de messages
   const contactForm = document.getElementById('contact-form');
   
   if (contactForm) {
@@ -1241,15 +1241,8 @@
       e.preventDefault();
       
       const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const loading = contactForm.querySelector('.loading');
-      const errorMessage = contactForm.querySelector('.error-message');
-      const sentMessage = contactForm.querySelector('.sent-message');
-      
-      // Show loading, hide others
-      loading.style.display = 'block';
-      errorMessage.style.display = 'none';
-      sentMessage.style.display = 'none';
       submitBtn.disabled = true;
+      submitBtn.textContent = 'Envoi...';
       
       try {
         const response = await fetch(contactForm.action, {
@@ -1260,31 +1253,15 @@
           }
         });
         
-        // Parse the response as JSON
-        const data = await response.json();
-        
-        // Check if Formspree returned success
-        if (response.ok || data.ok === true) {
-          // Success - hide loading, show success message
-          loading.style.display = 'none';
-          sentMessage.style.display = 'block';
+        if (response.ok) {
+          // Reset form silently
           contactForm.reset();
-          
-          // Optional: Hide success message after 5 seconds
-          setTimeout(() => {
-            sentMessage.style.display = 'none';
-          }, 5000);
+          submitBtn.textContent = 'Envoyer';
         } else {
-          // Formspree returned an error
-          loading.style.display = 'none';
-          errorMessage.textContent = data.error || 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
-          errorMessage.style.display = 'block';
+          submitBtn.textContent = 'Envoyer';
         }
       } catch (error) {
-        // Network error
-        loading.style.display = 'none';
-        errorMessage.textContent = 'Erreur de connexion. Veuillez vérifier votre connexion internet.';
-        errorMessage.style.display = 'block';
+        submitBtn.textContent = 'Envoyer';
       } finally {
         submitBtn.disabled = false;
       }
