@@ -1233,14 +1233,25 @@
         })();
     </script>
 <script>
-  // Formspree form handling - sans affichage de messages
-  const contactForm = document.getElementById('contact-form');
-  
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
+  // Formspree form handling - Version renforcée
+  (function() {
+    const contactForm = document.getElementById('contact-form');
+    
+    if (!contactForm) return;
+    
+    // Désactiver le comportement par défaut du formulaire
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    }, true);
+    
+    // Notre handler
+    contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
       submitBtn.disabled = true;
       submitBtn.textContent = 'Envoi...';
       
@@ -1254,19 +1265,16 @@
         });
         
         if (response.ok) {
-          // Reset form silently
           contactForm.reset();
-          submitBtn.textContent = 'Envoyer';
-        } else {
-          submitBtn.textContent = 'Envoyer';
         }
       } catch (error) {
-        submitBtn.textContent = 'Envoyer';
+        console.log('Erreur:', error);
       } finally {
         submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
       }
-    });
-  }
+    }, false);
+  })();
 </script>
   </body>
 </html>
