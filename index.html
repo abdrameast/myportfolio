@@ -1232,7 +1232,7 @@
           }
         })();
     </script>
-    <script>
+<script>
   // Formspree form handling
   const contactForm = document.getElementById('contact-form');
   
@@ -1260,14 +1260,22 @@
           }
         });
         
-        if (response.ok) {
-          // Success
+        // Parse the response as JSON
+        const data = await response.json();
+        
+        // Check if Formspree returned success
+        if (response.ok || data.ok === true) {
+          // Success - hide loading, show success message
           loading.style.display = 'none';
           sentMessage.style.display = 'block';
           contactForm.reset();
-        } {
-          // Error
-          const data = await response.json();
+          
+          // Optional: Hide success message after 5 seconds
+          setTimeout(() => {
+            sentMessage.style.display = 'none';
+          }, 5000);
+        } else {
+          // Formspree returned an error
           loading.style.display = 'none';
           errorMessage.textContent = data.error || 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
           errorMessage.style.display = 'block';
