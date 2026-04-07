@@ -1113,7 +1113,6 @@
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/typed.js/typed.umd.js"></script>
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
@@ -1232,28 +1231,24 @@
           }
         })();
     </script>
-<script>
-  // Formspree form handling - Version renforcée
-  (function() {
-    const contactForm = document.getElementById('contact-form');
-    
-    if (!contactForm) return;
-    
-    // Désactiver le comportement par défaut du formulaire
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      return false;
-    }, true);
-    
-    // Notre handler
-    contactForm.addEventListener('submit', async function(e) {
+    <script>
+  // Formspree form handling
+  const contactForm = document.getElementById('contact-form');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async (e) => {
       e.preventDefault();
       
       const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.textContent;
+      const loading = contactForm.querySelector('.loading');
+      const errorMessage = contactForm.querySelector('.error-message');
+      const sentMessage = contactForm.querySelector('.sent-message');
+      
+      // Show loading, hide others
+      loading.style.display = 'block';
+      errorMessage.style.display = 'none';
+      sentMessage.style.display = 'none';
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Envoi...';
       
       try {
         const response = await fetch(contactForm.action, {
@@ -1265,16 +1260,27 @@
         });
         
         if (response.ok) {
+          // Success
+          loading.style.display = 'none';
+          sentMessage.style.display = 'block';
           contactForm.reset();
+        } {
+          // Error
+          const data = await response.json();
+          loading.style.display = 'none';
+          errorMessage.textContent = data.error || 'Erreur lors de l\'envoi du message. Veuillez réessayer.';
+          errorMessage.style.display = 'block';
         }
       } catch (error) {
-        console.log('Erreur:', error);
+        // Network error
+        loading.style.display = 'none';
+        errorMessage.textContent = 'Erreur de connexion. Veuillez vérifier votre connexion internet.';
+        errorMessage.style.display = 'block';
       } finally {
         submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
       }
-    }, false);
-  })();
+    });
+  }
 </script>
   </body>
 </html>
