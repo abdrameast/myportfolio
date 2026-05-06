@@ -1,61 +1,41 @@
-export default async function handler(req, res) {
+export default function handler(req, res) {
   // Autoriser CORS pour votre frontend
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET");
 
-  const RSS_URL =
-    "https://www.google.fr/alerts/feeds/00897495945337774141/7724303843141150050";
-
-  try {
-    const response = await fetch(RSS_URL, {
-      headers: {
-        "User-Agent":
-          "Mozilla/5.0 (compatible; RSS Reader; +https://your-site.vercel.app)",
-        Accept: "application/rss+xml, application/xml, text/xml, */*",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error(`Erreur HTTP: ${response.status}`);
+  // Fausses données (Mock) générées à partir de votre flux XML
+  const items = [
+    {
+      title: "Morocco advances health digitalization with strategic agreements at GITEX Future Health Africa",
+      link: "https://en.yabiladi.com/articles/details/193960/morocco-advances-health-digitalization-with.html",
+      pubDate: "2026-05-06T14:52:03Z",
+      description: "This agreement seeks to create an integrated institutional framework for the development and implementation of innovative solutions in telemedicine..."
+    },
+    {
+      title: "Cispe lance un cadre auditable contre le «sovereignty washing» des services cloud",
+      link: "https://www.ictjournal.ch/news/2026-05-06/cispe-lance-un-cadre-auditable-contre-le-sovereignty-washing-des-services-cloud",
+      pubDate: "2026-05-06T13:53:31Z",
+      description: "L'association européenne Cispe lance un framework auditable destiné à clarifier les revendications de souveraineté."
+    },
+    {
+      title: "A-rticle - #Fr Signature d'une convention cadre entre l'EPST Centre de Développement...",
+      link: "https://www.facebook.com/ScientificPublication/",
+      pubDate: "2026-05-06T13:33:50Z",
+      description: "framework partnership agreement in the fields of science, technology, and particularly renewable energies. This framework agreement establishes a..."
+    },
+    {
+      title: "Learn Next.js: React Framework - App Store",
+      link: "https://apps.apple.com/rw/app/learn-next-js-react-framework/id6443595563?l=fr-FR",
+      pubDate: "2026-05-06T13:02:23Z",
+      description: "Master Next.js, the world's most popular React framework for building production-ready web applications! Whether you're a React developer looking to..."
+    },
+    {
+      title: "European Commission Round Table, Brussels, 4 May: Towards a European Business Code...",
+      link: "https://www.ohada.com/actualite/8273/european-commission-round-table-brussels-4-may-towards-a-european-business-code-and-a-28th-regime.html",
+      pubDate: "2026-05-06T12:03:53Z",
+      description: "Such an additional optional legal framework, as proposed by the Association Henri Capitant, would help remedy the legal fragmentation of the Single..."
     }
+  ];
 
-    const xml = await response.text();
-
-    // Parse XML manuellement (sans librairie externe)
-    const items = [];
-    const itemRegex = /<entry>([\s\S]*?)<\/entry>/g;
-    let match;
-
-    while ((match = itemRegex.exec(xml)) !== null) {
-      const entry = match[1];
-
-      const title = (entry.match(/<title[^>]*>([\s\S]*?)<\/title>/) || [])[1]
-        ?.replace(/<!\[CDATA\[(.*?)\]\]>/g, "$1")
-        ?.trim();
-
-      const link =
-        (entry.match(/<link[^>]*href="([^"]*)"/) || [])[1] ||
-        (entry.match(/<link[^>]*>([\s\S]*?)<\/link>/) || [])[1]?.trim();
-
-      const pubDate = (
-        entry.match(/<published>([\s\S]*?)<\/published>/) || []
-      )[1]?.trim();
-
-      const description = (
-        entry.match(/<content[^>]*>([\s\S]*?)<\/content>/) ||
-        entry.match(/<summary[^>]*>([\s\S]*?)<\/summary>/) || []
-      )[1]
-        ?.replace(/<!\[CDATA\[(.*?)\]\]>/gs, "$1")
-        ?.trim();
-
-      if (title && link) {
-        items.push({ title, link, pubDate, description: description || "" });
-      }
-    }
-
-    res.status(200).json({ status: "ok", items });
-  } catch (error) {
-    console.error("Erreur flux RSS:", error);
-    res.status(500).json({ status: "error", message: error.message, items: [] });
-  }
+  res.status(200).json({ status: "ok", items });
 }
