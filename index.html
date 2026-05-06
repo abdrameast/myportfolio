@@ -749,12 +749,93 @@
           <div class="alerts-carousel-container">
             <div class="alerts-carousel swiper">
               <div class="swiper-wrapper" id="alerts-container">
-                <!-- Les articles seront injectés ici dynamiquement -->
-                <div class="swiper-slide">
-                  <div class="loading-alert">
-                    <div class="loading-spinner"></div>
-                    <p>Chargement des actualités...</p>
-                  </div>
+                
+                <!-- Alerte 1 -->
+                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
+                  <article class="alert-card">
+                    <div class="alert-header">
+                      <div class="alert-badge"><i class="bi bi-megaphone"></i></div>
+                      <div class="alert-meta">
+                        <span class="alert-date">6 mai 2026</span>
+                        <span class="alert-source">Google Alerts</span>
+                      </div>
+                    </div>
+                    <div class="alert-content">
+                      <h3 class="alert-title">Morocco advances health digitalization with strategic agreements...</h3>
+                      <p class="alert-description">This agreement seeks to create an integrated institutional framework for the development and implementation of innovative solutions in telemedicine...</p>
+                    </div>
+                    <div class="alert-footer">
+                      <a href="https://en.yabiladi.com/articles/details/193960/morocco-advances-health-digitalization-with.html" target="_blank" class="alert-link">
+                        Lire l'article <i class="bi bi-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Alerte 2 -->
+                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
+                  <article class="alert-card">
+                    <div class="alert-header">
+                      <div class="alert-badge"><i class="bi bi-megaphone"></i></div>
+                      <div class="alert-meta">
+                        <span class="alert-date">6 mai 2026</span>
+                        <span class="alert-source">Google Alerts</span>
+                      </div>
+                    </div>
+                    <div class="alert-content">
+                      <h3 class="alert-title">Cispe lance un cadre auditable contre le «sovereignty washing»</h3>
+                      <p class="alert-description">L'association européenne Cispe lance un framework auditable destiné à clarifier les revendications de souveraineté pour les services cloud.</p>
+                    </div>
+                    <div class="alert-footer">
+                      <a href="https://www.ictjournal.ch/news/2026-05-06/cispe-lance-un-cadre-auditable-contre-le-sovereignty-washing-des-services-cloud" target="_blank" class="alert-link">
+                        Lire l'article <i class="bi bi-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Alerte 3 -->
+                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
+                  <article class="alert-card">
+                    <div class="alert-header">
+                      <div class="alert-badge"><i class="bi bi-megaphone"></i></div>
+                      <div class="alert-meta">
+                        <span class="alert-date">6 mai 2026</span>
+                        <span class="alert-source">Google Alerts</span>
+                      </div>
+                    </div>
+                    <div class="alert-content">
+                      <h3 class="alert-title">Learn Next.js: React Framework - App Store</h3>
+                      <p class="alert-description">Master Next.js, the world's most popular React framework for building production-ready web applications! Whether you're a React developer...</p>
+                    </div>
+                    <div class="alert-footer">
+                      <a href="https://apps.apple.com/rw/app/learn-next-js-react-framework/id6443595563?l=fr-FR" target="_blank" class="alert-link">
+                        Lire l'article <i class="bi bi-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </article>
+                </div>
+
+                <!-- Alerte 4 -->
+                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
+                  <article class="alert-card">
+                    <div class="alert-header">
+                      <div class="alert-badge"><i class="bi bi-megaphone"></i></div>
+                      <div class="alert-meta">
+                        <span class="alert-date">6 mai 2026</span>
+                        <span class="alert-source">Google Alerts</span>
+                      </div>
+                    </div>
+                    <div class="alert-content">
+                      <h3 class="alert-title">Signature d'une convention cadre entre l'EPST Centre de Développement</h3>
+                      <p class="alert-description">Framework partnership agreement in the fields of science, technology, and particularly renewable energies...</p>
+                    </div>
+                    <div class="alert-footer">
+                      <a href="https://www.facebook.com/ScientificPublication/" target="_blank" class="alert-link">
+                        Lire l'article <i class="bi bi-arrow-up-right"></i>
+                      </a>
+                    </div>
+                  </article>
                 </div>
               </div>
 
@@ -1183,111 +1264,30 @@
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
     <script>
-        // Script amélioré pour Google Alerts avec Swiper
-        (async () => {
-          try {
-            // Appel à l'API Vercel Serverless (Node.js)
-            const response = await fetch('/api/alerts');
-            const data = await response.json();
-
-            // Vérifier si nous avons des données
-            if (!data.items || data.items.length === 0) {
-              document.getElementById("alerts-container").innerHTML = `
-        <div class="swiper-slide">
-          <div class="no-alerts">
-            <i class="bi bi-newspaper"></i>
-            <h3>Aucune actualité disponible</h3>
-            <p>Vérifiez votre configuration Google Alerts</p>
-          </div>
-        </div>
-      `;
-              return;
+        // Initialisation de Swiper pour les alertes statiques
+        document.addEventListener('DOMContentLoaded', () => {
+          new Swiper(".alerts-carousel", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+              delay: 5000,
+              disableOnInteraction: false,
+            },
+            pagination: {
+              el: ".swiper-pagination",
+              clickable: true,
+            },
+            navigation: {
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+              768: { slidesPerView: 2 },
+              1200: { slidesPerView: 3 }
             }
-
-            // Créer le HTML pour chaque élément d'alerte
-            const alertsHTML = data.items
-              .slice(0, 5)
-              .map(
-                (item, index) => `
-      <div class="swiper-slide" data-aos="fade-up" data-aos-delay="${
-        100 + index * 100
-      }">
-        <article class="alert-card">
-          <div class="alert-header">
-            <div class="alert-badge">
-              <i class="bi bi-megaphone"></i>
-            </div>
-            <div class="alert-meta">
-              <span class="alert-date">${new Date(
-                item.pubDate
-              ).toLocaleDateString("fr-FR", {
-                day: "numeric",
-                month: "long",
-                year: "numeric",
-              })}</span>
-              <span class="alert-source">Google Alerts</span>
-            </div>
-          </div>
-          <div class="alert-content">
-            <h3 class="alert-title">${item.title}</h3>
-            <p class="alert-description">${item.description
-              .replace(/<[^>]*>/g, "")
-              .substring(0, 150)}...</p>
-          </div>
-          <div class="alert-footer">
-            <a href="${item.link}" target="_blank" class="alert-link">
-              Lire l'article
-              <i class="bi bi-arrow-up-right"></i>
-            </a>
-          </div>
-        </article>
-      </div>
-    `
-              )
-              .join("");
-
-            // Injecter le HTML dans le conteneur
-            document.getElementById("alerts-container").innerHTML = alertsHTML;
-
-            // Initialiser Swiper après l'injection du contenu
-            const swiper = new Swiper(".alerts-carousel", {
-              slidesPerView: 1,
-              spaceBetween: 30,
-              loop: true,
-              autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-              },
-              pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-              },
-              navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              },
-              breakpoints: {
-                768: {
-                  slidesPerView: 2,
-                },
-                1200: {
-                  slidesPerView: 3,
-                },
-              },
-            });
-          } catch (error) {
-            console.error("Erreur lors du chargement des alertes:", error);
-            document.getElementById("alerts-container").innerHTML = `
-      <div class="swiper-slide">
-        <div class="error-alert">
-          <i class="bi bi-exclamation-triangle"></i>
-          <h3>Erreur de chargement</h3>
-          <p>Impossible de récupérer les actualités</p>
-        </div>
-      </div>
-    `;
-          }
-        })();
+          });
+        });
     </script>
     <script>
   const contactForm = document.getElementById('contact-form');
