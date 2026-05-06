@@ -836,35 +836,6 @@
               </div>
             </div>
 
-            <!-- ===== EXTRAIT DE CODE ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="160">
-              <h3 class="mb-4">Extrait de Code Notable</h3>
-              <div class="code-snippet">
-                <div class="mb-2">
-                  <span class="code-dot" style="background:#ff5f57;"></span>
-                  <span class="code-dot" style="background:#febc2e;"></span>
-                  <span class="code-dot" style="background:#28c840;"></span>
-                  <span class="code-comment">// BorneConfig.cs — Singleton de configuration</span>
-                </div>
-<span class="code-keyword">public class</span> <span class="code-class">BorneConfig</span>
-{
-    <span class="code-keyword">private static</span> <span class="code-class">BorneConfig</span> _instance;
-    <span class="code-keyword">public static</span> <span class="code-class">BorneConfig</span> Instance
-        => _instance ??= <span class="code-method">LoadFromFile</span>();
-
-    <span class="code-keyword">public string</span> NomRestaurant { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
-    <span class="code-keyword">public string</span> CouleurAccent { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; } <span class="code-comment">// ex. "#E63946"</span>
-    <span class="code-keyword">public bool</span>   ModeSurPlace   { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
-
-    <span class="code-keyword">public void</span> <span class="code-method">Save</span>()
-    {
-        <span class="code-keyword">var</span> json = JsonSerializer.<span class="code-method">Serialize</span>(<span class="code-keyword">this</span>);
-        File.<span class="code-method">WriteAllText</span>(_configPath, json);
-    }
-}
-              </div>
-            </div>
-
             <!-- ===== FEATURES SWIPER ===== -->
             <div class="section-spacing" data-aos="fade-up" data-aos-delay="180">
               <h3 class="mb-4">Fonctionnalités Principales</h3>
