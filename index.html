@@ -140,7 +140,7 @@
               <h2>Apprentice Software Engineer &amp; Web Developer.</h2>
               <p class="fst-italic py-3">
                 Fort d'une formation en cours au sein d'une multinationale, j'ai
-                choisi de poursuivre mon appprentissage en ingénieurie logiciel.
+                choisi de poursuivre mon apprentissage en ingénieurie logiciel.
               </p>
               <div class="row">
                 <div class="col-lg-6">
@@ -346,7 +346,7 @@
             <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
               <h3 class="resume-title">Expérience Professionnelle</h3>
               <div class="resume-item">
-                <h4>Ingénieur logiciel en appprentissage</h4>
+                <h4>Ingénieur logiciel en apprentissage</h4>
                 <h5>2024 - Présent</h5>
                 <p><em>Assystem, 78180 SQY, France</em></p>
                 <ul>
@@ -437,8 +437,8 @@
               data-aos-delay="100"
             >
               <li data-filter="*" class="filter-active">Tout</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-product">Logiciel</li>
+              <li data-filter=".filter-app">Entreprise</li>
+              <li data-filter=".filter-product">École</li>
             </ul>
             <!-- End Portfolio Filters -->
 
@@ -476,7 +476,7 @@
               <!-- End Portfolio Item -->
 
               <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
               >
                 <img
                   src="assets/img/PythonCameraLogo.png"
@@ -496,6 +496,65 @@
                 </div>
               </div>
               <!-- End Portfolio Item -->
+
+              <!-- ERP Portfolio Item -->
+              <div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/LogoERP.png"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>AutoManage ERP</h4>
+                  <p>ERP de location de véhicules — PHP MVC &amp; MySQL</p>
+                  <a
+                    href="assets/img/LogoERP.png"
+                    title="AutoManage ERP"
+                    data-gallery="portfolio-gallery-product"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="portfolio-details-erp.html"
+                    title="More Details"
+                    class="details-link"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
+              <!-- Projet 2 Portfolio Item -->
+<div
+                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
+              >
+                <img
+                  src="assets/img/LogoBORNE.png"
+                  class="img-fluid"
+                  alt=""
+                />
+                <div class="portfolio-info">
+                  <h4>Borne de commande C#</h4>
+                  <p>Application client lourd C# + WPF</p>
+                  <a
+                    href="assets/img/LogoBORNE.png"
+                    title="Borne de commande C#"
+                    data-gallery="portfolio-gallery-app"
+                    class="glightbox preview-link"
+                    ><i class="bi bi-zoom-in"></i
+                  ></a>
+                  <a
+                    href="portfolio-details-borne.html"
+                    title="More Details"
+                    class="details-link"
+                    ><i class="bi bi-link-45deg"></i
+                  ></a>
+                </div>
+              </div>
+              <!-- End Portfolio Item -->
+
             </div>
             <!-- End Portfolio Container -->
           </div>
@@ -1016,10 +1075,9 @@
       </div>
 
       <div class="col-lg-8">
-        <!-- REPLACED: form action and added id for JavaScript -->
         <form
           id="contact-form"
-          action="https://formspree.io/f/xnjowgel"
+          action="https://formspree.io/f/dramealyba@gmail.com"
           method="POST"
           class="php-email-form"
           data-aos="fade-up"
@@ -1128,9 +1186,9 @@
         // Script amélioré pour Google Alerts avec Swiper
         (async () => {
           try {
-            // Appel à l'API Vercel serverless
-            const res = await fetch("/api/alerts");
-            const data = await res.json();
+            // Appel à l'API (chemin relatif pour fonctionner sur XAMPP et Vercel)
+            const response = await fetch('api/alerts.php');
+            const data = await response.json();
 
             // Vérifier si nous avons des données
             if (!data.items || data.items.length === 0) {
@@ -1232,7 +1290,6 @@
         })();
     </script>
     <script>
-  // Formspree form handling
   const contactForm = document.getElementById('contact-form');
   
   if (contactForm) {
@@ -1244,29 +1301,35 @@
       const errorMessage = contactForm.querySelector('.error-message');
       const sentMessage = contactForm.querySelector('.sent-message');
       
-      // Show loading, hide others
       loading.style.display = 'block';
       errorMessage.style.display = 'none';
       sentMessage.style.display = 'none';
       submitBtn.disabled = true;
       
       try {
+        const formData = new FormData(contactForm);
         const response = await fetch(contactForm.action, {
           method: 'POST',
-          body: new FormData(contactForm),
+          body: formData,
           headers: {
             'Accept': 'application/json'
           }
         });
         
         if (response.ok) {
-          // Success
           loading.style.display = 'none';
           sentMessage.style.display = 'block';
           contactForm.reset();
+        } else {
+          const data = await response.json();
+          if (data.errors) {
+            errorMessage.textContent = data.errors.map(e => e.message).join(', ');
+          } else {
+            errorMessage.textContent = 'Une erreur est survenue. Veuillez réessayer.';
+          }
+          errorMessage.style.display = 'block';
         }
       } catch (error) {
-        // Network error
         loading.style.display = 'none';
         errorMessage.textContent = 'Erreur de connexion. Veuillez vérifier votre connexion internet.';
         errorMessage.style.display = 'block';

@@ -7,7 +7,7 @@ export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Methods", "GET");
 
   const RSS_URL =
-    "https://www.google.fr/alerts/feeds/00897495945337774141/2039647074778688701";
+    "https://www.google.fr/alerts/feeds/00897495945337774141/7724303843141150050";
 
   try {
     const response = await fetch(RSS_URL, {

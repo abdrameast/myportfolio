@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>ASKILLS — Plateforme de gestion des compétences</title>
-  <meta content="Plateforme React/Node.js de gestion des compétences et ressources humaines — Dramé Aly" name="description">
+  <title>AutoManage ERP — Logiciel de gestion pour agence de location</title>
+  <meta content="ERP PHP MVC pour la location de véhicules — Dramé Aly" name="description">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -25,7 +25,7 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* ===== DESIGN TOKENS ===== */
+    /* ===== DESIGN TOKENS (identiques à portfolio-details.html) ===== */
     :root {
       --beige-ivory: #faf9f7;
       --beige-light: #f5f3f0;
@@ -36,8 +36,8 @@
       --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
       /* Accent subtil pour ce projet */
-      --askills-accent: #3a3a3a;
-      --askills-accent-soft: #6b6b6b;
+      --erp-accent: #3a3a3a;
+      --erp-accent-soft: #6b6b6b;
     }
 
     body {
@@ -103,20 +103,14 @@
       50%       { opacity: 0; }
     }
 
-    @keyframes flow-right {
-      0%   { left: -30%; opacity: 0; }
-      20%  { opacity: 1; }
-      80%  { opacity: 1; }
-      100% { left: 110%; opacity: 0; }
+    @keyframes flow-down {
+      0%   { opacity: 0; transform: translateY(-8px); }
+      40%  { opacity: 1; }
+      100% { opacity: 0; transform: translateY(8px); }
     }
 
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(1.4); }
-    }
-
-    /* ===== HERO BANNER ===== */
-    .project-hero-banner {
+    /* ===== HERO BANNER ERP ===== */
+    .erp-hero-banner {
       background: var(--anthracite-dark);
       color: var(--beige-ivory);
       padding: 4.5rem 0 3.5rem;
@@ -125,7 +119,7 @@
       overflow: hidden;
     }
 
-    .project-hero-banner::before {
+    .erp-hero-banner::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -133,7 +127,8 @@
       pointer-events: none;
     }
 
-    .project-hero-banner::after {
+    /* Grille subtile en fond */
+    .erp-hero-banner::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -144,9 +139,9 @@
       pointer-events: none;
     }
 
-    .project-hero-banner h1 { color: var(--beige-ivory); }
+    .erp-hero-banner h1 { color: var(--beige-ivory); }
 
-    .project-hero-banner .lead {
+    .erp-hero-banner .lead {
       color: rgba(250,249,247,0.65);
       font-size: 1.15rem;
     }
@@ -184,30 +179,7 @@
       border-radius: 2px;
     }
 
-    /* ===== STATUS BADGE ===== */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 500;
-    }
-
-    .status-badge.in-production {
-      background: rgba(44,44,44,0.08);
-      color: var(--anthracite-dark);
-    }
-
-    .status-badge .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--anthracite-dark);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    /* ===== MINIMAL CARD ===== */
+    /* ===== MINIMAL CARD (identique + variante dark) ===== */
     .minimal-card {
       background: var(--beige-light);
       border-radius: 24px;
@@ -256,8 +228,8 @@
       animation: counter-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
-    /* ===== ARCHITECTURE DIAGRAM (React/Node Flow) ===== */
-    .arch-diagram {
+    /* ===== MVC ARCHITECTURE DIAGRAM (innovation) ===== */
+    .mvc-diagram {
       background: var(--beige-light);
       border-radius: 24px;
       padding: 2.5rem;
@@ -266,7 +238,7 @@
       overflow: hidden;
     }
 
-    .arch-diagram-title {
+    .mvc-diagram-title {
       font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.12em;
@@ -275,7 +247,7 @@
       margin-bottom: 2rem;
     }
 
-    .arch-flow {
+    .mvc-flow {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -283,7 +255,7 @@
       flex-wrap: wrap;
     }
 
-    .arch-node {
+    .mvc-node {
       background: var(--beige-ivory);
       border: 1px solid var(--warm-grey-light);
       border-radius: 16px;
@@ -295,13 +267,13 @@
       cursor: default;
     }
 
-    .arch-node:hover {
+    .mvc-node:hover {
       border-color: var(--anthracite-dark);
       transform: translateY(-4px);
       box-shadow: 0 8px 24px rgba(0,0,0,0.08);
     }
 
-    .arch-node .node-icon {
+    .mvc-node .node-icon {
       font-size: 1.75rem;
       color: var(--warm-grey-medium);
       margin-bottom: 0.5rem;
@@ -309,23 +281,23 @@
       transition: var(--transition-smooth);
     }
 
-    .arch-node:hover .node-icon { color: var(--anthracite-dark); }
+    .mvc-node:hover .node-icon { color: var(--anthracite-dark); }
 
-    .arch-node .node-label {
+    .mvc-node .node-label {
       font-weight: 600;
       font-size: 0.875rem;
       color: var(--anthracite-dark);
       font-family: 'Space Grotesk', sans-serif;
     }
 
-    .arch-node .node-sub {
+    .mvc-node .node-sub {
       font-size: 0.725rem;
       color: var(--warm-grey-medium);
       margin-top: 0.2rem;
     }
 
     /* Flèche entre nodes */
-    .arch-arrow {
+    .mvc-arrow {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -334,7 +306,7 @@
       gap: 2px;
     }
 
-    .arch-arrow-line {
+    .mvc-arrow-line {
       width: 40px;
       height: 1px;
       background: linear-gradient(90deg, var(--warm-grey-medium), var(--warm-grey-light));
@@ -342,7 +314,8 @@
       overflow: hidden;
     }
 
-    .arch-arrow-line::after {
+    /* Animation de flux sur la flèche */
+    .mvc-arrow-line::after {
       content: '';
       position: absolute;
       top: -1px;
@@ -351,10 +324,18 @@
       height: 3px;
       background: var(--anthracite-dark);
       border-radius: 2px;
-      animation: flow-right 2s ease-in-out infinite;
+      animation: flow-down 2s ease-in-out infinite;
+      animation-name: flow-right;
     }
 
-    .arch-arrow-label {
+    @keyframes flow-right {
+      0%   { left: -30%; opacity: 0; }
+      20%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { left: 110%; opacity: 0; }
+    }
+
+    .mvc-arrow-label {
       font-size: 0.65rem;
       color: var(--warm-grey-medium);
       white-space: nowrap;
@@ -562,6 +543,34 @@
       color: var(--anthracite-dark);
     }
 
+    /* ===== STATUS BADGE ===== */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 500;
+    }
+
+    .status-badge.in-progress {
+      background: rgba(44,44,44,0.08);
+      color: var(--anthracite-dark);
+    }
+
+    .status-badge .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--anthracite-dark);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(1.4); }
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (max-width: 992px) {
       h1 { font-size: 2.5rem; }
@@ -569,15 +578,15 @@
       .minimal-card { padding: 1.5rem; }
       .metric-value-minimal { font-size: 2rem; }
       .section-spacing { margin: 2rem 0; }
-      .project-hero-banner { padding: 3rem 0 2.5rem; }
+      .erp-hero-banner { padding: 3rem 0 2.5rem; }
     }
 
     @media (max-width: 768px) {
       h1 { font-size: 2rem; }
       h2 { font-size: 1.75rem; }
       .lead { font-size: 1.1rem; }
-      .arch-flow { gap: 0.25rem; }
-      .arch-arrow-line { width: 20px; }
+      .mvc-flow { gap: 0.25rem; }
+      .mvc-arrow-line { width: 20px; }
       .typewriter-title::after { display: none; }
     }
 
@@ -608,32 +617,32 @@
   <main class="main">
 
     <!-- ===== HERO BANNER ===== -->
-    <div class="project-hero-banner">
+    <div class="erp-hero-banner">
       <div class="container" data-aos="fade-up">
         <div class="hero-breadcrumb mb-3">
           <a href="index.html">Accueil</a>
           <span>/</span>
           <a href="index.html#portfolio">Portfolio</a>
           <span>/</span>
-          <span class="current">ASKILLS</span>
+          <span class="current">AutoManage ERP</span>
         </div>
 
         <div class="mb-3">
-          <span class="hero-tag"><i class="bi bi-braces me-1"></i>React 18 + TypeScript</span>
-          <span class="hero-tag"><i class="bi bi-server me-1"></i>Node.js / Express</span>
-          <span class="hero-tag"><i class="bi bi-people me-1"></i>Gestion des Compétences</span>
+          <span class="hero-tag"><i class="bi bi-gear me-1"></i>PHP MVC</span>
+          <span class="hero-tag"><i class="bi bi-database me-1"></i>MySQL</span>
+          <span class="hero-tag"><i class="bi bi-truck me-1"></i>Location de Véhicules</span>
         </div>
 
-        <h1 class="typewriter-title" data-aos="fade-up" data-aos-delay="80">ASKILLS</h1>
+        <h1 class="typewriter-title" data-aos="fade-up" data-aos-delay="80">AutoManage ERP</h1>
         <p class="lead" data-aos="fade-up" data-aos-delay="150">
-          Plateforme harmonisant le suivi des compétences, projets et ressources humaines
-          en environnement technique complexe — développée sur 12 mois pour Assystem.
+          Un ERP sur mesure développé en PHP orienté objet (architecture MVC pure) pour
+          centraliser la gestion commerciale et le suivi client d'une agence de location de véhicules.
         </p>
 
         <div class="d-flex align-items-center gap-3 mt-3" data-aos="fade-up" data-aos-delay="200">
-          <span class="status-badge in-production" style="background:rgba(255,255,255,0.1); color:rgba(250,249,247,0.85);">
-            <span class="dot" style="background:rgba(250,249,247,0.85);"></span>
-            En Production
+          <span class="status-badge in-progress">
+            <span class="dot"></span>
+            En développement
           </span>
           <a href="index.html#portfolio" class="btn-minimal" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); color:rgba(250,249,247,0.8);">
             <i class="bi bi-arrow-left"></i> Retour au portfolio
@@ -660,16 +669,16 @@
           </script>
           <div class="swiper-wrapper align-items-center">
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/app-1.png" alt="Dashboard ASKILLS">
+              <img src="assets/img/portfolio/erp-dashboard.png" alt="Dashboard AutoManage ERP">
             </div>
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/product-1.png" alt="Gestion des compétences">
+              <img src="assets/img/portfolio/erp-prospects.png" alt="Module CRM Prospects">
             </div>
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/branding-1.png" alt="Profils utilisateurs">
+              <img src="assets/img/portfolio/erp-search.png" alt="Recherche et pagination">
             </div>
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/books-1.png" alt="Interface d'administration">
+              <img src="assets/img/portfolio/erp-form.png" alt="Formulaire de saisie client">
             </div>
           </div>
           <div class="swiper-button-prev"></div>
@@ -685,19 +694,19 @@
 
             <!-- Overview -->
             <div class="minimal-card" data-aos="fade-up">
-              <h2>Transformation Digitale pour Assystem</h2>
+              <h2>C'est quoi un ERP ?</h2>
               <p class="lead mb-4">
-                Application moderne conçue pour centraliser la gestion des compétences,
-                des projets et des utilisateurs dans un environnement technique complexe.
+                Un ERP (Enterprise Resource Planning) est un système d'information centralisé qui regroupe
+                l'ensemble des processus opérationnels d'une entreprise sur une seule base de données.
               </p>
               <p>
-                Développée sur <strong class="text-anthracite">12 mois</strong>, ASKILLS modernise la gestion
-                des talents au sein d'un leader mondial de l'ingénierie, créant une source
-                de vérité unique pour les compétences techniques. Avec une interface fluide
-                et réactive pensée pour simplifier le quotidien des équipes, elle s'appuie sur
-                une stack <strong class="text-anthracite">React 18 / TypeScript</strong> côté client et
-                un backend <strong class="text-anthracite">Node.js + Express</strong> exposant une API REST
-                sécurisée par JWT, le tout orchestré via <strong class="text-anthracite">Docker</strong>.
+                Dans le secteur de la location de véhicules, ce logiciel élimine les fichiers Excel
+                dispersés en regroupant la <strong class="text-anthracite">gestion de la flotte automobile</strong>,
+                le <strong class="text-anthracite">suivi des clients et prospects</strong>,
+                les <strong class="text-anthracite">contrats de location</strong>, la
+                <strong class="text-anthracite">facturation</strong> et les
+                <strong class="text-anthracite">statistiques</strong> au sein d'une même application web
+                sécurisée, rapide et facile d'accès pour les employés de l'agence.
               </p>
             </div>
 
@@ -705,66 +714,66 @@
             <div class="row mb-5" data-aos="fade-up" data-aos-delay="100">
               <div class="col-md-3 col-6 mb-4">
                 <div class="metric-card-minimal" style="animation-delay: 0s;">
-                  <div class="metric-value-minimal">-75%</div>
-                  <p class="text-warm-grey small">Temps de gestion</p>
+                  <div class="metric-value-minimal">MVC</div>
+                  <p class="text-warm-grey small">Architecture pure</p>
                 </div>
               </div>
               <div class="col-md-3 col-6 mb-4">
                 <div class="metric-card-minimal" style="animation-delay: 0.8s;">
-                  <div class="metric-value-minimal">&lt;200ms</div>
-                  <p class="text-warm-grey small">Réponse API</p>
+                  <div class="metric-value-minimal">100%</div>
+                  <p class="text-warm-grey small">PHP natif OO</p>
                 </div>
               </div>
               <div class="col-md-3 col-6 mb-4">
                 <div class="metric-card-minimal" style="animation-delay: 1.6s;">
-                  <div class="metric-value-minimal">100%</div>
-                  <p class="text-warm-grey small">Données centralisées</p>
+                  <div class="metric-value-minimal">DAO</div>
+                  <p class="text-warm-grey small">Pattern d'accès</p>
                 </div>
               </div>
               <div class="col-md-3 col-6 mb-4">
                 <div class="metric-card-minimal" style="animation-delay: 2.4s;">
-                  <div class="metric-value-minimal">RBAC</div>
-                  <p class="text-warm-grey small">3 niveaux d'accès</p>
+                  <div class="metric-value-minimal">0 lib</div>
+                  <p class="text-warm-grey small">Framework externe</p>
                 </div>
               </div>
             </div>
 
-            <!-- ===== ARCHITECTURE DIAGRAM ===== -->
+            <!-- ===== MVC DIAGRAM (innovation visuelle) ===== -->
             <div class="section-spacing" data-aos="fade-up" data-aos-delay="120">
-              <h3 class="mb-4">Architecture Fullstack Illustrée</h3>
-              <div class="arch-diagram">
-                <p class="arch-diagram-title">Flux de données — Requête utilisateur → Réponse UI</p>
+              <h3 class="mb-4">Architecture MVC Illustrée</h3>
+              <div class="mvc-diagram">
+                <p class="mvc-diagram-title">Flux de données — Requête HTTP → Réponse HTML</p>
 
-                <div class="arch-flow mb-4">
+                <div class="mvc-flow mb-4">
                   <!-- Utilisateur -->
-                  <div class="arch-node">
+                  <div class="mvc-node">
                     <span class="node-icon"><i class="bi bi-person-circle"></i></span>
                     <div class="node-label">Navigateur</div>
-                    <div class="node-sub">React 18 + Vite</div>
+                    <div class="node-sub">Requête HTTP</div>
                   </div>
 
-                  <div class="arch-arrow">
-                    <div class="arch-arrow-line"></div>
-                    <div class="arch-arrow-label">Context API</div>
+                  <div class="mvc-arrow">
+                    <div class="mvc-arrow-line"></div>
+                    <div class="mvc-arrow-label">GET/POST</div>
                   </div>
 
-                  <!-- API -->
-                  <div class="arch-node">
+                  <!-- Routeur -->
+                  <div class="mvc-node">
+                    <span class="node-icon"><i class="bi bi-signpost-split"></i></span>
+                    <div class="node-label">Routeur</div>
+                    <div class="node-sub">index.php</div>
+                  </div>
+
+                  <div class="mvc-arrow">
+                    <div class="mvc-arrow-line"></div>
+                    <div class="mvc-arrow-label">dispatch</div>
+                  </div>
+
+                  <!-- Contrôleur -->
+                  <div class="mvc-node">
                     <span class="node-icon"><i class="bi bi-cpu"></i></span>
-                    <div class="node-label">API REST</div>
-                    <div class="node-sub">Express + JWT</div>
-                  </div>
-
-                  <div class="arch-arrow">
-                    <div class="arch-arrow-line"></div>
-                    <div class="arch-arrow-label">Prisma ORM</div>
-                  </div>
-
-                  <!-- Base de données -->
-                  <div class="arch-node">
-                    <span class="node-icon"><i class="bi bi-database"></i></span>
-                    <div class="node-label">Base de Données</div>
-                    <div class="node-sub">PostgreSQL</div>
+                    <div class="node-label">Contrôleur</div>
+                    <div class="node-sub">ProspectCtrl</div>
                   </div>
                 </div>
 
@@ -772,28 +781,28 @@
                 <div class="row g-3 mt-1">
                   <div class="col-md-4">
                     <div class="layer-item-minimal">
-                      <i class="bi bi-braces"></i>
+                      <i class="bi bi-table"></i>
                       <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Frontend (Client)</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">React 18 + TypeScript + Vite</div>
+                        <div style="font-weight:600; font-size:0.875rem;">Modèle (Model)</div>
+                        <div class="text-warm-grey" style="font-size:0.75rem;">Prospect.php + ProspectDao.php</div>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="layer-item-minimal">
-                      <i class="bi bi-server"></i>
+                      <i class="bi bi-database"></i>
                       <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Backend (Serveur)</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">Node.js — Express + JWT</div>
+                        <div style="font-weight:600; font-size:0.875rem;">Base de Données</div>
+                        <div class="text-warm-grey" style="font-size:0.75rem;">MySQL — PDO sécurisé</div>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="layer-item-minimal">
-                      <i class="bi bi-box-seam"></i>
+                      <i class="bi bi-layout-text-window"></i>
                       <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Déploiement</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">Docker — Caddy reverse proxy</div>
+                        <div style="font-weight:600; font-size:0.875rem;">Vue (View)</div>
+                        <div class="text-warm-grey" style="font-size:0.75rem;">Templates HTML/PHP</div>
                       </div>
                     </div>
                   </div>
@@ -801,39 +810,39 @@
               </div>
             </div>
 
-            <!-- ===== STACK TECHNIQUE ===== -->
+            <!-- ===== ARCHITECTURE TECHNIQUE ===== -->
             <div class="section-spacing" data-aos="fade-up" data-aos-delay="150">
               <h3 class="mb-4">Stack Technique</h3>
               <div style="background: var(--beige-light); border-radius: 20px; padding: 2rem; margin: 0;">
                 <div class="row">
                   <div class="col-md-6 mb-4">
-                    <h5 class="mb-3 text-warm-grey">Frontend — Couche Présentation</h5>
+                    <h5 class="mb-3 text-warm-grey">Backend — Couche Logique</h5>
                     <div class="layer-item-minimal">
-                      <i class="bi bi-braces"></i>
-                      <span>React 18 + TypeScript — SPA moderne</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-lightning"></i>
-                      <span>Vite — Build ultra-rapide + HMR</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-layers"></i>
-                      <span>Context API — Gestion d'état globale</span>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <h5 class="mb-3 text-warm-grey">Backend — Couche Logique & Données</h5>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-server"></i>
-                      <span>Node.js + Express — API REST</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-database-gear"></i>
-                      <span>PostgreSQL + Prisma ORM</span>
+                      <i class="bi bi-filetype-php"></i>
+                      <span>PHP Orienté Objet — Architecture MVC pure</span>
                     </div>
                     <div class="layer-item-minimal">
                       <i class="bi bi-shield-check"></i>
-                      <span>JWT — Authentification sécurisée</span>
+                      <span>Sécurité — FILTER_SANITIZE + htmlspecialchars</span>
+                    </div>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-person-lock"></i>
+                      <span>Sessions sécurisées — Messages flash</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <h5 class="mb-3 text-warm-grey">Données — Couche Persistance</h5>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-database-gear"></i>
+                      <span>MySQL — Gestion relationnelle</span>
+                    </div>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-diagram-2"></i>
+                      <span>Pattern DAO (ProspectDao.php)</span>
+                    </div>
+                    <div class="layer-item-minimal">
+                      <i class="bi bi-braces-asterisk"></i>
+                      <span>Requêtes préparées PDO anti-injection</span>
                     </div>
                   </div>
                 </div>
@@ -848,55 +857,55 @@
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-person-badge"></i></div>
-                      <h5 class="mb-2">Gestion des Compétences</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-people"></i></div>
+                      <h5 class="mb-2">Module CRM — Prospects</h5>
                       <p class="text-warm-grey small">
-                        Création, validation et hiérarchisation des compétences techniques
-                        avec un workflow à deux niveaux (Manager → Admin).
+                        Système complet de <strong>CRUD</strong> (Création, Lecture, Modification, Suppression)
+                        pour la base de prospects B2B et B2C de l'agence. Conversion prospect → client intégrée.
                       </p>
                     </div>
                   </div>
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-diagram-3"></i></div>
-                      <h5 class="mb-2">Profils Utilisateurs</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-search"></i></div>
+                      <h5 class="mb-2">Recherche &amp; Pagination</h5>
                       <p class="text-warm-grey small">
-                        Profils enrichis avec auto-évaluation et validation par les pairs,
-                        offrant une vue complète des expertises de chaque collaborateur.
+                        Barre de recherche instantanée pour retrouver tout contact, couplée à une
+                        pagination fluide pour naviguer dans de grandes bases de données clients.
                       </p>
                     </div>
                   </div>
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-kanban"></i></div>
-                      <h5 class="mb-2">Gestion de Projets</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-speedometer2"></i></div>
+                      <h5 class="mb-2">Tableau de Bord</h5>
                       <p class="text-warm-grey small">
-                        Matching automatique compétences/projets et affectation optimisée
-                        des ressources humaines selon les besoins opérationnels.
+                        Calcul et affichage de statistiques globales en temps réel — nombre de prospects,
+                        conversions, clients actifs — pour piloter l'activité commerciale.
                       </p>
                     </div>
                   </div>
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-graph-up"></i></div>
-                      <h5 class="mb-2">Tableaux de Bord</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-bell"></i></div>
+                      <h5 class="mb-2">Notifications Flash</h5>
                       <p class="text-warm-grey small">
-                        Analytics et reporting en temps réel sur les compétences disponibles
-                        pour piloter les décisions RH et opérationnelles.
+                        Système de messages flash via <code>$_SESSION['message']</code> informant l'utilisateur
+                        du succès ou de l'échec de ses actions (création, mise à jour, format email invalide).
                       </p>
                     </div>
                   </div>
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-shield-lock"></i></div>
-                      <h5 class="mb-2">Sécurité Multi-niveaux</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-car-front"></i></div>
+                      <h5 class="mb-2">Module Flotte (à venir)</h5>
                       <p class="text-warm-grey small">
-                        RBAC avec 3 niveaux de permissions distincts (Admin, Manager, Collaborateur)
-                        garantissant une séparation stricte des droits d'accès.
+                        Architecture extensible pensée dès le départ pour intégrer la gestion de la flotte
+                        automobile, des contrats et de la facturation.
                       </p>
                     </div>
                   </div>
@@ -906,19 +915,55 @@
               </div>
             </div>
 
+            <!-- ===== CODE SNIPPET (originalité) ===== -->
+            <div class="section-spacing" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="mb-3">Extrait d'Architecture — Pattern DAO</h3>
+              <p class="text-warm-grey mb-3" style="font-size:0.9rem;">
+                Séparation stricte entre accès données et logique métier, garantissant maintenabilité et évolutivité.
+              </p>
+              <div class="code-snippet">
+                <div class="mb-3 d-flex align-items-center gap-1">
+                  <span class="code-dot" style="background:#ff5f57;"></span>
+                  <span class="code-dot" style="background:#febc2e;"></span>
+                  <span class="code-dot" style="background:#28c840;"></span>
+                  <span class="ms-2" style="color:rgba(250,249,247,0.3); font-size:0.75rem;">ProspectDao.php</span>
+                </div>
+<span class="code-comment">// DAO — Couche d'accès aux données (Data Access Object)</span>
+<span class="code-keyword">class</span> <span class="code-class">ProspectDao</span> {
+
+  <span class="code-keyword">private</span> PDO <span class="code-method">$pdo</span>;
+
+  <span class="code-keyword">public function</span> <span class="code-method">findAll</span>(<span class="code-keyword">int</span> <span class="code-method">$limit</span>, <span class="code-keyword">int</span> <span class="code-method">$offset</span>): <span class="code-keyword">array</span> {
+    <span class="code-comment">// Requête préparée → protection contre les injections SQL</span>
+    <span class="code-method">$stmt</span> = <span class="code-method">$this</span>->pdo->prepare(
+      <span class="code-string">"SELECT * FROM prospects LIMIT :limit OFFSET :offset"</span>
+    );
+    <span class="code-method">$stmt</span>->execute([<span class="code-string">'limit'</span> => <span class="code-method">$limit</span>, <span class="code-string">'offset'</span> => <span class="code-method">$offset</span>]);
+    <span class="code-keyword">return</span> <span class="code-method">$stmt</span>->fetchAll(PDO::FETCH_CLASS, <span class="code-class">Prospect</span>::class);
+  }
+
+  <span class="code-keyword">public function</span> <span class="code-method">save</span>(<span class="code-class">Prospect</span> <span class="code-method">$p</span>): <span class="code-keyword">bool</span> {
+    <span class="code-comment">// Validation email avant toute persistance</span>
+    <span class="code-method">$email</span> = filter_var(<span class="code-method">$p</span>->getEmail(), FILTER_SANITIZE_EMAIL);
+    <span class="code-keyword">if</span> (!filter_var(<span class="code-method">$email</span>, FILTER_VALIDATE_EMAIL)) <span class="code-keyword">return false</span>;
+    <span class="code-comment">// INSERT préparé...</span>
+  }
+}
+              </div>
+            </div>
+
             <!-- ===== TECHNICAL CHALLENGES ===== -->
             <div class="section-spacing" data-aos="fade-up" data-aos-delay="220">
               <h3 class="mb-4">Défis Techniques Relevés</h3>
               <div class="minimal-card">
-
                 <div class="challenge-item">
                   <div class="challenge-num">01</div>
                   <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Synchronisation Temps Réel</h6>
+                    <h6 class="mb-1 text-anthracite">Architecture Logicielle MVC Stricte</h6>
                     <p class="text-warm-grey small mb-0">
-                      Implémentation d'un système de rafraîchissement automatique via des hooks
-                      React personnalisés et le Context API — garantissant la cohérence des données
-                      affichées entre tous les composants sans rechargement de page.
+                      Mise en place d'une séparation nette entre requêtes en base de données (DAO), logique
+                      métier (Contrôleurs) et affichage HTML (Vues) — rendant le code maintenable et
+                      prêt à évoluer pour l'ajout du module Flotte de véhicules.
                     </p>
                   </div>
                 </div>
@@ -926,11 +971,12 @@
                 <div class="challenge-item">
                   <div class="challenge-num">02</div>
                   <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Sécurité &amp; Contrôle d'Accès</h6>
+                    <h6 class="mb-1 text-anthracite">Fiabilité &amp; Intégrité des Données</h6>
                     <p class="text-warm-grey small mb-0">
-                      Mise en place d'un système RBAC à 3 niveaux (Admin, Manager, Collaborateur)
-                      avec validation JWT côté serveur et protections de routes côté client,
-                      assurant une séparation stricte des droits selon le rôle de chaque utilisateur.
+                      Implémentation d'une validation rigoureuse des saisies avec
+                      <code>FILTER_SANITIZE_EMAIL</code> et <code>htmlspecialchars</code> pour
+                      contrer les injections XSS et garantir l'intégrité des informations commerciales
+                      (nom, prénom, format d'email obligatoires).
                     </p>
                   </div>
                 </div>
@@ -938,11 +984,11 @@
                 <div class="challenge-item">
                   <div class="challenge-num">03</div>
                   <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Performance Optimisée</h6>
+                    <h6 class="mb-1 text-anthracite">Gestion d'État via Sessions PHP</h6>
                     <p class="text-warm-grey small mb-0">
-                      Code splitting automatique avec Vite et lazy loading des routes React,
-                      réduisant drastiquement le bundle initial et maintenant des temps de réponse
-                      API inférieurs à 200 ms même sous charge.
+                      Mise en œuvre d'un système de notifications flash basé sur
+                      <code>$_SESSION['message']</code>, offrant un feedback utilisateur immédiat
+                      sans rechargement de page supplémentaire.
                     </p>
                   </div>
                 </div>
@@ -950,34 +996,31 @@
                 <div class="challenge-item">
                   <div class="challenge-num">04</div>
                   <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Déploiement Containerisé</h6>
+                    <h6 class="mb-1 text-anthracite">Pagination &amp; Performance des Requêtes</h6>
                     <p class="text-warm-grey small mb-0">
-                      Architecture Docker multi-conteneurs (frontend, backend, base de données)
-                      orchestrée derrière un reverse proxy Caddy, permettant des mises en production
-                      reproductibles et un passage en environnement HTTPS automatique.
+                      Conception d'un système de pagination dynamique côté serveur (LIMIT/OFFSET)
+                      maintenant des performances constantes quelle que soit la taille de la base
+                      de prospects.
                     </p>
                   </div>
                 </div>
-
               </div>
             </div>
 
-            <!-- ===== STACK TECHNOLOGIQUE ===== -->
+            <!-- ===== STACK ===== -->
             <div class="section-spacing" data-aos="fade-up" data-aos-delay="240">
               <h4 class="mb-3">Stack Technologique</h4>
               <div class="mb-5">
-                <span class="tech-badge-minimal">React 18</span>
-                <span class="tech-badge-minimal">TypeScript</span>
-                <span class="tech-badge-minimal">Vite</span>
-                <span class="tech-badge-minimal">Context API</span>
-                <span class="tech-badge-minimal">Node.js</span>
-                <span class="tech-badge-minimal">Express</span>
-                <span class="tech-badge-minimal">PostgreSQL</span>
-                <span class="tech-badge-minimal">Prisma ORM</span>
-                <span class="tech-badge-minimal">JWT</span>
-                <span class="tech-badge-minimal">Docker</span>
-                <span class="tech-badge-minimal">Caddy</span>
+                <span class="tech-badge-minimal">PHP 8 OO</span>
+                <span class="tech-badge-minimal">MySQL</span>
+                <span class="tech-badge-minimal">PDO</span>
+                <span class="tech-badge-minimal">Architecture MVC</span>
+                <span class="tech-badge-minimal">Pattern DAO</span>
+                <span class="tech-badge-minimal">Sessions PHP</span>
+                <span class="tech-badge-minimal">HTML5 / CSS3</span>
                 <span class="tech-badge-minimal">Bootstrap 5</span>
+                <span class="tech-badge-minimal">FILTER_SANITIZE</span>
+                <span class="tech-badge-minimal">Requêtes Préparées</span>
               </div>
             </div>
 
@@ -991,41 +1034,41 @@
               <h3>Informations du Projet</h3>
               <ul class="list-unstyled">
                 <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Client</strong>
-                  <span class="text-warm-grey">Assystem</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Durée</strong>
-                  <span class="text-warm-grey">12+ mois</span>
+                  <strong class="d-block text-anthracite mb-1">Secteur</strong>
+                  <span class="text-warm-grey">Transport / Location de véhicules</span>
                 </li>
                 <li class="mb-3">
                   <strong class="d-block text-anthracite mb-1">Rôle</strong>
-                  <span class="text-warm-grey">Développeur Full-Stack</span>
+                  <span class="text-warm-grey">Développeur Backend PHP</span>
                 </li>
                 <li class="mb-3">
                   <strong class="d-block text-anthracite mb-1">Architecture</strong>
-                  <span class="text-warm-grey">SPA React + API REST</span>
+                  <span class="text-warm-grey">Modèle-Vue-Contrôleur (MVC)</span>
+                </li>
+                <li class="mb-3">
+                  <strong class="d-block text-anthracite mb-1">Base de données</strong>
+                  <span class="text-warm-grey">MySQL + PDO</span>
                 </li>
                 <li class="mb-3">
                   <strong class="d-block text-anthracite mb-1">Statut</strong>
-                  <span class="text-warm-grey">En Production</span>
+                  <span class="text-warm-grey">En développement actif</span>
                 </li>
                 <li>
-                  <strong class="d-block text-anthracite mb-1">Méthodologie</strong>
-                  <span class="text-warm-grey">Mentorat + Autoformation</span>
+                  <strong class="d-block text-anthracite mb-1">Objectif</strong>
+                  <span class="text-warm-grey">Digitalisation &amp; centralisation métier</span>
                 </li>
               </ul>
             </div>
 
             <!-- Impact Business -->
             <div class="sidebar-minimal" data-aos="fade-up" data-aos-delay="150">
-              <h5 class="mb-3">Impact Business</h5>
+              <h5 class="mb-3">Bénéfices Métier</h5>
               <ul class="impact-list">
-                <li><i class="bi bi-check-circle"></i><span>Centralisation des données compétences</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Optimisation des affectations projets</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Visibilité accrue sur les talents</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Décisionnel RH amélioré</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Formation minimale nécessaire</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Zéro fichier Excel dispersé</span></li>
+                <li><i class="bi bi-check-circle"></i><span>CRM centralisé prospects/clients</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Suivi en temps réel de l'activité</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Saisies protégées et validées</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Architecture extensible (flotte)</span></li>
               </ul>
             </div>
 
@@ -1099,8 +1142,8 @@
         '.minimal-card, .metric-card-minimal, .feature-card-minimal, .layer-item-minimal, .challenge-item'
       ).forEach(el => observer.observe(el));
 
-      // ===== ARCH NODES CLICK RIPPLE =====
-      document.querySelectorAll('.arch-node').forEach(node => {
+      // ===== MVC NODES CLICK RIPPLE =====
+      document.querySelectorAll('.mvc-node').forEach(node => {
         node.addEventListener('click', function () {
           this.style.transform = 'scale(0.95)';
           setTimeout(() => this.style.transform = '', 150);

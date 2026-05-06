@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>ASKILLS — Plateforme de gestion des compétences</title>
-  <meta content="Plateforme React/Node.js de gestion des compétences et ressources humaines — Dramé Aly" name="description">
+  <title>Borne de Commande — Application WPF / C# pour restaurant</title>
+  <meta content="Application WPF .NET de borne de commande interactive pour restaurant — Dramé Aly" name="description">
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -25,7 +25,7 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
   <style>
-    /* ===== DESIGN TOKENS ===== */
+    /* ===== DESIGN TOKENS (identiques aux autres pages portfolio) ===== */
     :root {
       --beige-ivory: #faf9f7;
       --beige-light: #f5f3f0;
@@ -35,9 +35,9 @@
       --anthracite-medium: #4a4a4a;
       --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-      /* Accent subtil pour ce projet */
-      --askills-accent: #3a3a3a;
-      --askills-accent-soft: #6b6b6b;
+      /* Accent pour ce projet */
+      --borne-accent: #3a3a3a;
+      --borne-accent-soft: #6b6b6b;
     }
 
     body {
@@ -115,8 +115,8 @@
       50%       { opacity: 0.5; transform: scale(1.4); }
     }
 
-    /* ===== HERO BANNER ===== */
-    .project-hero-banner {
+    /* ===== HERO BANNER BORNE ===== */
+    .borne-hero-banner {
       background: var(--anthracite-dark);
       color: var(--beige-ivory);
       padding: 4.5rem 0 3.5rem;
@@ -125,7 +125,7 @@
       overflow: hidden;
     }
 
-    .project-hero-banner::before {
+    .borne-hero-banner::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -133,7 +133,7 @@
       pointer-events: none;
     }
 
-    .project-hero-banner::after {
+    .borne-hero-banner::after {
       content: '';
       position: absolute;
       inset: 0;
@@ -144,9 +144,9 @@
       pointer-events: none;
     }
 
-    .project-hero-banner h1 { color: var(--beige-ivory); }
+    .borne-hero-banner h1 { color: var(--beige-ivory); }
 
-    .project-hero-banner .lead {
+    .borne-hero-banner .lead {
       color: rgba(250,249,247,0.65);
       font-size: 1.15rem;
     }
@@ -195,15 +195,9 @@
       font-weight: 500;
     }
 
-    .status-badge.in-production {
-      background: rgba(44,44,44,0.08);
-      color: var(--anthracite-dark);
-    }
-
     .status-badge .dot {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: var(--anthracite-dark);
       animation: pulse-dot 2s ease-in-out infinite;
     }
 
@@ -256,7 +250,7 @@
       animation: counter-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
     }
 
-    /* ===== ARCHITECTURE DIAGRAM (React/Node Flow) ===== */
+    /* ===== ARCHITECTURE DIAGRAM (WPF Layers) ===== */
     .arch-diagram {
       background: var(--beige-light);
       border-radius: 24px;
@@ -569,7 +563,7 @@
       .minimal-card { padding: 1.5rem; }
       .metric-value-minimal { font-size: 2rem; }
       .section-spacing { margin: 2rem 0; }
-      .project-hero-banner { padding: 3rem 0 2.5rem; }
+      .borne-hero-banner { padding: 3rem 0 2.5rem; }
     }
 
     @media (max-width: 768px) {
@@ -608,32 +602,32 @@
   <main class="main">
 
     <!-- ===== HERO BANNER ===== -->
-    <div class="project-hero-banner">
+    <div class="borne-hero-banner">
       <div class="container" data-aos="fade-up">
         <div class="hero-breadcrumb mb-3">
           <a href="index.html">Accueil</a>
           <span>/</span>
           <a href="index.html#portfolio">Portfolio</a>
           <span>/</span>
-          <span class="current">ASKILLS</span>
+          <span class="current">Borne de Commande</span>
         </div>
 
         <div class="mb-3">
-          <span class="hero-tag"><i class="bi bi-braces me-1"></i>React 18 + TypeScript</span>
-          <span class="hero-tag"><i class="bi bi-server me-1"></i>Node.js / Express</span>
-          <span class="hero-tag"><i class="bi bi-people me-1"></i>Gestion des Compétences</span>
+          <span class="hero-tag"><i class="bi bi-window me-1"></i>WPF / C# (.NET)</span>
+          <span class="hero-tag"><i class="bi bi-database me-1"></i>MySQL / JSON</span>
+          <span class="hero-tag"><i class="bi bi-shop me-1"></i>Application Restaurant</span>
         </div>
 
-        <h1 class="typewriter-title" data-aos="fade-up" data-aos-delay="80">ASKILLS</h1>
+        <h1 class="typewriter-title" data-aos="fade-up" data-aos-delay="80">Borne de Commande</h1>
         <p class="lead" data-aos="fade-up" data-aos-delay="150">
-          Plateforme harmonisant le suivi des compétences, projets et ressources humaines
-          en environnement technique complexe — développée sur 12 mois pour Assystem.
+          Application de bureau WPF simulant une borne de commande interactive pour restaurant —
+          gestion du menu, du panier client et d'un back-office d'administration complet.
         </p>
 
         <div class="d-flex align-items-center gap-3 mt-3" data-aos="fade-up" data-aos-delay="200">
-          <span class="status-badge in-production" style="background:rgba(255,255,255,0.1); color:rgba(250,249,247,0.85);">
+          <span class="status-badge" style="background:rgba(255,255,255,0.1); color:rgba(250,249,247,0.85);">
             <span class="dot" style="background:rgba(250,249,247,0.85);"></span>
-            En Production
+            Projet Personnel
           </span>
           <a href="index.html#portfolio" class="btn-minimal" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); color:rgba(250,249,247,0.8);">
             <i class="bi bi-arrow-left"></i> Retour au portfolio
@@ -660,16 +654,16 @@
           </script>
           <div class="swiper-wrapper align-items-center">
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/app-1.png" alt="Dashboard ASKILLS">
+              <img src="assets/img/portfolio/borne-1.png" alt="Écran d'accueil — Choix du type de commande">
             </div>
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/product-1.png" alt="Gestion des compétences">
+              <img src="assets/img/portfolio/borne-2.png" alt="Interface de commande — Catalogue et panier">
             </div>
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/branding-1.png" alt="Profils utilisateurs">
+              <img src="assets/img/portfolio/borne-3.png" alt="Interface d'administration — Gestion des plats">
             </div>
             <div class="swiper-slide">
-              <img src="assets/img/portfolio/books-1.png" alt="Interface d'administration">
+              <img src="assets/img/portfolio/borne-4.png" alt="Panneau de configuration — Couleur et paramètres">
             </div>
           </div>
           <div class="swiper-button-prev"></div>
@@ -685,19 +679,21 @@
 
             <!-- Overview -->
             <div class="minimal-card" data-aos="fade-up">
-              <h2>Transformation Digitale pour Assystem</h2>
+              <h2>Une Borne de Commande de A à Z en C#</h2>
               <p class="lead mb-4">
-                Application moderne conçue pour centraliser la gestion des compétences,
-                des projets et des utilisateurs dans un environnement technique complexe.
+                Application desktop développée en WPF (.NET / C#) simulant une borne de commande
+                interactive pour restaurant, du choix du menu jusqu'à la validation du panier — avec un
+                back-office d'administration complet.
               </p>
               <p>
-                Développée sur <strong class="text-anthracite">12 mois</strong>, ASKILLS modernise la gestion
-                des talents au sein d'un leader mondial de l'ingénierie, créant une source
-                de vérité unique pour les compétences techniques. Avec une interface fluide
-                et réactive pensée pour simplifier le quotidien des équipes, elle s'appuie sur
-                une stack <strong class="text-anthracite">React 18 / TypeScript</strong> côté client et
-                un backend <strong class="text-anthracite">Node.js + Express</strong> exposant une API REST
-                sécurisée par JWT, le tout orchestré via <strong class="text-anthracite">Docker</strong>.
+                Ce projet suit une <strong class="text-anthracite">architecture en couches</strong> rigoureuse
+                (Modèles, Services, Vues) et couvre l'intégralité du cycle d'une commande côté client ainsi que la
+                gestion opérationnelle côté employé/admin. La persistance est assurée de manière hybride :
+                les plats et la configuration sont stockés en <strong class="text-anthracite">JSON local</strong>,
+                tandis que l'authentification et l'historique des connexions reposent sur une base
+                <strong class="text-anthracite">MySQL/MariaDB</strong> avec hachage BCrypt.
+                La couleur d'accentuation de l'interface est configurable à chaud depuis le panneau admin,
+                grâce à une ressource WPF dynamique (<code>AccentBrush</code>).
               </p>
             </div>
 
@@ -705,95 +701,95 @@
             <div class="row mb-5" data-aos="fade-up" data-aos-delay="100">
               <div class="col-md-3 col-6 mb-4">
                 <div class="metric-card-minimal" style="animation-delay: 0s;">
-                  <div class="metric-value-minimal">-75%</div>
-                  <p class="text-warm-grey small">Temps de gestion</p>
+                  <div class="metric-value-minimal">3</div>
+                  <p class="text-warm-grey small">Couches applicatives</p>
                 </div>
               </div>
               <div class="col-md-3 col-6 mb-4">
                 <div class="metric-card-minimal" style="animation-delay: 0.8s;">
-                  <div class="metric-value-minimal">&lt;200ms</div>
-                  <p class="text-warm-grey small">Réponse API</p>
+                  <div class="metric-value-minimal">4</div>
+                  <p class="text-warm-grey small">Onglets d'administration</p>
                 </div>
               </div>
               <div class="col-md-3 col-6 mb-4">
                 <div class="metric-card-minimal" style="animation-delay: 1.6s;">
-                  <div class="metric-value-minimal">100%</div>
-                  <p class="text-warm-grey small">Données centralisées</p>
+                  <div class="metric-value-minimal">2</div>
+                  <p class="text-warm-grey small">Rôles utilisateurs</p>
                 </div>
               </div>
               <div class="col-md-3 col-6 mb-4">
                 <div class="metric-card-minimal" style="animation-delay: 2.4s;">
-                  <div class="metric-value-minimal">RBAC</div>
-                  <p class="text-warm-grey small">3 niveaux d'accès</p>
+                  <div class="metric-value-minimal">JSON</div>
+                  <p class="text-warm-grey small">Persistance locale</p>
                 </div>
               </div>
             </div>
 
             <!-- ===== ARCHITECTURE DIAGRAM ===== -->
             <div class="section-spacing" data-aos="fade-up" data-aos-delay="120">
-              <h3 class="mb-4">Architecture Fullstack Illustrée</h3>
+              <h3 class="mb-4">Architecture en Couches Illustrée</h3>
               <div class="arch-diagram">
-                <p class="arch-diagram-title">Flux de données — Requête utilisateur → Réponse UI</p>
+                <p class="arch-diagram-title">Flux utilisateur — Écran client → Validation → Back-office</p>
 
                 <div class="arch-flow mb-4">
-                  <!-- Utilisateur -->
+                  <!-- Client -->
                   <div class="arch-node">
                     <span class="node-icon"><i class="bi bi-person-circle"></i></span>
-                    <div class="node-label">Navigateur</div>
-                    <div class="node-sub">React 18 + Vite</div>
+                    <div class="node-label">Client</div>
+                    <div class="node-sub">TypeCommandeView</div>
                   </div>
 
                   <div class="arch-arrow">
                     <div class="arch-arrow-line"></div>
-                    <div class="arch-arrow-label">Context API</div>
+                    <div class="arch-arrow-label">Événement</div>
                   </div>
 
-                  <!-- API -->
+                  <!-- Commande -->
                   <div class="arch-node">
-                    <span class="node-icon"><i class="bi bi-cpu"></i></span>
-                    <div class="node-label">API REST</div>
-                    <div class="node-sub">Express + JWT</div>
+                    <span class="node-icon"><i class="bi bi-cart3"></i></span>
+                    <div class="node-label">Commande</div>
+                    <div class="node-sub">CommandeView</div>
                   </div>
 
                   <div class="arch-arrow">
                     <div class="arch-arrow-line"></div>
-                    <div class="arch-arrow-label">Prisma ORM</div>
+                    <div class="arch-arrow-label">PlatService</div>
                   </div>
 
-                  <!-- Base de données -->
+                  <!-- Admin -->
                   <div class="arch-node">
-                    <span class="node-icon"><i class="bi bi-database"></i></span>
-                    <div class="node-label">Base de Données</div>
-                    <div class="node-sub">PostgreSQL</div>
+                    <span class="node-icon"><i class="bi bi-gear"></i></span>
+                    <div class="node-label">Back-office</div>
+                    <div class="node-sub">AdminWindow</div>
                   </div>
                 </div>
 
-                <!-- 2ème rangée -->
+                <!-- Couches détaillées -->
                 <div class="row g-3 mt-1">
                   <div class="col-md-4">
                     <div class="layer-item-minimal">
-                      <i class="bi bi-braces"></i>
+                      <i class="bi bi-box"></i>
                       <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Frontend (Client)</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">React 18 + TypeScript + Vite</div>
+                        <div style="font-weight:600; font-size:0.875rem;">Modèles</div>
+                        <div class="text-warm-grey" style="font-size:0.75rem;">Plat · LigneCommande · Commande</div>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="layer-item-minimal">
-                      <i class="bi bi-server"></i>
+                      <i class="bi bi-cpu"></i>
                       <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Backend (Serveur)</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">Node.js — Express + JWT</div>
+                        <div style="font-weight:600; font-size:0.875rem;">Services</div>
+                        <div class="text-warm-grey" style="font-size:0.75rem;">BorneConfig · PlatService · AuthService</div>
                       </div>
                     </div>
                   </div>
                   <div class="col-md-4">
                     <div class="layer-item-minimal">
-                      <i class="bi bi-box-seam"></i>
+                      <i class="bi bi-layout-text-window"></i>
                       <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Déploiement</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">Docker — Caddy reverse proxy</div>
+                        <div style="font-weight:600; font-size:0.875rem;">Vues (WPF)</div>
+                        <div class="text-warm-grey" style="font-size:0.75rem;">MainWindow · CommandeView · AdminWindow</div>
                       </div>
                     </div>
                   </div>
@@ -807,36 +803,65 @@
               <div style="background: var(--beige-light); border-radius: 20px; padding: 2rem; margin: 0;">
                 <div class="row">
                   <div class="col-md-6 mb-4">
-                    <h5 class="mb-3 text-warm-grey">Frontend — Couche Présentation</h5>
+                    <h5 class="mb-3 text-warm-grey">Interface — Couche Présentation</h5>
                     <div class="layer-item-minimal">
-                      <i class="bi bi-braces"></i>
-                      <span>React 18 + TypeScript — SPA moderne</span>
+                      <i class="bi bi-window"></i>
+                      <span>WPF — Fenêtres, vues, contrôles XAML</span>
                     </div>
                     <div class="layer-item-minimal">
-                      <i class="bi bi-lightning"></i>
-                      <span>Vite — Build ultra-rapide + HMR</span>
+                      <i class="bi bi-palette"></i>
+                      <span>AccentBrush — Couleur dynamique configurable</span>
                     </div>
                     <div class="layer-item-minimal">
-                      <i class="bi bi-layers"></i>
-                      <span>Context API — Gestion d'état globale</span>
+                      <i class="bi bi-grid"></i>
+                      <span>DataGrid — Affichage plats &amp; historique</span>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
-                    <h5 class="mb-3 text-warm-grey">Backend — Couche Logique & Données</h5>
+                    <h5 class="mb-3 text-warm-grey">Données — Couche Persistance</h5>
                     <div class="layer-item-minimal">
-                      <i class="bi bi-server"></i>
-                      <span>Node.js + Express — API REST</span>
+                      <i class="bi bi-filetype-json"></i>
+                      <span>JSON local — Plats &amp; configuration (AppData)</span>
                     </div>
                     <div class="layer-item-minimal">
-                      <i class="bi bi-database-gear"></i>
-                      <span>PostgreSQL + Prisma ORM</span>
+                      <i class="bi bi-database"></i>
+                      <span>MySQL/MariaDB — Auth &amp; historique connexions</span>
                     </div>
                     <div class="layer-item-minimal">
-                      <i class="bi bi-shield-check"></i>
-                      <span>JWT — Authentification sécurisée</span>
+                      <i class="bi bi-shield-lock"></i>
+                      <span>BCrypt — Hachage sécurisé des mots de passe</span>
                     </div>
                   </div>
                 </div>
+              </div>
+            </div>
+
+            <!-- ===== EXTRAIT DE CODE ===== -->
+            <div class="section-spacing" data-aos="fade-up" data-aos-delay="160">
+              <h3 class="mb-4">Extrait de Code Notable</h3>
+              <div class="code-snippet">
+                <div class="mb-2">
+                  <span class="code-dot" style="background:#ff5f57;"></span>
+                  <span class="code-dot" style="background:#febc2e;"></span>
+                  <span class="code-dot" style="background:#28c840;"></span>
+                  <span class="code-comment">// BorneConfig.cs — Singleton de configuration</span>
+                </div>
+<span class="code-keyword">public class</span> <span class="code-class">BorneConfig</span>
+{
+    <span class="code-keyword">private static</span> <span class="code-class">BorneConfig</span> _instance;
+    <span class="code-keyword">public static</span> <span class="code-class">BorneConfig</span> Instance
+        => _instance ??= <span class="code-method">LoadFromFile</span>();
+
+    <span class="code-keyword">public string</span> NomRestaurant { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+    <span class="code-keyword">public string</span> CouleurAccent { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; } <span class="code-comment">// ex. "#E63946"</span>
+    <span class="code-keyword">public bool</span>   ModeSurPlace   { <span class="code-keyword">get</span>; <span class="code-keyword">set</span>; }
+
+    <span class="code-keyword">public void</span> <span class="code-method">Save</span>()
+    {
+        <span class="code-keyword">var</span> json = JsonSerializer.<span class="code-method">Serialize</span>(<span class="code-keyword">this</span>);
+        File.<span class="code-method">WriteAllText</span>(_configPath, json);
+    }
+}
               </div>
             </div>
 
@@ -848,55 +873,60 @@
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-person-badge"></i></div>
-                      <h5 class="mb-2">Gestion des Compétences</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-ui-checks"></i></div>
+                      <h5 class="mb-2">Borne Client Interactive</h5>
                       <p class="text-warm-grey small">
-                        Création, validation et hiérarchisation des compétences techniques
-                        avec un workflow à deux niveaux (Manager → Admin).
+                        Écran d'accueil avec choix du mode ("Sur place" / "À emporter"),
+                        catalogue filtrable par catégorie et recherche texte, panier en temps réel
+                        avec ajout, incrément, décrément et suppression de lignes.
                       </p>
                     </div>
                   </div>
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-diagram-3"></i></div>
-                      <h5 class="mb-2">Profils Utilisateurs</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-gear-wide-connected"></i></div>
+                      <h5 class="mb-2">Administration Multi-onglets</h5>
                       <p class="text-warm-grey small">
-                        Profils enrichis avec auto-évaluation et validation par les pairs,
-                        offrant une vue complète des expertises de chaque collaborateur.
+                        Back-office à 4 onglets : gestion des plats (CRUD DataGrid),
+                        configuration de la borne, paramètres de connexion MySQL avec test asynchrone,
+                        et historique des 500 dernières connexions.
                       </p>
                     </div>
                   </div>
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-kanban"></i></div>
-                      <h5 class="mb-2">Gestion de Projets</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-palette2"></i></div>
+                      <h5 class="mb-2">Thème Dynamique en Direct</h5>
                       <p class="text-warm-grey small">
-                        Matching automatique compétences/projets et affectation optimisée
-                        des ressources humaines selon les besoins opérationnels.
+                        La couleur d'accentuation est une ressource WPF dynamique (<code>AccentBrush</code>)
+                        modifiable à la volée depuis l'admin — palette de swatches ou saisie hexadécimale —
+                        avec aperçu instantané sans redémarrage.
                       </p>
                     </div>
                   </div>
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-graph-up"></i></div>
-                      <h5 class="mb-2">Tableaux de Bord</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-shield-check"></i></div>
+                      <h5 class="mb-2">Authentification &amp; Sessions</h5>
                       <p class="text-warm-grey small">
-                        Analytics et reporting en temps réel sur les compétences disponibles
-                        pour piloter les décisions RH et opérationnelles.
+                        Connexion admin sécurisée via BCrypt contre une base MySQL. Gestion de session
+                        statique avec rôles "admin" et "employé", accès à l'AdminWindow restreint
+                        aux administrateurs authentifiés.
                       </p>
                     </div>
                   </div>
 
                   <div class="swiper-slide">
                     <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-shield-lock"></i></div>
-                      <h5 class="mb-2">Sécurité Multi-niveaux</h5>
+                      <div class="feature-icon-minimal"><i class="bi bi-filetype-json"></i></div>
+                      <h5 class="mb-2">Persistance Hybride</h5>
                       <p class="text-warm-grey small">
-                        RBAC avec 3 niveaux de permissions distincts (Admin, Manager, Collaborateur)
-                        garantissant une séparation stricte des droits d'accès.
+                        Plats et configuration stockés localement en JSON (AppData) via des singletons
+                        chargés une fois au démarrage. Les données métier évoluent indépendamment
+                        de la connexion à la base de données.
                       </p>
                     </div>
                   </div>
@@ -914,11 +944,12 @@
                 <div class="challenge-item">
                   <div class="challenge-num">01</div>
                   <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Synchronisation Temps Réel</h6>
+                    <h6 class="mb-1 text-anthracite">Mise à Jour du Panier sans INotifyPropertyChanged</h6>
                     <p class="text-warm-grey small mb-0">
-                      Implémentation d'un système de rafraîchissement automatique via des hooks
-                      React personnalisés et le Context API — garantissant la cohérence des données
-                      affichées entre tous les composants sans rechargement de page.
+                      <code>LigneCommande</code> n'implémentant pas <code>INotifyPropertyChanged</code>,
+                      chaque modification de quantité nécessite un reset manuel de l'<code>ItemsSource</code>
+                      du DataGrid panier pour forcer le rafraîchissement visuel — contournement technique
+                      documenté et maîtrisé.
                     </p>
                   </div>
                 </div>
@@ -926,11 +957,12 @@
                 <div class="challenge-item">
                   <div class="challenge-num">02</div>
                   <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Sécurité &amp; Contrôle d'Accès</h6>
+                    <h6 class="mb-1 text-anthracite">Ressource WPF Dynamique pour le Thème</h6>
                     <p class="text-warm-grey small mb-0">
-                      Mise en place d'un système RBAC à 3 niveaux (Admin, Manager, Collaborateur)
-                      avec validation JWT côté serveur et protections de routes côté client,
-                      assurant une séparation stricte des droits selon le rôle de chaque utilisateur.
+                      La couleur d'accentuation est injectée comme ressource dynamique globale
+                      (<code>Application.Current.Resources["AccentBrush"]</code>), permettant de
+                      repeindre l'ensemble de l'interface à chaud depuis le panneau admin sans
+                      rechargement de la fenêtre principale.
                     </p>
                   </div>
                 </div>
@@ -938,11 +970,12 @@
                 <div class="challenge-item">
                   <div class="challenge-num">03</div>
                   <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Performance Optimisée</h6>
+                    <h6 class="mb-1 text-anthracite">Cohérence des Données Admin / Client</h6>
                     <p class="text-warm-grey small mb-0">
-                      Code splitting automatique avec Vite et lazy loading des routes React,
-                      réduisant drastiquement le bundle initial et maintenant des temps de réponse
-                      API inférieurs à 200 ms même sous charge.
+                      Le <code>PlatService</code> étant un singleton chargé une fois au démarrage,
+                      <code>CommandeView</code> le recharge explicitement à chaque nouvelle commande
+                      afin de refléter immédiatement toute modification effectuée dans l'onglet Plats
+                      de l'admin, sans redémarrage de l'application.
                     </p>
                   </div>
                 </div>
@@ -950,11 +983,12 @@
                 <div class="challenge-item">
                   <div class="challenge-num">04</div>
                   <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Déploiement Containerisé</h6>
+                    <h6 class="mb-1 text-anthracite">Test de Connexion MySQL Asynchrone</h6>
                     <p class="text-warm-grey small mb-0">
-                      Architecture Docker multi-conteneurs (frontend, backend, base de données)
-                      orchestrée derrière un reverse proxy Caddy, permettant des mises en production
-                      reproductibles et un passage en environnement HTTPS automatique.
+                      La méthode statique <code>AuthService.TestConnectionAsync</code> permet de
+                      valider les paramètres de connexion à la base de données directement depuis
+                      l'onglet "Base de données" de l'admin — retour visuel immédiat, sans bloquer
+                      le thread UI grâce à l'usage de <code>async/await</code>.
                     </p>
                   </div>
                 </div>
@@ -966,18 +1000,16 @@
             <div class="section-spacing" data-aos="fade-up" data-aos-delay="240">
               <h4 class="mb-3">Stack Technologique</h4>
               <div class="mb-5">
-                <span class="tech-badge-minimal">React 18</span>
-                <span class="tech-badge-minimal">TypeScript</span>
-                <span class="tech-badge-minimal">Vite</span>
-                <span class="tech-badge-minimal">Context API</span>
-                <span class="tech-badge-minimal">Node.js</span>
-                <span class="tech-badge-minimal">Express</span>
-                <span class="tech-badge-minimal">PostgreSQL</span>
-                <span class="tech-badge-minimal">Prisma ORM</span>
-                <span class="tech-badge-minimal">JWT</span>
-                <span class="tech-badge-minimal">Docker</span>
-                <span class="tech-badge-minimal">Caddy</span>
-                <span class="tech-badge-minimal">Bootstrap 5</span>
+                <span class="tech-badge-minimal">C# / .NET</span>
+                <span class="tech-badge-minimal">WPF</span>
+                <span class="tech-badge-minimal">XAML</span>
+                <span class="tech-badge-minimal">Architecture en Couches</span>
+                <span class="tech-badge-minimal">Singleton</span>
+                <span class="tech-badge-minimal">JSON (System.Text.Json)</span>
+                <span class="tech-badge-minimal">MySQL / MariaDB</span>
+                <span class="tech-badge-minimal">BCrypt</span>
+                <span class="tech-badge-minimal">async / await</span>
+                <span class="tech-badge-minimal">AccentBrush Dynamique</span>
               </div>
             </div>
 
@@ -991,41 +1023,41 @@
               <h3>Informations du Projet</h3>
               <ul class="list-unstyled">
                 <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Client</strong>
-                  <span class="text-warm-grey">Assystem</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Durée</strong>
-                  <span class="text-warm-grey">12+ mois</span>
+                  <strong class="d-block text-anthracite mb-1">Contexte</strong>
+                  <span class="text-warm-grey">Projet personnel</span>
                 </li>
                 <li class="mb-3">
                   <strong class="d-block text-anthracite mb-1">Rôle</strong>
-                  <span class="text-warm-grey">Développeur Full-Stack</span>
+                  <span class="text-warm-grey">Développeur Desktop C# / WPF</span>
                 </li>
                 <li class="mb-3">
                   <strong class="d-block text-anthracite mb-1">Architecture</strong>
-                  <span class="text-warm-grey">SPA React + API REST</span>
+                  <span class="text-warm-grey">Modèles · Services · Vues</span>
+                </li>
+                <li class="mb-3">
+                  <strong class="d-block text-anthracite mb-1">Base de données</strong>
+                  <span class="text-warm-grey">MySQL / MariaDB + JSON local</span>
                 </li>
                 <li class="mb-3">
                   <strong class="d-block text-anthracite mb-1">Statut</strong>
-                  <span class="text-warm-grey">En Production</span>
+                  <span class="text-warm-grey">Fonctionnel — Demo</span>
                 </li>
                 <li>
-                  <strong class="d-block text-anthracite mb-1">Méthodologie</strong>
-                  <span class="text-warm-grey">Mentorat + Autoformation</span>
+                  <strong class="d-block text-anthracite mb-1">Plateforme</strong>
+                  <span class="text-warm-grey">Windows Desktop (.NET)</span>
                 </li>
               </ul>
             </div>
 
-            <!-- Impact Business -->
+            <!-- Points Clés -->
             <div class="sidebar-minimal" data-aos="fade-up" data-aos-delay="150">
-              <h5 class="mb-3">Impact Business</h5>
+              <h5 class="mb-3">Points Clés</h5>
               <ul class="impact-list">
-                <li><i class="bi bi-check-circle"></i><span>Centralisation des données compétences</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Optimisation des affectations projets</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Visibilité accrue sur les talents</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Décisionnel RH amélioré</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Formation minimale nécessaire</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Interface client intuitive façon fast-food</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Back-office admin complet &amp; sécurisé</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Thème dynamique sans redémarrage</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Persistance hybride JSON + MySQL</span></li>
+                <li><i class="bi bi-check-circle"></i><span>Architecture en couches propre</span></li>
               </ul>
             </div>
 
