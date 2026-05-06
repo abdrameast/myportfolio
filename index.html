@@ -1186,8 +1186,8 @@
         // Script amélioré pour Google Alerts avec Swiper
         (async () => {
           try {
-            // Appel à l'API (chemin relatif pour fonctionner sur XAMPP et Vercel)
-            const response = await fetch('api/alerts.php');
+            // Appel à l'API Vercel Serverless (Node.js)
+            const response = await fetch('/api/alerts');
             const data = await response.json();
 
             // Vérifier si nous avons des données
