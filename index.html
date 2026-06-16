@@ -1,1271 +1,729 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>DRAME ALY - Portfolio</title>
-    <meta content="" name="description" />
-    <meta content="" name="keywords" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aly-Ba Dramé — Développeur & Ingénieur logiciel</title>
+    <meta
+      name="description"
+      content="Portfolio d'Aly-Ba Dramé, développeur full-stack et ingénieur logiciel en apprentissage chez Assystem. Applications web, logicielles et solutions sur mesure."
+    />
+    <meta name="keywords" content="Aly-Ba Dramé, développeur, ingénieur logiciel, full-stack, React, TypeScript, PHP, C#, Python, BTS SIO, Assystem, Paris" />
+    <meta name="author" content="Aly-Ba Dramé" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Aly-Ba Dramé — Développeur & Ingénieur logiciel" />
+    <meta property="og:description" content="Développeur full-stack et ingénieur logiciel en apprentissage. Découvrez mes projets et mon parcours." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/img/profile-img.png" />
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon" />
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+    <link rel="icon" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300..700&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Vendor CSS Files -->
-    <link
-      href="assets/vendor/bootstrap/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
-    <link
-      href="assets/vendor/glightbox/css/glightbox.min.css"
-      rel="stylesheet"
-    />
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <!-- Icons (local) -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
 
-    <!-- Main CSS File -->
-    <link href="assets/css/main.css" rel="stylesheet" />
-
-    <!-- =======================================================
-  * Template Name: MyResume
-  * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-  * Updated: Jun 29 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
   </head>
 
-  <body class="index-page">
-    <header
-      id="header"
-      class="header d-flex flex-column justify-content-center"
-    >
-      <i class="header-toggle d-xl-none bi bi-list"></i>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="preloader__inner">
+        <div class="preloader__name">Aly-Ba Dramé</div>
+        <div class="preloader__bar"><span></span></div>
+      </div>
+    </div>
 
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li>
-            <a href="#hero" class="active"
-              ><i class="bi bi-house navicon"></i><span>Accueil</span></a
-            >
-          </li>
-          <li>
-            <a href="#about"
-              ><i class="bi bi-person navicon"></i><span>À propos</span></a
-            >
-          </li>
-          <li>
-            <a href="#resume"
-              ><i class="bi bi-file-earmark-text navicon"></i
-              ><span>Expérience</span></a
-            >
-          </li>
-          <li>
-            <a href="#portfolio"
-              ><i class="bi bi-images navicon"></i><span>Portfolio</span></a
-            >
-          </li>
-          <li>
-            <a href="#services"
-              ><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a
-            >
-          </li>
-          <li>
-            <a href="#contact"
-              ><i class="bi bi-envelope navicon"></i><span>Contact</span></a
-            >
-          </li>
-        </ul>
-      </nav>
+    <!-- Custom cursor -->
+    <div class="cursor" aria-hidden="true"></div>
+    <div class="cursor cursor--ring" aria-hidden="true"></div>
+
+    <!-- Scroll progress -->
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Navigation -->
+    <header class="nav" id="nav">
+      <div class="nav__inner">
+        <a href="#hero" class="brand" data-cursor>Aly-Ba Dramé<span class="dot">.</span></a>
+        <nav class="nav__links" aria-label="Navigation principale">
+          <a href="#hero" class="active">Accueil</a>
+          <a href="#about">À propos</a>
+          <a href="#skills">Compétences</a>
+          <a href="#parcours">Parcours</a>
+          <a href="#projects">Projets</a>
+          <a href="#services">Services</a>
+        </nav>
+        <div class="nav__cta">
+          <a href="#contact" class="btn btn--primary" data-cursor>Me contacter <i class="bi bi-arrow-up-right"></i></a>
+          <button class="nav__burger" id="burger" aria-label="Ouvrir le menu"><i class="bi bi-list"></i></button>
+        </div>
+      </div>
     </header>
 
-    <main class="main">
-      <!-- Hero Section -->
-      <section id="hero" class="hero section light-background">
-        <img src="assets/img/hero-bg.png" alt="" />
+    <!-- Mobile menu -->
+    <div class="menu" id="menu">
+      <a href="#hero"><span>01</span> Accueil</a>
+      <a href="#about"><span>02</span> À propos</a>
+      <a href="#skills"><span>03</span> Compétences</a>
+      <a href="#parcours"><span>04</span> Parcours</a>
+      <a href="#projects"><span>05</span> Projets</a>
+      <a href="#services"><span>06</span> Services</a>
+      <a href="#contact"><span>07</span> Contact</a>
+      <div class="menu__foot">
+        <span>dramealyba@gmail.com</span>
+        <span>+33 7 82 30 65 35</span>
+        <span>Paris, France</span>
+      </div>
+    </div>
 
-        <div class="container" data-aos="zoom-out">
-          <div class="row justify-content-center">
-            <div class="col-lg-9">
-              <h2>Dramé Aly-Ba</h2>
-              <p>
-                Je suis un
-                <span
-                  class="typed"
-                  data-typed-items=" Développeur, Étudiant, Ingénieur logiciel"
-                  >Développeur</span
-                ><span
-                  class="typed-cursor typed-cursor--blink"
-                  aria-hidden="true"
-                ></span>
-              </p>
-              <div class="social-links">
-                <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/"><i class="bi bi-linkedin"></i></a>
-              </div>
-            </div>
+    <main>
+      <!-- ===================== HERO ===================== -->
+      <section class="hero" id="hero">
+        <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero__fallback" aria-hidden="true"></div>
+
+        <div class="hero__inner">
+          <span class="hero__avail" data-hero><span class="pulse"></span> Disponible · Alternance & projets</span>
+          <h1 class="hero__title">
+            <span class="l1" data-hero><span class="word">Aly-Ba</span></span>
+            <span class="l2" data-hero><span class="word">Dramé</span></span>
+          </h1>
+          <p class="hero__role" data-hero>
+            <span class="type-text" id="typed"></span><span class="caret"></span>
+          </p>
+          <p class="hero__desc lead" data-hero>
+            Je conçois et développe des applications web et logicielles, de
+            l'analyse du besoin jusqu'à la mise en production — avec rigueur,
+            curiosité et le souci du détail.
+          </p>
+          <div class="hero__actions" data-hero>
+            <a href="#projects" class="btn btn--primary" data-cursor>Voir mes projets <i class="bi bi-arrow-down"></i></a>
+            <a href="#contact" class="btn btn--ghost" data-cursor>Me contacter</a>
+            <span class="hero__social">
+              <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/" class="icon-btn" target="_blank" rel="noopener" aria-label="LinkedIn" data-cursor><i class="bi bi-linkedin"></i></a>
+              <a href="mailto:dramealyba@gmail.com" class="icon-btn" aria-label="Email" data-cursor><i class="bi bi-envelope"></i></a>
+            </span>
           </div>
         </div>
-      </section>
-      <!-- /Hero Section -->
 
-      <!-- About Section -->
-      <section id="about" class="about section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>À propos</h2>
-          <p>
-            Trouvez ici une synthèse des informations utiles à mon propos.
-          </p>
-        </div>
-        <!-- End Section Title -->
-
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row gy-4 justify-content-center">
-            <div class="col-lg-4">
-              <img src="assets/img/profile-img.png" class="img-fluid" alt="" />
-            </div>
-            <div class="col-lg-8 content">
-              <h2>Apprentice Software Engineer &amp; Web Developer.</h2>
-              <p class="fst-italic py-3">
-                Fort d'une formation en cours au sein d'une multinationale, j'ai
-                choisi de poursuivre mon apprentissage en ingénieurie logiciel.
-              </p>
-              <div class="row">
-                <div class="col-lg-6">
-                  <ul>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Naissance:</strong> <span>19 juin 2006</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Téléphone:</strong> <span>+33 7 82 30 65 35</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Ville:</strong> <span>Paris, France</span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="col-lg-6">
-                  <ul>
-                    <li>
-                      <i class="bi bi-chevron-right"></i> <strong>Age:</strong>
-                      <span>19</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Diplôme le plus haut:</strong>
-                      <span>BTS SIO</span>
-                    </li>
-                    <li>
-                      <i class="bi bi-chevron-right"></i>
-                      <strong>Email:</strong> <span>dramealyba@gmail.com</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <p class="py-3">
-                Mon expérience en milieu professionnel m'a permis de mettre en
-                pratique mes connaissances et mes aptitudes de manière dynamique
-                et challengeante. Je suis actuellement en cours de formation en
-                ingénierie logiciel pour obtention de mon diplôme de Brevet de
-                Technicien Supérieur en Service Informatique aux Organisations
-                <i>(BTS SIO)</i>.
-              </p>
-            </div>
-          </div>
+        <div class="hero__scroll" aria-hidden="true">
+          <span class="mouse"></span> Défiler
         </div>
       </section>
-      <!-- /About Section -->
 
-      <!-- Skills Section -->
-
-      <!-- Resume Section -->
-      <section id="resume" class="resume section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Resumé</h2>
-          <p>
-            Retrouvez ici une synthèse de mon parcours scolaire et
-            professionnel.
-          </p>
+      <!-- ===================== MARQUEE ===================== -->
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee__track">
+          <span class="marquee__item">React</span>
+          <span class="marquee__item">TypeScript</span>
+          <span class="marquee__item">Node.js</span>
+          <span class="marquee__item">PHP</span>
+          <span class="marquee__item">C# / .NET</span>
+          <span class="marquee__item">Python</span>
+          <span class="marquee__item">PostgreSQL</span>
+          <span class="marquee__item">Docker</span>
+          <!-- duplicate for seamless loop -->
+          <span class="marquee__item">React</span>
+          <span class="marquee__item">TypeScript</span>
+          <span class="marquee__item">Node.js</span>
+          <span class="marquee__item">PHP</span>
+          <span class="marquee__item">C# / .NET</span>
+          <span class="marquee__item">Python</span>
+          <span class="marquee__item">PostgreSQL</span>
+          <span class="marquee__item">Docker</span>
         </div>
-        <!-- End Section Title -->
+      </div>
 
+      <!-- ===================== MANIFESTO ===================== -->
+      <section class="manifesto section" id="manifesto">
         <div class="container">
-          <div class="row">
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-              <h3 class="resume-title">Sommaire</h3>
+          <p class="manifesto__text" id="manifesto-text">
+            Transformer des idées en produits numériques fiables, élégants et
+            <span class="accent">utiles</span>.
+          </p>
+          <p class="manifesto__sign">— Ma manière de travailler</p>
+        </div>
+      </section>
 
-              <div class="resume-item pb-0">
-                <h4>Dramé Aly</h4>
-                <p>
-                  <em
-                    >Étudiant en BTS SIO (Services Informatiques aux
-                    Organisations), en alternance chez Assystem, passionné par
-                    l’innovation et le développement de solutions numériques.
-                    Diplômé du baccalauréat en 2024, je me distingue par une
-                    approche créative et orientée résultats dans la conception
-                    et l’amélioration de systèmes informatiques, de l’analyse
-                    des besoins à la livraison d’applications performantes.</em
-                  >
+      <!-- ===================== ABOUT ===================== -->
+      <section class="section section--alt" id="about">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-head__no"><b>01</b> / À propos</span>
+              <h2 class="section-head__title" data-reveal>Apprenti ingénieur logiciel & développeur web.</h2>
+            </div>
+            <p class="section-head__intro" data-reveal>
+              Une synthèse de qui je suis, de ma formation et de ce qui guide ma
+              façon de construire des solutions.
+            </p>
+          </div>
+
+          <div class="about__grid">
+            <div class="about__media" data-reveal="left">
+              <img class="about__photo" src="assets/img/profile-img.png" alt="Portrait d'Aly-Ba Dramé" />
+              <span class="about__photo-tag"><b>19 ans</b> · Paris, France</span>
+            </div>
+
+            <div class="about__content">
+              <h3 class="about__title" data-reveal>Curieux, rigoureux et orienté résultats.</h3>
+              <div class="about__body">
+                <p data-reveal>
+                  Je suis <strong>Aly-Ba Dramé</strong>, étudiant en BTS SIO
+                  (Services Informatiques aux Organisations) en alternance chez
+                  <strong>Assystem</strong>. Mon quotidien d'apprenti me permet de
+                  coder chaque jour, d'utiliser des outils et des processus
+                  d'ingénierie dignes des grandes équipes, et de monter en
+                  compétence sur des projets concrets.
                 </p>
-                <ul>
-                  <li>7 Rue du Clos Garnier, 95240 Cormeilles-en-Parisis, France</li>
-                  <li>07 82 30 65 35</li>
-                  <li>dramealyba@gmail.com</li>
+                <p data-reveal>
+                  Issu d'une formation à l'École d'enseignement technique de
+                  l'Armée de l'Air et de l'Espace, j'ai développé une
+                  <strong>discipline de travail</strong> rare, un esprit d'analyse
+                  pointu et une vraie capacité d'adaptation. J'aborde chaque projet
+                  de l'analyse du besoin jusqu'à la livraison d'applications
+                  performantes.
+                </p>
+              </div>
+
+              <div class="facts" data-reveal>
+                <div class="fact"><span class="fact__k">Naissance</span><span class="fact__v">19 juin 2006</span></div>
+                <div class="fact"><span class="fact__k">Localisation</span><span class="fact__v">Paris, France</span></div>
+                <div class="fact"><span class="fact__k">Formation</span><span class="fact__v">BTS SIO · 2024–2026</span></div>
+                <div class="fact"><span class="fact__k">Entreprise</span><span class="fact__v">Assystem (alternance)</span></div>
+                <div class="fact"><span class="fact__k">Email</span><span class="fact__v">dramealyba@gmail.com</span></div>
+                <div class="fact"><span class="fact__k">Téléphone</span><span class="fact__v">+33 7 82 30 65 35</span></div>
+              </div>
+
+              <div class="chips" data-reveal>
+                <span class="chip"><i class="bi bi-check2"></i>Rigueur</span>
+                <span class="chip"><i class="bi bi-check2"></i>Curiosité</span>
+                <span class="chip"><i class="bi bi-check2"></i>Discipline</span>
+                <span class="chip"><i class="bi bi-check2"></i>Esprit d'équipe</span>
+                <span class="chip"><i class="bi bi-check2"></i>Résolution de problèmes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== SKILLS ===================== -->
+      <section class="section" id="skills">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-head__no"><b>02</b> / Compétences</span>
+              <h2 class="section-head__title" data-reveal>Une stack full-stack, du front au back.</h2>
+            </div>
+            <p class="section-head__intro" data-reveal>
+              Les langages, frameworks et outils que j'utilise au quotidien, en
+              entreprise comme sur mes projets personnels.
+            </p>
+          </div>
+
+          <div class="skills__grid">
+            <div class="skill-cats">
+              <div class="skill-cat" data-reveal>
+                <div class="skill-cat__head">
+                  <span class="skill-cat__icon"><i class="bi bi-code-slash"></i></span>
+                  <h3 class="skill-cat__title">Langages</h3>
+                </div>
+                <ul class="skill-cat__list">
+                  <li>TypeScript</li><li>JavaScript</li><li>PHP 8</li>
+                  <li>C#</li><li>Python</li><li>SQL</li><li>HTML5</li><li>CSS3</li>
                 </ul>
               </div>
-              <!-- Edn Resume Item -->
 
-              <h3 class="resume-title">Education</h3>
-              <div class="resume-item">
-                <h4>BTS Services Informatiques aux Organisations</h4>
-                <h5>2024 - 2026</h5>
-                <p><em>Ingetis, Paris 5e, France</em></p>
+              <div class="skill-cat" data-reveal>
+                <div class="skill-cat__head">
+                  <span class="skill-cat__icon"><i class="bi bi-window-stack"></i></span>
+                  <h3 class="skill-cat__title">Frontend & Interfaces</h3>
+                </div>
+                <ul class="skill-cat__list">
+                  <li>React 18</li><li>Vite</li><li>WPF / XAML</li>
+                  <li>Bootstrap 5</li><li>Context API</li><li>Responsive Design</li>
+                </ul>
+              </div>
+
+              <div class="skill-cat" data-reveal>
+                <div class="skill-cat__head">
+                  <span class="skill-cat__icon"><i class="bi bi-hdd-network"></i></span>
+                  <h3 class="skill-cat__title">Backend & API</h3>
+                </div>
+                <ul class="skill-cat__list">
+                  <li>Node.js</li><li>Express</li><li>PHP MVC</li>
+                  <li>.NET</li><li>REST</li><li>JWT</li><li>async / await</li>
+                </ul>
+              </div>
+
+              <div class="skill-cat" data-reveal>
+                <div class="skill-cat__head">
+                  <span class="skill-cat__icon"><i class="bi bi-database"></i></span>
+                  <h3 class="skill-cat__title">Bases de données & Outils</h3>
+                </div>
+                <ul class="skill-cat__list">
+                  <li>PostgreSQL</li><li>MySQL / MariaDB</li><li>Prisma ORM</li>
+                  <li>PDO</li><li>Git</li><li>Docker</li><li>Caddy</li>
+                </ul>
+              </div>
+            </div>
+
+            <aside class="skills__aside">
+              <p class="skills__aside-title">Niveau de maîtrise</p>
+              <div class="bars">
+                <div class="bar" data-reveal>
+                  <div class="bar__top"><span class="bar__name">Développement Front-end (React / TS)</span><span class="bar__pct">85%</span></div>
+                  <div class="bar__track"><span class="bar__fill" data-pct="85"></span></div>
+                </div>
+                <div class="bar" data-reveal>
+                  <div class="bar__top"><span class="bar__name">Développement Back-end (Node / PHP)</span><span class="bar__pct">80%</span></div>
+                  <div class="bar__track"><span class="bar__fill" data-pct="80"></span></div>
+                </div>
+                <div class="bar" data-reveal>
+                  <div class="bar__top"><span class="bar__name">Bases de données & SQL</span><span class="bar__pct">82%</span></div>
+                  <div class="bar__track"><span class="bar__fill" data-pct="82"></span></div>
+                </div>
+                <div class="bar" data-reveal>
+                  <div class="bar__top"><span class="bar__name">Applications desktop (C# / WPF)</span><span class="bar__pct">75%</span></div>
+                  <div class="bar__track"><span class="bar__fill" data-pct="75"></span></div>
+                </div>
+                <div class="bar" data-reveal>
+                  <div class="bar__top"><span class="bar__name">Architecture & bonnes pratiques (MVC, DAO)</span><span class="bar__pct">78%</span></div>
+                  <div class="bar__track"><span class="bar__fill" data-pct="78"></span></div>
+                </div>
+                <div class="bar" data-reveal>
+                  <div class="bar__top"><span class="bar__name">Automatisation & scripting (Python)</span><span class="bar__pct">70%</span></div>
+                  <div class="bar__track"><span class="bar__fill" data-pct="70"></span></div>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== PARCOURS ===================== -->
+      <section class="section section--alt" id="parcours">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-head__no"><b>03</b> / Parcours</span>
+              <h2 class="section-head__title" data-reveal>Expérience & formation.</h2>
+            </div>
+            <p class="section-head__intro" data-reveal>
+              Un parcours qui mêle excellence militaire, formation technique et
+              pratique professionnelle de l'ingénierie logicielle.
+            </p>
+          </div>
+
+          <div class="parcours__tabs" data-reveal role="tablist">
+            <button class="parcours__tab active" data-tab="exp">Expérience</button>
+            <button class="parcours__tab" data-tab="edu">Formation</button>
+          </div>
+
+          <!-- Experience -->
+          <div class="timeline active" data-timeline="exp">
+            <div class="tl-item" data-reveal>
+              <span class="tl-date">2024 — Présent</span>
+              <h3 class="tl-title">Ingénieur logiciel en apprentissage</h3>
+              <p class="tl-org"><i class="bi bi-building"></i> Assystem · Saint-Quentin-en-Yvelines (78)</p>
+              <div class="tl-body">
+                <ul>
+                  <li><strong>Pratique intensive :</strong> développement quotidien sur des projets réels et montée en compétence continue.</li>
+                  <li><strong>Méthodes professionnelles :</strong> outils et processus d'ingénierie logicielle dignes des grandes équipes (versioning, revue de code, déploiement).</li>
+                  <li><strong>Résolution de problèmes :</strong> analyse, diagnostic et correction de bugs et de besoins complexes.</li>
+                  <li><strong>Innovation constante :</strong> conception de solutions nouvelles et efficaces adaptées aux projets d'Assystem (ex. application Askills).</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="tl-item" data-reveal>
+              <span class="tl-date">2022 — 2024</span>
+              <h3 class="tl-title">Militaire · Élève technicien</h3>
+              <p class="tl-org"><i class="bi bi-shield-check"></i> EETAAE · Saintes, Nouvelle-Aquitaine</p>
+              <div class="tl-body">
+                <ul>
+                  <li><strong>Leadership éprouvé :</strong> coordination d'équipes et sens aigu de l'organisation et de la responsabilité.</li>
+                  <li><strong>Polyvalence certifiée :</strong> nombreuses certifications (CATI, FIEQ SAP…) témoignant d'une adaptabilité hors pair.</li>
+                  <li><strong>Esprit d'excellence :</strong> intégration d'une école d'élite et volonté de dépasser les standards.</li>
+                  <li><strong>Mentalité « au-delà » :</strong> discipline et détermination pour aller plus loin que les sentiers battus.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="timeline" data-timeline="edu">
+            <div class="tl-item" data-reveal>
+              <span class="tl-date">2024 — 2026</span>
+              <h3 class="tl-title">BTS Services Informatiques aux Organisations</h3>
+              <p class="tl-org"><i class="bi bi-mortarboard"></i> Ingetis · Paris 5e, France</p>
+              <div class="tl-body">
                 <p>
-                  La formation BTS Services Informatiques aux Organisations
-                  (SIO) est une formation professionnelle de niveau BAC +2
-                  offrant une formation sur site et en entreprise. Elle m'a
-                  permis d'élever mon niveau de compétence professionnelle et de
-                  m'orienter vers une carrière dans le domaine de
-                  l'informatique.
+                  Formation professionnelle de niveau Bac+2 alliant cours sur site
+                  et expérience en entreprise. Elle me permet d'élever mon niveau de
+                  compétence professionnelle et de m'orienter durablement vers une
+                  carrière dans le développement et l'ingénierie logicielle.
                 </p>
               </div>
-              <!-- Edn Resume Item -->
+            </div>
 
-              <div class="resume-item">
-                <h4>
-                  Baccalauréat technologique : STI2D - Sciences de l'information
-                  et du numérique.
-                </h4>
-                <h5>2022 - 2024</h5>
+            <div class="tl-item" data-reveal>
+              <span class="tl-date">2022 — 2024</span>
+              <h3 class="tl-title">Baccalauréat technologique STI2D — spécialité SIN</h3>
+              <p class="tl-org"><i class="bi bi-mortarboard"></i> EETAAE · Saintes, Nouvelle-Aquitaine</p>
+              <div class="tl-body">
                 <p>
-                  <em
-                    >École d'enseignement technique de l'Armée de l'Air et de
-                    l'Espace, Saintes, Nouvelle-Aquitaine</em
-                  >
-                </p>
-                <p>
-                  Formé à l’EETAAE de Saintes où j’ai obtenu un bac STI2D
-                  spécialité SIN, j’y ai acquis une discipline de travail rare,
-                  des bases technologiques solides et un esprit d’analyse
-                  pointu. Cette expérience m’a donné une maturité
-                  professionnelle et une adaptabilité qui me démarquent dans mes
+                  Obtenu à l'École d'enseignement technique de l'Armée de l'Air et
+                  de l'Espace (spécialité Systèmes d'Information et Numérique). J'y ai
+                  acquis des bases technologiques solides, une discipline de travail
+                  rare et une maturité professionnelle qui me démarquent dans mes
                   projets actuels.
                 </p>
               </div>
-              <!-- Edn Resume Item -->
-            </div>
-
-            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-              <h3 class="resume-title">Expérience Professionnelle</h3>
-              <div class="resume-item">
-                <h4>Ingénieur logiciel en apprentissage</h4>
-                <h5>2024 - Présent</h5>
-                <p><em>Assystem, 78180 SQY, France</em></p>
-                <ul>
-                  <li>
-                    Pratique intensive : chaque projet en alternance m’a permis
-                    de coder quotidiennement et de perfectionner mes
-                    compétences.
-                  </li>
-                  <li>
-                    Méthodes professionnelles : j’ai appris à utiliser des
-                    outils et processus d’ingénierie logicielle dignes des
-                    grandes équipes.
-                  </li>
-                  <li>
-                    Résolution de problèmes : je me suis entraîné à analyser,
-                    diagnostiquer et corriger à mon rythme des bugs ou des besoins
-                    complexes.
-                  </li>
-                  <li>
-                    Innovation constante : j’ai développé une capacité à
-                    proposer des solutions nouvelles et efficaces, adaptées aux
-                    projets d’Assystem.
-                  </li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
-
-              <div class="resume-item">
-                <h4>Militaire - Élève technicien</h4>
-                <h5>2022 - 2024</h5>
-                <p>
-                  <em
-                    >École d'enseignement technique de l'Armée de l'Air et de
-                    l'Espace, Saintes, Nouvelle-Aquitaine</em
-                  >
-                </p>
-                <ul>
-                  <li>
-                    Leadership éprouvé : j’ai dirigé et coordonné de grandes
-                    équipes, développant un sens aigu de l’organisation et de la
-                    responsabilité.
-                  </li>
-                  <li>
-                    Polyvalence certifiée : mes nombreuses certifications (CATI,
-                    FIEQ SAP, etc.) témoignent d’une adaptabilité hors pair.
-                  </li>
-                  <li>
-                    Esprit d’excellence : j’ai choisi d’intégrer une école
-                    d’élite, montrant ma volonté de dépasser les standards
-                    classiques.
-                  </li>
-                  <li>
-                    Mentalité “au-delà” : je cultive une discipline et une
-                    détermination qui me permettent d’aller plus loin que les
-                    sentiers battus.
-                  </li>
-                </ul>
-              </div>
-              <!-- Edn Resume Item -->
             </div>
           </div>
         </div>
       </section>
-      <!-- /Resume Section -->
 
-      <!-- Portfolio Section -->
-      <section id="portfolio" class="portfolio section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Portfolio</h2>
-          <p>
-            Trouvez ici une synthèse des projets et travaux que j’ai entièrement
-            effectué.
-          </p>
-        </div>
-        <!-- End Section Title -->
-
+      <!-- ===================== PROJECTS ===================== -->
+      <section class="section" id="projects">
         <div class="container">
-          <div
-            class="isotope-layout"
-            data-default-filter="*"
-            data-layout="masonry"
-            data-sort="original-order"
-          >
-            <ul
-              class="portfolio-filters isotope-filters"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <li data-filter="*" class="filter-active">Tout</li>
-              <li data-filter=".filter-app">Entreprise</li>
-              <li data-filter=".filter-product">École</li>
-            </ul>
-            <!-- End Portfolio Filters -->
-
-            <div
-              class="row gy-4 isotope-container"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/AskillsLogoRed.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Askills</h4>
-                  <p>Application de gestion des compétences / collaborateurs</p>
-                  <a
-                    href="assets/img/AskillsLogoRed.png"
-                    title="Askills"
-                    data-gallery="portfolio-gallery-app"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                  <a
-                    href="portfolio-details.html"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-link-45deg"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-app"
-              >
-                <img
-                  src="assets/img/PythonCameraLogo.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Pylote Photomatique</h4>
-                  <p>Pilote autonome et configurable en Python</p>
-                  <a
-                    href="assets/img/PythonCameraLogo.png"
-                    title="Pylote Photomatique"
-                    data-gallery="portfolio-gallery-product"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <!-- ERP Portfolio Item -->
-              <div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
-              >
-                <img
-                  src="assets/img/LogoERP.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>AutoManage ERP</h4>
-                  <p>ERP de location de véhicules — PHP MVC &amp; MySQL</p>
-                  <a
-                    href="assets/img/LogoERP.png"
-                    title="AutoManage ERP"
-                    data-gallery="portfolio-gallery-product"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                  <a
-                    href="portfolio-details-erp.html"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-link-45deg"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
-              <!-- Projet 2 Portfolio Item -->
-<div
-                class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product"
-              >
-                <img
-                  src="assets/img/LogoBORNE.png"
-                  class="img-fluid"
-                  alt=""
-                />
-                <div class="portfolio-info">
-                  <h4>Borne de commande C#</h4>
-                  <p>Application client lourd C# + WPF</p>
-                  <a
-                    href="assets/img/LogoBORNE.png"
-                    title="Borne de commande C#"
-                    data-gallery="portfolio-gallery-app"
-                    class="glightbox preview-link"
-                    ><i class="bi bi-zoom-in"></i
-                  ></a>
-                  <a
-                    href="portfolio-details-borne.html"
-                    title="More Details"
-                    class="details-link"
-                    ><i class="bi bi-link-45deg"></i
-                  ></a>
-                </div>
-              </div>
-              <!-- End Portfolio Item -->
-
+          <div class="section-head">
+            <div>
+              <span class="section-head__no"><b>04</b> / Projets</span>
+              <h2 class="section-head__title" data-reveal>Une sélection de réalisations.</h2>
             </div>
-            <!-- End Portfolio Container -->
+            <p class="section-head__intro" data-reveal>
+              Des projets menés de bout en bout — en entreprise, à l'école et en
+              autonomie. Chacun illustre une compétence et une architecture.
+            </p>
+          </div>
+
+          <div class="proj__filters" data-reveal>
+            <button class="proj__filter active" data-filter="all">Tout</button>
+            <button class="proj__filter" data-filter="entreprise">Entreprise</button>
+            <button class="proj__filter" data-filter="ecole">École</button>
+            <button class="proj__filter" data-filter="perso">Personnel</button>
+          </div>
+
+          <div class="proj__grid" id="proj-grid">
+            <!-- Askills -->
+            <article class="proj-card" data-cat="entreprise" data-reveal data-cursor>
+              <div class="proj-card__media">
+                <img src="assets/img/AskillsLogoRed.png" alt="Askills — gestion des compétences" loading="lazy" />
+                <span class="proj-card__no">01</span>
+                <span class="proj-card__cat">Entreprise</span>
+              </div>
+              <div class="proj-card__body">
+                <h3 class="proj-card__title">Askills</h3>
+                <p class="proj-card__desc">
+                  Application full-stack de gestion des compétences et des
+                  collaborateurs, développée pour Assystem. Centralisation des
+                  données, 3 niveaux d'accès et tableaux de bord temps réel.
+                </p>
+                <div class="proj-card__tags">
+                  <span>React 18</span><span>TypeScript</span><span>Node / Express</span>
+                  <span>PostgreSQL</span><span>Prisma</span><span>JWT</span><span>Docker</span>
+                </div>
+                <div class="proj-card__foot">
+                  <a href="portfolio-details.html" class="link-arrow" data-cursor>Voir le projet <i class="bi bi-arrow-up-right"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <!-- AutoManage ERP -->
+            <article class="proj-card" data-cat="ecole" data-reveal data-cursor>
+              <div class="proj-card__media">
+                <img src="assets/img/portfolio/erp-dashboard.png" alt="AutoManage ERP — tableau de bord" loading="lazy" />
+                <span class="proj-card__no">02</span>
+                <span class="proj-card__cat">École</span>
+              </div>
+              <div class="proj-card__body">
+                <h3 class="proj-card__title">AutoManage ERP</h3>
+                <p class="proj-card__desc">
+                  ERP de location de véhicules construit en PHP natif orienté objet,
+                  sans framework : architecture MVC, pattern DAO, requêtes préparées
+                  et sécurité des données de bout en bout.
+                </p>
+                <div class="proj-card__tags">
+                  <span>PHP 8 OO</span><span>MVC</span><span>Pattern DAO</span>
+                  <span>PDO</span><span>MySQL</span><span>Sessions</span>
+                </div>
+                <div class="proj-card__foot">
+                  <a href="portfolio-details-erp.html" class="link-arrow" data-cursor>Voir le projet <i class="bi bi-arrow-up-right"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Borne C# -->
+            <article class="proj-card" data-cat="ecole" data-reveal data-cursor>
+              <div class="proj-card__media">
+                <img src="assets/img/portfolio/borne-1.png" alt="Borne de commande C#" loading="lazy" />
+                <span class="proj-card__no">03</span>
+                <span class="proj-card__cat">École</span>
+              </div>
+              <div class="proj-card__body">
+                <h3 class="proj-card__title">Borne de commande C#</h3>
+                <p class="proj-card__desc">
+                  Application client lourd de borne de commande développée de A à Z
+                  en C# / WPF : architecture en couches, back-office d'administration,
+                  rôles utilisateurs et persistance locale sécurisée.
+                </p>
+                <div class="proj-card__tags">
+                  <span>C# / .NET</span><span>WPF</span><span>XAML</span>
+                  <span>MariaDB</span><span>BCrypt</span><span>async/await</span>
+                </div>
+                <div class="proj-card__foot">
+                  <a href="portfolio-details-borne.html" class="link-arrow" data-cursor>Voir le projet <i class="bi bi-arrow-up-right"></i></a>
+                </div>
+              </div>
+            </article>
+
+            <!-- Pylote Photomatique -->
+            <article class="proj-card" data-cat="perso" data-reveal data-cursor>
+              <div class="proj-card__media">
+                <img src="assets/img/PythonCameraLogo.png" alt="Pylote Photomatique — pilote Python" loading="lazy" />
+                <span class="proj-card__no">04</span>
+                <span class="proj-card__cat">Personnel</span>
+              </div>
+              <div class="proj-card__body">
+                <h3 class="proj-card__title">Pylote Photomatique</h3>
+                <p class="proj-card__desc">
+                  Pilote autonome et entièrement configurable développé en Python
+                  pour automatiser la capture photo. Un projet personnel centré sur
+                  l'automatisation, la configuration et la fiabilité.
+                </p>
+                <div class="proj-card__tags">
+                  <span>Python</span><span>Automatisation</span><span>Scripting</span><span>Configurable</span>
+                </div>
+                <div class="proj-card__foot">
+                  <span class="link-arrow" style="color:var(--muted)"><i class="bi bi-lock"></i> Projet personnel</span>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
-      <!-- /Portfolio Section -->
 
-      <!-- Services Section -->
-      <section id="services" class="services section">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Notions de programmation</h2>
-          <p></p>
-        </div>
-        <!-- End Section Title -->
-
+      <!-- ===================== SERVICES ===================== -->
+      <section class="section section--alt" id="services">
         <div class="container">
-          <div class="row gy-4">
-            <!-- 1 TypeScript -->
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div class="service-item item-cyan position-relative">
-                <div class="icon">
-                  <img
-                    src="https://cdn.worldvectorlogo.com/logos/typescript.svg"
-                    alt="TypeScript logo"
-                    style="width: 80px; height: 80px; object-fit: contain"
-                  />
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Typescript</h3>
-                </a>
-                <p>
-                  est un langage superset de Javascript, offrant des
-                  fonctionnalités plus avancées, notamment la gestion des types.
-                </p>
-              </div>
+          <div class="section-head">
+            <div>
+              <span class="section-head__no"><b>05</b> / Services</span>
+              <h2 class="section-head__title" data-reveal>Ce que je peux construire pour vous.</h2>
             </div>
-            <!-- End Service Item -->
-
-            <!-- 2 React -->
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div class="service-item item-orange position-relative">
-                <div class="icon">
-                  <img
-                    src="https://www.pngall.com/wp-content/uploads/15/React-Logo-PNG-File.png"
-                    alt="React logo"
-                    style="width: 80px; height: 80px; object-fit: contain"
-                  />
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>React</h3>
-                </a>
-                <p>
-                  permet de construire des interfaces utilisateurs à partir de
-                  briques individuelles appelées composants.
-                </p>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <!-- 3 PostgreSQL -->
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div class="service-item item-teal position-relative">
-                <div class="icon">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
-                    alt="PostgreSQL logo"
-                    style="width: 80px; height: 80px; object-fit: contain"
-                  />
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>Postgresql</h3>
-                </a>
-                <p>
-                  est un système de gestion de base de données relationnelle et
-                  objet. C'est un outil libre disponible mettant l’accent sur
-                  l’extensibilité et la conformité avec SQL.
-                </p>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <!-- 4 PHP -->
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <div class="service-item item-red position-relative">
-                <div class="icon">
-                  <img
-                    src="https://cdn.freebiesupply.com/logos/large/2x/php-logo-png-transparent.png"
-                    alt="PHP logo"
-                    style="width: 80px; height: 80px; object-fit: contain"
-                  />
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>PHP</h3>
-                </a>
-                <p>
-                  est un langage de programmation libre, principalement utilisé
-                  pour produire des pages Web dynamiques via un serveur web[5],
-                  mais pouvant également fonctionner comme n'importe quel
-                  langage interprété de façon locale. PHP est un langage
-                  impératif orienté objet.
-                </p>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <!-- 5 HTML5 -->
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="500"
-            >
-              <div class="service-item item-indigo position-relative">
-                <div class="icon">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/2048px-HTML5_logo_and_wordmark.svg.png"
-                    alt="HTML5 logo"
-                    style="width: 80px; height: 80px; object-fit: contain"
-                  />
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>HTML5</h3>
-                </a>
-                <p>
-                  est la dernière révision majeure du HTML (format de données
-                  conçu pour représenter les pages web) et le langage de feuille
-                  de style en cascade.
-                </p>
-              </div>
-            </div>
-            <!-- End Service Item -->
-
-            <!-- 6 CSS3 -->
-            <div
-              class="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="600"
-            >
-              <div class="service-item item-pink position-relative">
-                <div class="icon">
-                  <img
-                    src="https://cdn.worldvectorlogo.com/logos/css-3.svg"
-                    alt="CSS3 logo"
-                    style="width: 80px; height: 80px; object-fit: contain"
-                  />
-                </div>
-                <a href="#" class="stretched-link">
-                  <h3>CSS</h3>
-                </a>
-                <p>
-                  est un langage informatique qui décrit la présentation des
-                  documents HTML et XML. Les standards définissant CSS sont
-                  publiés par le World Wide Web Consortium (W3C).
-                </p>
-              </div>
-            </div>
-            <!-- End Service Item -->
+            <p class="section-head__intro" data-reveal>
+              De l'idée au déploiement : applications web, logiciels métier, bases
+              de données et architectures robustes.
+            </p>
           </div>
-        </div>
-      </section>
-      <!-- /Services Section -->
 
-      <!-- Remplacer la section actuelle Google Alerts par ce code -->
-      <section
-        id="google-alerts"
-        class="alerts-section section light-background"
-      >
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Actualités</h2>
-          <p>Dernières actualités de Google Alerts sur mes centres d'intérêt</p>
-        </div>
-        <!-- End Section Title -->
+          <div class="services__grid">
+            <div class="service" data-reveal data-cursor>
+              <span class="service__no">01</span>
+              <div class="service__icon"><i class="bi bi-window-desktop"></i></div>
+              <h3 class="service__title">Développement web full-stack</h3>
+              <p class="service__desc">
+                Des applications web modernes, rapides et responsives, du composant
+                d'interface jusqu'à l'API.
+              </p>
+              <ul class="service__list">
+                <li>Front-end React / TypeScript</li>
+                <li>API Node.js / Express ou PHP</li>
+                <li>Interfaces responsives & accessibles</li>
+              </ul>
+            </div>
 
-        <div class="container" data-aos="fade" data-aos-delay="100">
-          <div class="alerts-carousel-container">
-            <div class="alerts-carousel swiper">
-              <div class="swiper-wrapper" id="alerts-container">
-                
-                <!-- Alerte 1 -->
-                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="100">
-                  <article class="alert-card">
-                    <div class="alert-header">
-                      <div class="alert-badge"><i class="bi bi-megaphone"></i></div>
-                      <div class="alert-meta">
-                        <span class="alert-date">6 mai 2026</span>
-                        <span class="alert-source">Google Alerts</span>
-                      </div>
-                    </div>
-                    <div class="alert-content">
-                      <h3 class="alert-title">Morocco advances health digitalization with strategic agreements...</h3>
-                      <p class="alert-description">This agreement seeks to create an integrated institutional framework for the development and implementation of innovative solutions in telemedicine...</p>
-                    </div>
-                    <div class="alert-footer">
-                      <a href="https://en.yabiladi.com/articles/details/193960/morocco-advances-health-digitalization-with.html" target="_blank" class="alert-link">
-                        Lire l'article <i class="bi bi-arrow-up-right"></i>
-                      </a>
-                    </div>
-                  </article>
-                </div>
+            <div class="service" data-reveal data-cursor>
+              <span class="service__no">02</span>
+              <div class="service__icon"><i class="bi bi-pc-display"></i></div>
+              <h3 class="service__title">Applications logicielles & desktop</h3>
+              <p class="service__desc">
+                Des logiciels métier client lourd performants et maintenables,
+                pensés pour des usages exigeants.
+              </p>
+              <ul class="service__list">
+                <li>Applications C# / .NET (WPF)</li>
+                <li>Automatisation & scripts Python</li>
+                <li>Architecture en couches</li>
+              </ul>
+            </div>
 
-                <!-- Alerte 2 -->
-                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="200">
-                  <article class="alert-card">
-                    <div class="alert-header">
-                      <div class="alert-badge"><i class="bi bi-megaphone"></i></div>
-                      <div class="alert-meta">
-                        <span class="alert-date">6 mai 2026</span>
-                        <span class="alert-source">Google Alerts</span>
-                      </div>
-                    </div>
-                    <div class="alert-content">
-                      <h3 class="alert-title">Cispe lance un cadre auditable contre le «sovereignty washing»</h3>
-                      <p class="alert-description">L'association européenne Cispe lance un framework auditable destiné à clarifier les revendications de souveraineté pour les services cloud.</p>
-                    </div>
-                    <div class="alert-footer">
-                      <a href="https://www.ictjournal.ch/news/2026-05-06/cispe-lance-un-cadre-auditable-contre-le-sovereignty-washing-des-services-cloud" target="_blank" class="alert-link">
-                        Lire l'article <i class="bi bi-arrow-up-right"></i>
-                      </a>
-                    </div>
-                  </article>
-                </div>
+            <div class="service" data-reveal data-cursor>
+              <span class="service__no">03</span>
+              <div class="service__icon"><i class="bi bi-database-gear"></i></div>
+              <h3 class="service__title">Bases de données & API</h3>
+              <p class="service__desc">
+                Une donnée structurée, sécurisée et accessible, au service de vos
+                applications.
+              </p>
+              <ul class="service__list">
+                <li>Modélisation PostgreSQL / MySQL</li>
+                <li>ORM (Prisma) & accès via PDO/DAO</li>
+                <li>API REST sécurisées (JWT)</li>
+              </ul>
+            </div>
 
-                <!-- Alerte 3 -->
-                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="300">
-                  <article class="alert-card">
-                    <div class="alert-header">
-                      <div class="alert-badge"><i class="bi bi-megaphone"></i></div>
-                      <div class="alert-meta">
-                        <span class="alert-date">6 mai 2026</span>
-                        <span class="alert-source">Google Alerts</span>
-                      </div>
-                    </div>
-                    <div class="alert-content">
-                      <h3 class="alert-title">Learn Next.js: React Framework - App Store</h3>
-                      <p class="alert-description">Master Next.js, the world's most popular React framework for building production-ready web applications! Whether you're a React developer...</p>
-                    </div>
-                    <div class="alert-footer">
-                      <a href="https://apps.apple.com/rw/app/learn-next-js-react-framework/id6443595563?l=fr-FR" target="_blank" class="alert-link">
-                        Lire l'article <i class="bi bi-arrow-up-right"></i>
-                      </a>
-                    </div>
-                  </article>
-                </div>
-
-                <!-- Alerte 4 -->
-                <div class="swiper-slide" data-aos="fade-up" data-aos-delay="400">
-                  <article class="alert-card">
-                    <div class="alert-header">
-                      <div class="alert-badge"><i class="bi bi-megaphone"></i></div>
-                      <div class="alert-meta">
-                        <span class="alert-date">6 mai 2026</span>
-                        <span class="alert-source">Google Alerts</span>
-                      </div>
-                    </div>
-                    <div class="alert-content">
-                      <h3 class="alert-title">Signature d'une convention cadre entre l'EPST Centre de Développement</h3>
-                      <p class="alert-description">Framework partnership agreement in the fields of science, technology, and particularly renewable energies...</p>
-                    </div>
-                    <div class="alert-footer">
-                      <a href="https://www.facebook.com/ScientificPublication/" target="_blank" class="alert-link">
-                        Lire l'article <i class="bi bi-arrow-up-right"></i>
-                      </a>
-                    </div>
-                  </article>
-                </div>
-              </div>
-
-              <!-- Pagination -->
-              <div class="swiper-pagination"></div>
-
-              <!-- Navigation -->
-              <div class="swiper-button-prev">
-                <i class="bi bi-chevron-left"></i>
-              </div>
-              <div class="swiper-button-next">
-                <i class="bi bi-chevron-right"></i>
-              </div>
+            <div class="service" data-reveal data-cursor>
+              <span class="service__no">04</span>
+              <div class="service__icon"><i class="bi bi-diagram-3"></i></div>
+              <h3 class="service__title">Architecture & bonnes pratiques</h3>
+              <p class="service__desc">
+                Des fondations saines pour des projets qui durent : structure
+                claire, code lisible et sécurité.
+              </p>
+              <ul class="service__list">
+                <li>Patterns MVC & DAO</li>
+                <li>Sécurité (sanitization, BCrypt, JWT)</li>
+                <li>Conteneurisation Docker & déploiement</li>
+              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Google Alerts script loaded below after Swiper -->
-
-      <style>
-        /* Styles pour la section Google Alerts */
-        .alerts-section {
-          padding: 80px 0;
-        }
-
-        .alerts-carousel-container {
-          position: relative;
-          padding: 0 50px;
-        }
-
-        .alerts-carousel {
-          overflow: hidden;
-          border-radius: 16px;
-        }
-
-        .alert-card {
-          background: var(--surface-color);
-          border-radius: 16px;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-          padding: 30px;
-          height: 100%;
-          display: flex;
-          flex-direction: column;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-          border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-
-        .alert-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .alert-header {
-          display: flex;
-          align-items: flex-start;
-          margin-bottom: 20px;
-        }
-
-        .alert-badge {
-          background: var(--accent-color);
-          color: var(--contrast-color);
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          margin-right: 15px;
-          flex-shrink: 0;
-        }
-
-        .alert-badge i {
-          font-size: 18px;
-        }
-
-        .alert-meta {
-          display: flex;
-          flex-direction: column;
-        }
-
-        .alert-date {
-          font-size: 14px;
-          color: color-mix(in srgb, var(--default-color), transparent 30%);
-          font-weight: 500;
-        }
-
-        .alert-source {
-          font-size: 12px;
-          color: color-mix(in srgb, var(--default-color), transparent 50%);
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-        }
-
-        .alert-content {
-          flex-grow: 1;
-          margin-bottom: 20px;
-        }
-
-        .alert-title {
-          font-size: 18px;
-          font-weight: 600;
-          line-height: 1.4;
-          margin-bottom: 12px;
-          color: var(--heading-color);
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .alert-description {
-          font-size: 14px;
-          line-height: 1.6;
-          color: color-mix(in srgb, var(--default-color), transparent 20%);
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-
-        .alert-footer {
-          margin-top: auto;
-        }
-
-        .alert-link {
-          display: inline-flex;
-          align-items: center;
-          color: var(--accent-color);
-          font-weight: 500;
-          font-size: 14px;
-          transition: all 0.3s ease;
-        }
-
-        .alert-link i {
-          margin-left: 5px;
-          font-size: 12px;
-          transition: transform 0.3s ease;
-        }
-
-        .alert-link:hover {
-          color: color-mix(in srgb, var(--accent-color), transparent 20%);
-        }
-
-        .alert-link:hover i {
-          transform: translate(2px, -2px);
-        }
-
-        /* Styles pour Swiper */
-        .alerts-carousel .swiper-pagination {
-          position: relative;
-          margin-top: 30px;
-        }
-
-        .alerts-carousel .swiper-pagination-bullet {
-          width: 8px;
-          height: 8px;
-          background: color-mix(in srgb, var(--default-color), transparent 70%);
-          opacity: 1;
-          transition: all 0.3s ease;
-        }
-
-        .alerts-carousel .swiper-pagination-bullet-active {
-          background: var(--accent-color);
-          width: 24px;
-          border-radius: 4px;
-        }
-
-        .alerts-carousel .swiper-button-prev,
-        .alerts-carousel .swiper-button-next {
-          width: 44px;
-          height: 44px;
-          background: var(--surface-color);
-          border-radius: 50%;
-          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-          color: var(--default-color);
-          transition: all 0.3s ease;
-        }
-
-        .alerts-carousel .swiper-button-prev:after,
-        .alerts-carousel .swiper-button-next:after {
-          content: none;
-        }
-
-        .alerts-carousel .swiper-button-prev i,
-        .alerts-carousel .swiper-button-next i {
-          font-size: 18px;
-        }
-
-        .alerts-carousel .swiper-button-prev:hover,
-        .alerts-carousel .swiper-button-next:hover {
-          background: var(--accent-color);
-          color: var(--contrast-color);
-          transform: scale(1.05);
-        }
-
-        /* États de chargement et d'erreur */
-        .loading-alert,
-        .no-alerts,
-        .error-alert {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-          padding: 60px 20px;
-          height: 100%;
-        }
-
-        .loading-spinner {
-          width: 40px;
-          height: 40px;
-          border: 3px solid
-            color-mix(in srgb, var(--default-color), transparent 80%);
-          border-top: 3px solid var(--accent-color);
-          border-radius: 50%;
-          animation: spin 1s linear infinite;
-          margin-bottom: 15px;
-        }
-
-        @keyframes spin {
-          0% {
-            transform: rotate(0deg);
-          }
-          100% {
-            transform: rotate(360deg);
-          }
-        }
-
-        .loading-alert p,
-        .no-alerts p,
-        .error-alert p {
-          color: color-mix(in srgb, var(--default-color), transparent 40%);
-          margin-top: 10px;
-        }
-
-        .no-alerts i,
-        .error-alert i {
-          font-size: 48px;
-          color: color-mix(in srgb, var(--default-color), transparent 60%);
-          margin-bottom: 15px;
-        }
-
-        .error-alert i {
-          color: #df1529;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-          .alerts-carousel-container {
-            padding: 0 20px;
-          }
-
-          .alert-card {
-            padding: 20px;
-          }
-
-          .alerts-carousel .swiper-button-prev,
-          .alerts-carousel .swiper-button-next {
-            display: none;
-          }
-        }
-      </style>
-
-      <!-- Contact Section -->
-<section id="contact" class="contact section">
-  <!-- Section Title -->
-  <div class="container section-title" data-aos="fade-up">
-    <h2>Contact</h2>
-    <p>
-      Vous pouvez me contacter par mail ou en utilisant le formulaire de
-      contact ci-dessous.
-    </p>
-  </div>
-  <!-- End Section Title -->
-
-  <div class="container" data-aos="fade" data-aos-delay="100">
-    <div class="row gy-4">
-      <div class="col-lg-4">
-        <div
-          class="info-item d-flex"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          <i class="bi bi-geo-alt flex-shrink-0"></i>
-          <div>
-            <h3>Adresse</h3>
-            <p>7 Rue du Clos Garnier, 95240 Cormeilles-en-Parisis</p>
+      <!-- ===================== CONTACT ===================== -->
+      <section class="section" id="contact">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <span class="section-head__no"><b>06</b> / Contact</span>
+              <h2 class="section-head__title" data-reveal>Travaillons ensemble.</h2>
+            </div>
+            <p class="section-head__intro" data-reveal>
+              Une opportunité d'alternance, un projet, une question ? Écrivez-moi,
+              je réponds rapidement.
+            </p>
           </div>
-        </div>
-        <!-- End Info Item -->
 
-        <div
-          class="info-item d-flex"
-          data-aos="fade-up"
-          data-aos-delay="300"
-        >
-          <i class="bi bi-telephone flex-shrink-0"></i>
-          <div>
-            <h3>Appelez moi !</h3>
-            <p>+33782306535</p>
-          </div>
-        </div>
-        <!-- End Info Item -->
-
-        <div
-          class="info-item d-flex"
-          data-aos="fade-up"
-          data-aos-delay="400"
-        >
-          <i class="bi bi-envelope flex-shrink-0"></i>
-          <div>
-            <h3>Email</h3>
-            <p>dramealyba@gmail.com</p>
-          </div>
-        </div>
-        <!-- End Info Item -->
-      </div>
-
-      <div class="col-lg-8">
-        <form
-          id="contact-form"
-          action="https://formspree.io/f/xnjowgel"
-          method="POST"
-          class="php-email-form"
-          data-aos="fade-up"
-          data-aos-delay="200"
-        >
-          <div class="row gy-4">
-            <div class="col-md-6">
-              <input
-                type="text"
-                name="name"
-                class="form-control"
-                placeholder="Votre Nom"
-                required
-              />
-            </div>
-
-            <div class="col-md-6">
-              <input
-                type="email"
-                class="form-control"
-                name="email"
-                placeholder="Votre Email"
-                required
-              />
-            </div>
-
-            <div class="col-md-12">
-              <input
-                type="text"
-                class="form-control"
-                name="subject"
-                placeholder="Objet"
-                required
-              />
-            </div>
-
-            <div class="col-md-12">
-              <textarea
-                class="form-control"
-                name="message"
-                rows="6"
-                placeholder="Message"
-                required
-              ></textarea>
-            </div>
-
-            <div class="col-md-12 text-center">
-              <div class="loading">Chargement</div>
-              <div class="error-message"></div>
-              <div class="sent-message">
-                Votre message à été envoyé avec succès! Hâte de vous
-                recontacter !
+          <div class="contact__grid">
+            <div data-reveal="left">
+              <h3 class="contact__title">Disponible pour de nouveaux défis.</h3>
+              <p class="contact__lead">
+                Que ce soit pour une collaboration, une mission ou simplement
+                échanger sur la tech, n'hésitez pas à me contacter par le moyen qui
+                vous convient.
+              </p>
+              <div class="contact__info">
+                <a class="info-row" href="mailto:dramealyba@gmail.com" data-cursor>
+                  <i class="bi bi-envelope"></i>
+                  <span><span class="k">Email</span><br /><span class="v">dramealyba@gmail.com</span></span>
+                </a>
+                <a class="info-row" href="tel:+33782306535" data-cursor>
+                  <i class="bi bi-telephone"></i>
+                  <span><span class="k">Téléphone</span><br /><span class="v">+33 7 82 30 65 35</span></span>
+                </a>
+                <a class="info-row" href="https://www.linkedin.com/in/aly-ba-drame-282735309/" target="_blank" rel="noopener" data-cursor>
+                  <i class="bi bi-linkedin"></i>
+                  <span><span class="k">LinkedIn</span><br /><span class="v">aly-ba-drame</span></span>
+                </a>
+                <div class="info-row">
+                  <i class="bi bi-geo-alt"></i>
+                  <span><span class="k">Localisation</span><br /><span class="v">Cormeilles-en-Parisis · Paris (95/Île-de-France)</span></span>
+                </div>
               </div>
+            </div>
 
-              <button type="submit">Envoyer</button>
+            <div data-reveal="right">
+              <form id="contact-form" class="form" action="https://formspree.io/f/xnjowgel" method="POST">
+                <div class="form__grid">
+                  <div class="field">
+                    <label for="name">Votre nom</label>
+                    <input id="name" type="text" name="name" placeholder="Jean Dupont" required />
+                  </div>
+                  <div class="field">
+                    <label for="email">Votre email</label>
+                    <input id="email" type="email" name="email" placeholder="jean@exemple.com" required />
+                  </div>
+                  <div class="field full">
+                    <label for="subject">Objet</label>
+                    <input id="subject" type="text" name="subject" placeholder="Sujet de votre message" required />
+                  </div>
+                  <div class="field full">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Parlez-moi de votre projet…" required></textarea>
+                  </div>
+                </div>
+                <div class="form__foot">
+                  <button type="submit" class="btn btn--primary" data-cursor>Envoyer le message <i class="bi bi-send"></i></button>
+                  <span class="form__msg loading">Envoi en cours…</span>
+                  <span class="form__msg error"></span>
+                  <span class="form__msg success">Message envoyé avec succès ! Hâte de vous recontacter.</span>
+                </div>
+              </form>
             </div>
           </div>
-        </form>
-      </div>
-      <!-- End Contact Form -->
-    </div>
-  </div>
-</section>
-<!-- /Contact Section -->
+        </div>
+      </section>
     </main>
 
-    <footer id="footer" class="footer position-relative light-background">
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer" id="footer">
       <div class="container">
-        <h3 class="sitename">Dramé Aly</h3>
-        <p>
-          Étudiant en BTS SIO (Services Informatiques aux Organisations), en
-          alternance chez Assystem, passionné par l’innovation et le
-          développement de solutions numériques.
-        </p>
-        <div class="social-links d-flex justify-content-center">
-          <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/"><i class="bi bi-linkedin"></i></a>
+        <div class="footer__top">
+          <h2 class="footer__big">Créons quelque<br />chose <em>d'utile</em>.</h2>
+          <div class="footer__cta">
+            <a href="#contact" class="btn btn--primary" data-cursor>Démarrer une conversation <i class="bi bi-arrow-up-right"></i></a>
+            <span style="color:rgba(243,241,234,0.6);font-family:var(--font-mono);font-size:0.8rem">Réponse sous 24–48 h</span>
+          </div>
+        </div>
+
+        <div class="footer__links">
+          <div class="footer__col">
+            <h5>Navigation</h5>
+            <a href="#about">À propos</a>
+            <a href="#skills">Compétences</a>
+            <a href="#parcours">Parcours</a>
+            <a href="#projects">Projets</a>
+            <a href="#services">Services</a>
+          </div>
+          <div class="footer__col">
+            <h5>Contact</h5>
+            <a href="mailto:dramealyba@gmail.com">dramealyba@gmail.com</a>
+            <a href="tel:+33782306535">+33 7 82 30 65 35</a>
+            <p>Cormeilles-en-Parisis, France</p>
+          </div>
+          <div class="footer__col">
+            <h5>Réseaux</h5>
+            <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <span>© <span id="year"></span> Aly-Ba Dramé — Tous droits réservés.</span>
+          <span>Conçu & développé avec soin · Paris</span>
         </div>
       </div>
     </footer>
 
-    <!-- Scroll Top -->
-    <a
-      href="#"
-      id="scroll-top"
-      class="scroll-top d-flex align-items-center justify-content-center"
-      ><i class="bi bi-arrow-up-short"></i
-    ></a>
+    <a href="#hero" class="scroll-top" id="scroll-top" aria-label="Remonter en haut"><i class="bi bi-arrow-up"></i></a>
 
-    <!-- Preloader -->
-    <div id="preloader"></div>
-
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/typed.js/typed.umd.js"></script>
-    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Main JS File -->
-    <script src="assets/js/main.js"></script>
-    <script>
-        // Initialisation de Swiper pour les alertes statiques
-        document.addEventListener('DOMContentLoaded', () => {
-          new Swiper(".alerts-carousel", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-              delay: 5000,
-              disableOnInteraction: false,
-            },
-            pagination: {
-              el: ".swiper-pagination",
-              clickable: true,
-            },
-            navigation: {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev",
-            },
-            breakpoints: {
-              768: { slidesPerView: 2 },
-              1200: { slidesPerView: 3 }
-            }
-          });
-        });
-    </script>
-    <script>
-  const contactForm = document.getElementById('contact-form');
-  
-  if (contactForm) {
-    contactForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const loading = contactForm.querySelector('.loading');
-      const errorMessage = contactForm.querySelector('.error-message');
-      const sentMessage = contactForm.querySelector('.sent-message');
-      
-      loading.style.display = 'block';
-      errorMessage.style.display = 'none';
-      sentMessage.style.display = 'none';
-      submitBtn.disabled = true;
-      
-      try {
-        const formData = new FormData(contactForm);
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          loading.style.display = 'none';
-          sentMessage.style.display = 'block';
-          contactForm.reset();
-        } else {
-          const data = await response.json();
-          if (data.errors) {
-            errorMessage.textContent = data.errors.map(e => e.message).join(', ');
-          } else {
-            errorMessage.textContent = 'Une erreur est survenue. Veuillez réessayer.';
-          }
-          errorMessage.style.display = 'block';
+    <!-- Libraries (CDN) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
         }
-      } catch (error) {
-        loading.style.display = 'none';
-        errorMessage.textContent = 'Erreur de connexion. Veuillez vérifier votre connexion internet.';
-        errorMessage.style.display = 'block';
-      } finally {
-        submitBtn.disabled = false;
       }
-    });
-  }
-</script>
+    </script>
+
+    <!-- Main script -->
+    <script src="assets/js/portfolio.js"></script>
+    <script type="module" src="assets/js/hero3d.js"></script>
   </body>
 </html>

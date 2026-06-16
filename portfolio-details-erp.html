@@ -1,1174 +1,383 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>AutoManage ERP — Logiciel de gestion pour agence de location</title>
-  <meta content="ERP PHP MVC pour la location de véhicules — Dramé Aly" name="description">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <style>
-    /* ===== DESIGN TOKENS (identiques à portfolio-details.html) ===== */
-    :root {
-      --beige-ivory: #faf9f7;
-      --beige-light: #f5f3f0;
-      --warm-grey-light: #e8e6e1;
-      --warm-grey-medium: #a8a59e;
-      --anthracite-dark: #2c2c2c;
-      --anthracite-medium: #4a4a4a;
-      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-      /* Accent subtil pour ce projet */
-      --erp-accent: #3a3a3a;
-      --erp-accent-soft: #6b6b6b;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--beige-ivory);
-      color: var(--anthracite-medium);
-      line-height: 1.6;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      color: var(--anthracite-dark);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1rem; }
-    h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
-    h3 { font-size: 1.75rem; margin-bottom: 1rem; }
-
-    .lead {
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: var(--anthracite-medium);
-      line-height: 1.7;
-    }
-
-    /* ===== ANIMATIONS KEYFRAMES ===== */
-    @keyframes fade-in-up {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes subtle-float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-6px); }
-    }
-
-    @keyframes slide-in-left {
-      from { opacity: 0; transform: translateX(-30px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes counter-pop {
-      0%   { transform: scale(0.8); opacity: 0; }
-      60%  { transform: scale(1.05); }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes draw-line {
-      from { width: 0; }
-      to   { width: 100%; }
-    }
-
-    @keyframes pulse-border {
-      0%, 100% { border-color: var(--warm-grey-light); }
-      50%       { border-color: var(--warm-grey-medium); }
-    }
-
-    @keyframes typewriter-cursor {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
-    }
-
-    @keyframes flow-down {
-      0%   { opacity: 0; transform: translateY(-8px); }
-      40%  { opacity: 1; }
-      100% { opacity: 0; transform: translateY(8px); }
-    }
-
-    /* ===== HERO BANNER ERP ===== */
-    .erp-hero-banner {
-      background: var(--anthracite-dark);
-      color: var(--beige-ivory);
-      padding: 4.5rem 0 3.5rem;
-      margin-bottom: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .erp-hero-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    /* Grille subtile en fond */
-    .erp-hero-banner::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-    }
-
-    .erp-hero-banner h1 { color: var(--beige-ivory); }
-
-    .erp-hero-banner .lead {
-      color: rgba(250,249,247,0.65);
-      font-size: 1.15rem;
-    }
-
-    .hero-breadcrumb a { color: rgba(250,249,247,0.45); text-decoration: none; font-size: 0.9rem; }
-    .hero-breadcrumb span { color: rgba(250,249,247,0.7); font-size: 0.9rem; margin: 0 0.4rem; }
-    .hero-breadcrumb .current { color: rgba(250,249,247,0.85); font-size: 0.9rem; font-weight: 500; }
-
-    .hero-tag {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: rgba(250,249,247,0.6);
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Typewriter title effect */
-    .typewriter-title {
-      position: relative;
-      display: inline-block;
-    }
-
-    .typewriter-title::after {
-      content: '';
-      display: inline-block;
-      width: 3px;
-      height: 0.85em;
-      background: rgba(250,249,247,0.6);
-      margin-left: 4px;
-      vertical-align: middle;
-      animation: typewriter-cursor 1s step-end infinite;
-      border-radius: 2px;
-    }
-
-    /* ===== MINIMAL CARD (identique + variante dark) ===== */
-    .minimal-card {
-      background: var(--beige-light);
-      border-radius: 24px;
-      padding: 2.5rem;
-      margin-bottom: 2rem;
-      border: none;
-      transition: var(--transition-smooth);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .minimal-card:hover {
-      transform: translateY(-4px);
-      background: var(--warm-grey-light);
-    }
-
-    .minimal-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, var(--warm-grey-medium) 50%, transparent 100%);
-      opacity: 0.3;
-    }
-
-    /* ===== METRIC CARDS ===== */
-    .metric-card-minimal {
-      background: transparent;
-      padding: 1.5rem;
-      text-align: center;
-      border-radius: 20px;
-      border: 1px solid var(--warm-grey-light);
-      transition: var(--transition-smooth);
-      animation: subtle-float 6s ease-in-out infinite;
-    }
-
-    .metric-card-minimal:hover { border-color: var(--warm-grey-medium); }
-
-    .metric-value-minimal {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--anthracite-dark);
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      animation: counter-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-
-    /* ===== MVC ARCHITECTURE DIAGRAM (innovation) ===== */
-    .mvc-diagram {
-      background: var(--beige-light);
-      border-radius: 24px;
-      padding: 2.5rem;
-      margin: 2rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .mvc-diagram-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--warm-grey-medium);
-      margin-bottom: 2rem;
-    }
-
-    .mvc-flow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .mvc-node {
-      background: var(--beige-ivory);
-      border: 1px solid var(--warm-grey-light);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      text-align: center;
-      min-width: 130px;
-      transition: var(--transition-smooth);
-      position: relative;
-      cursor: default;
-    }
-
-    .mvc-node:hover {
-      border-color: var(--anthracite-dark);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-
-    .mvc-node .node-icon {
-      font-size: 1.75rem;
-      color: var(--warm-grey-medium);
-      margin-bottom: 0.5rem;
-      display: block;
-      transition: var(--transition-smooth);
-    }
-
-    .mvc-node:hover .node-icon { color: var(--anthracite-dark); }
-
-    .mvc-node .node-label {
-      font-weight: 600;
-      font-size: 0.875rem;
-      color: var(--anthracite-dark);
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .mvc-node .node-sub {
-      font-size: 0.725rem;
-      color: var(--warm-grey-medium);
-      margin-top: 0.2rem;
-    }
-
-    /* Flèche entre nodes */
-    .mvc-arrow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0 0.5rem;
-      gap: 2px;
-    }
-
-    .mvc-arrow-line {
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--warm-grey-medium), var(--warm-grey-light));
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Animation de flux sur la flèche */
-    .mvc-arrow-line::after {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: -100%;
-      width: 30%;
-      height: 3px;
-      background: var(--anthracite-dark);
-      border-radius: 2px;
-      animation: flow-down 2s ease-in-out infinite;
-      animation-name: flow-right;
-    }
-
-    @keyframes flow-right {
-      0%   { left: -30%; opacity: 0; }
-      20%  { opacity: 1; }
-      80%  { opacity: 1; }
-      100% { left: 110%; opacity: 0; }
-    }
-
-    .mvc-arrow-label {
-      font-size: 0.65rem;
-      color: var(--warm-grey-medium);
-      white-space: nowrap;
-    }
-
-    /* ===== FEATURE CARDS ===== */
-    .feature-card-minimal {
-      height: 100%;
-      padding: 2rem;
-      border-radius: 20px;
-      background: var(--beige-light);
-      border: 1px solid transparent;
-      transition: var(--transition-smooth);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .feature-card-minimal:hover {
-      border-color: var(--warm-grey-light);
-      transform: translateY(-3px);
-    }
-
-    .feature-icon-minimal {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: var(--beige-ivory);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      color: var(--anthracite-dark);
-      font-size: 1.5rem;
-      border: 1px solid var(--warm-grey-light);
-      transition: var(--transition-smooth);
-    }
-
-    .feature-card-minimal:hover .feature-icon-minimal {
-      background: var(--warm-grey-light);
-      border-color: var(--warm-grey-medium);
-    }
-
-    /* ===== LAYER ITEMS ===== */
-    .layer-item-minimal {
-      padding: 0.875rem 1.25rem;
-      margin: 0.4rem 0;
-      background: var(--beige-ivory);
-      border-radius: 14px;
-      border-left: 3px solid var(--warm-grey-medium);
-      display: flex;
-      align-items: center;
-      transition: var(--transition-smooth);
-    }
-
-    .layer-item-minimal:hover {
-      transform: translateX(8px);
-      border-left-color: var(--anthracite-dark);
-    }
-
-    .layer-item-minimal i {
-      color: var(--warm-grey-medium);
-      margin-right: 1rem;
-      font-size: 1.1rem;
-      min-width: 20px;
-    }
-
-    .layer-item-minimal:hover i { color: var(--anthracite-dark); }
-
-    /* ===== TECH BADGES ===== */
-    .tech-badge-minimal {
-      display: inline-block;
-      padding: 0.45rem 0.9rem;
-      margin: 0.25rem;
-      background: var(--beige-light);
-      color: var(--anthracite-medium);
-      border-radius: 12px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      border: 1px solid var(--warm-grey-light);
-      transition: var(--transition-smooth);
-    }
-
-    .tech-badge-minimal:hover {
-      background: var(--warm-grey-light);
-      color: var(--anthracite-dark);
-      transform: translateY(-2px);
-    }
-
-    /* ===== SIDEBAR ===== */
-    .sidebar-minimal {
-      background: var(--beige-light);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border: 1px solid var(--warm-grey-light);
-    }
-
-    .sidebar-minimal h3 {
-      font-size: 1.4rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--warm-grey-light);
-    }
-
-    /* ===== IMPACT LIST ===== */
-    .impact-list { list-style: none; padding: 0; }
-
-    .impact-list li {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--warm-grey-light);
-      display: flex;
-      align-items: center;
-    }
-
-    .impact-list li:last-child { border-bottom: none; }
-
-    .impact-list i {
-      color: var(--anthracite-medium);
-      margin-right: 1rem;
-      font-size: 1.1rem;
-    }
-
-    /* ===== CODE SNIPPET BLOCK ===== */
-    .code-snippet {
-      background: var(--anthracite-dark);
-      border-radius: 16px;
-      padding: 1.5rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: rgba(250,249,247,0.8);
-      overflow-x: auto;
-      position: relative;
-    }
-
-    .code-snippet .code-comment { color: rgba(250,249,247,0.3); }
-    .code-snippet .code-keyword { color: #a8c7fa; }
-    .code-snippet .code-class   { color: #e8c77a; }
-    .code-snippet .code-method  { color: #b3e0a0; }
-    .code-snippet .code-string  { color: #f0a98b; }
-
-    .code-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 5px;
-    }
-
-    /* ===== CHALLENGE ITEMS ===== */
-    .challenge-item {
-      display: flex;
-      align-items: flex-start;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--warm-grey-light);
-      transition: var(--transition-smooth);
-    }
-
-    .challenge-item:last-child { border-bottom: none; }
-
-    .challenge-item:hover { padding-left: 0.5rem; }
-
-    .challenge-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--warm-grey-light);
-      line-height: 1;
-      min-width: 3rem;
-      transition: var(--transition-smooth);
-    }
-
-    .challenge-item:hover .challenge-num { color: var(--warm-grey-medium); }
-
-    /* ===== PORTFOLIO SLIDER ===== */
-    .portfolio-details-slider {
-      border-radius: 24px;
-      overflow: hidden;
-      margin-bottom: 3rem;
-    }
-
-    /* ===== SECTION SPACINGS ===== */
-    .section-spacing { margin: 4rem 0; }
-    .content-spacing { margin: 3rem 0; }
-
-    /* ===== BACK BUTTON ===== */
-    .btn-minimal {
-      padding: 0.7rem 1.4rem;
-      background: var(--beige-light);
-      border: 1px solid var(--warm-grey-light);
-      color: var(--anthracite-dark);
-      border-radius: 12px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition-smooth);
-    }
-
-    .btn-minimal:hover {
-      background: var(--warm-grey-light);
-      border-color: var(--warm-grey-medium);
-      transform: translateY(-2px);
-      color: var(--anthracite-dark);
-    }
-
-    /* ===== STATUS BADGE ===== */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 500;
-    }
-
-    .status-badge.in-progress {
-      background: rgba(44,44,44,0.08);
-      color: var(--anthracite-dark);
-    }
-
-    .status-badge .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--anthracite-dark);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(1.4); }
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 992px) {
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 2rem; }
-      .minimal-card { padding: 1.5rem; }
-      .metric-value-minimal { font-size: 2rem; }
-      .section-spacing { margin: 2rem 0; }
-      .erp-hero-banner { padding: 3rem 0 2.5rem; }
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.75rem; }
-      .lead { font-size: 1.1rem; }
-      .mvc-flow { gap: 0.25rem; }
-      .mvc-arrow-line { width: 20px; }
-      .typewriter-title::after { display: none; }
-    }
-
-    /* Texte helpers */
-    .text-warm-grey  { color: var(--warm-grey-medium); }
-    .text-anthracite { color: var(--anthracite-dark); }
-    .text-beige      { color: var(--beige-ivory); }
-  </style>
-</head>
-
-<body class="portfolio-details-page">
-
-  <!-- Header -->
-  <header id="header" class="header d-flex flex-column justify-content-center">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="index.html#hero"><i class="bi bi-house navicon"></i><span>Accueil</span></a></li>
-        <li><a href="index.html#about"><i class="bi bi-person navicon"></i><span>À propos</span></a></li>
-        <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Expérience</span></a></li>
-        <li><a href="index.html#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
-        <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
-        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="main">
-
-    <!-- ===== HERO BANNER ===== -->
-    <div class="erp-hero-banner">
-      <div class="container" data-aos="fade-up">
-        <div class="hero-breadcrumb mb-3">
-          <a href="index.html">Accueil</a>
-          <span>/</span>
-          <a href="index.html#portfolio">Portfolio</a>
-          <span>/</span>
-          <span class="current">AutoManage ERP</span>
-        </div>
-
-        <div class="mb-3">
-          <span class="hero-tag"><i class="bi bi-gear me-1"></i>PHP MVC</span>
-          <span class="hero-tag"><i class="bi bi-database me-1"></i>MySQL</span>
-          <span class="hero-tag"><i class="bi bi-truck me-1"></i>Location de Véhicules</span>
-        </div>
-
-        <h1 class="typewriter-title" data-aos="fade-up" data-aos-delay="80">AutoManage ERP</h1>
-        <p class="lead" data-aos="fade-up" data-aos-delay="150">
-          Un ERP sur mesure développé en PHP orienté objet (architecture MVC pure) pour
-          centraliser la gestion commerciale et le suivi client d'une agence de location de véhicules.
-        </p>
-
-        <div class="d-flex align-items-center gap-3 mt-3" data-aos="fade-up" data-aos-delay="200">
-          <span class="status-badge in-progress">
-            <span class="dot"></span>
-            En développement
-          </span>
-          <a href="index.html#portfolio" class="btn-minimal" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); color:rgba(250,249,247,0.8);">
-            <i class="bi bi-arrow-left"></i> Retour au portfolio
-          </a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AutoManage ERP — Logiciel de gestion (PHP MVC) · Aly-Ba Dramé</title>
+    <meta name="description" content="AutoManage ERP : un ERP de location de véhicules développé en PHP 8 orienté objet, architecture MVC pure, pattern DAO et MySQL. Par Aly-Ba Dramé." />
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Icons + styles -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+    <link rel="stylesheet" href="assets/css/portfolio-details.css" />
+  </head>
+
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Nav -->
+    <header class="nav nav--on-dark" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="brand">Aly-Ba Dramé<span class="dot">.</span></a>
+        <nav class="nav__links" aria-label="Navigation principale">
+          <a href="index.html#about">À propos</a>
+          <a href="index.html#skills">Compétences</a>
+          <a href="index.html#parcours">Parcours</a>
+          <a href="index.html#projects">Projets</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="nav__cta">
+          <a href="index.html#projects" class="btn btn--ghost"><i class="bi bi-arrow-left"></i> Projets</a>
         </div>
       </div>
-    </div>
+    </header>
 
-    <!-- ===== DETAILS SECTION ===== -->
-    <section id="portfolio-details" class="portfolio-details section">
-      <div class="container">
+    <main>
+      <!-- Hero -->
+      <section class="pd-hero">
+        <span class="pd-hero__num">02</span>
+        <div class="container">
+          <nav class="pd-breadcrumb" aria-label="Fil d'Ariane">
+            <a href="index.html">Accueil</a><span class="sep">/</span>
+            <a href="index.html#projects">Projets</a><span class="sep">/</span>
+            <span class="current">AutoManage ERP</span>
+          </nav>
+          <div class="pd-hero__tags">
+            <span class="pd-hero__tag"><i class="bi bi-gear"></i> PHP MVC</span>
+            <span class="pd-hero__tag"><i class="bi bi-database"></i> MySQL</span>
+            <span class="pd-hero__tag"><i class="bi bi-truck"></i> Location de véhicules</span>
+          </div>
+          <h1 class="pd-hero__title">AutoManage <em>ERP</em></h1>
+          <p class="pd-hero__lead">
+            Un ERP sur mesure développé en PHP orienté objet (architecture MVC pure)
+            pour centraliser la gestion commerciale et le suivi client d'une agence
+            de location de véhicules.
+          </p>
+          <div class="pd-hero__actions">
+            <span class="pd-status"><span class="dot"></span> En développement</span>
+            <a href="index.html#projects" class="btn btn--ghost"><i class="bi bi-arrow-left"></i> Retour aux projets</a>
+          </div>
+        </div>
+      </section>
 
-        <!-- Gallery Swiper -->
-        <div class="portfolio-details-slider swiper init-swiper" data-aos="fade-up">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 700,
-              "autoplay": { "delay": 5000, "disableOnInteraction": false },
-              "slidesPerView": "auto",
-              "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" },
-              "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true }
-            }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/erp-dashboard.png" alt="Dashboard AutoManage ERP">
+      <div class="pd-main">
+        <div class="container">
+          <!-- Gallery -->
+          <div class="pd-gallery-wrap" data-gallery data-reveal>
+            <div class="pd-window">
+              <div class="pd-window__bar">
+                <div class="pd-window__dots"><span></span><span></span><span></span></div>
+                <span class="pd-window__title">automanage · dashboard</span>
+              </div>
+              <div class="pd-window__body">
+                <img class="active" src="assets/img/portfolio/erp-dashboard.png" alt="Tableau de bord AutoManage ERP" />
+                <img src="assets/img/portfolio/erp-prospects.png" alt="Module CRM prospects" />
+                <img src="assets/img/portfolio/erp-search.png" alt="Recherche et pagination" />
+                <img src="assets/img/portfolio/erp-form.png" alt="Formulaire de saisie client" />
+              </div>
             </div>
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/erp-prospects.png" alt="Module CRM Prospects">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/erp-search.png" alt="Recherche et pagination">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/erp-form.png" alt="Formulaire de saisie client">
+            <div class="pd-thumbs">
+              <button class="pd-thumb active" data-title="automanage · dashboard"><img src="assets/img/portfolio/erp-dashboard.png" alt="" /></button>
+              <button class="pd-thumb" data-title="automanage · prospects"><img src="assets/img/portfolio/erp-prospects.png" alt="" /></button>
+              <button class="pd-thumb" data-title="automanage · recherche"><img src="assets/img/portfolio/erp-search.png" alt="" /></button>
+              <button class="pd-thumb" data-title="automanage · formulaire"><img src="assets/img/portfolio/erp-form.png" alt="" /></button>
             </div>
           </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
-        </div>
 
-        <!-- Main Content + Sidebar -->
-        <div class="row justify-content-between gy-5">
-
-          <!-- ===== MAIN COL ===== -->
-          <div class="col-lg-8">
-
-            <!-- Overview -->
-            <div class="minimal-card" data-aos="fade-up">
-              <h2>C'est quoi un ERP ?</h2>
-              <p class="lead mb-4">
-                Un ERP (Enterprise Resource Planning) est un système d'information centralisé qui regroupe
-                l'ensemble des processus opérationnels d'une entreprise sur une seule base de données.
-              </p>
-              <p>
-                Dans le secteur de la location de véhicules, ce logiciel élimine les fichiers Excel
-                dispersés en regroupant la <strong class="text-anthracite">gestion de la flotte automobile</strong>,
-                le <strong class="text-anthracite">suivi des clients et prospects</strong>,
-                les <strong class="text-anthracite">contrats de location</strong>, la
-                <strong class="text-anthracite">facturation</strong> et les
-                <strong class="text-anthracite">statistiques</strong> au sein d'une même application web
-                sécurisée, rapide et facile d'accès pour les employés de l'agence.
-              </p>
-            </div>
-
-            <!-- Metrics -->
-            <div class="row mb-5" data-aos="fade-up" data-aos-delay="100">
-              <div class="col-md-3 col-6 mb-4">
-                <div class="metric-card-minimal" style="animation-delay: 0s;">
-                  <div class="metric-value-minimal">MVC</div>
-                  <p class="text-warm-grey small">Architecture pure</p>
+          <div class="pd-layout">
+            <!-- Main column -->
+            <div class="pd-content">
+              <!-- Overview -->
+              <section class="pd-section" data-reveal>
+                <div class="pd-overview">
+                  <h2>C'est quoi un ERP ?</h2>
+                  <p class="pd-lead">
+                    Un ERP (Enterprise Resource Planning) est un système d'information
+                    centralisé qui regroupe l'ensemble des processus opérationnels
+                    d'une entreprise sur une seule base de données.
+                  </p>
+                  <p>
+                    Dans le secteur de la location de véhicules, ce logiciel élimine
+                    les fichiers Excel dispersés en regroupant la
+                    <strong>gestion de la flotte automobile</strong>, le
+                    <strong>suivi des clients et prospects</strong>, les
+                    <strong>contrats de location</strong>, la
+                    <strong>facturation</strong> et les <strong>statistiques</strong>
+                    au sein d'une même application web sécurisée, rapide et facile
+                    d'accès pour les employés de l'agence.
+                  </p>
                 </div>
-              </div>
-              <div class="col-md-3 col-6 mb-4">
-                <div class="metric-card-minimal" style="animation-delay: 0.8s;">
-                  <div class="metric-value-minimal">100%</div>
-                  <p class="text-warm-grey small">PHP natif OO</p>
+              </section>
+
+              <!-- Metrics -->
+              <section class="pd-section" data-reveal>
+                <div class="pd-metrics">
+                  <div class="pd-metric"><div class="pd-metric__v">MVC</div><div class="pd-metric__k">Architecture pure</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">100%</div><div class="pd-metric__k">PHP natif OO</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">DAO</div><div class="pd-metric__k">Pattern d'accès</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">0 lib</div><div class="pd-metric__k">Framework externe</div></div>
                 </div>
-              </div>
-              <div class="col-md-3 col-6 mb-4">
-                <div class="metric-card-minimal" style="animation-delay: 1.6s;">
-                  <div class="metric-value-minimal">DAO</div>
-                  <p class="text-warm-grey small">Pattern d'accès</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-6 mb-4">
-                <div class="metric-card-minimal" style="animation-delay: 2.4s;">
-                  <div class="metric-value-minimal">0 lib</div>
-                  <p class="text-warm-grey small">Framework externe</p>
-                </div>
-              </div>
-            </div>
+              </section>
 
-            <!-- ===== MVC DIAGRAM (innovation visuelle) ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="120">
-              <h3 class="mb-4">Architecture MVC Illustrée</h3>
-              <div class="mvc-diagram">
-                <p class="mvc-diagram-title">Flux de données — Requête HTTP → Réponse HTML</p>
-
-                <div class="mvc-flow mb-4">
-                  <!-- Utilisateur -->
-                  <div class="mvc-node">
-                    <span class="node-icon"><i class="bi bi-person-circle"></i></span>
-                    <div class="node-label">Navigateur</div>
-                    <div class="node-sub">Requête HTTP</div>
+              <!-- Architecture -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Architecture</span>
+                <h3 class="pd-section__title">Architecture MVC illustrée</h3>
+                <div class="pd-arch">
+                  <p class="pd-arch__title">Flux de données — Requête HTTP → Réponse HTML</p>
+                  <div class="pd-flow">
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-person-circle"></i></span>
+                      <div class="pd-node__label">Navigateur</div>
+                      <div class="pd-node__sub">Requête HTTP</div>
+                    </div>
+                    <div class="pd-arrow"><div class="pd-arrow__line"></div><div class="pd-arrow__label">GET / POST</div></div>
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-signpost-split"></i></span>
+                      <div class="pd-node__label">Routeur</div>
+                      <div class="pd-node__sub">index.php</div>
+                    </div>
+                    <div class="pd-arrow"><div class="pd-arrow__line"></div><div class="pd-arrow__label">dispatch</div></div>
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-cpu"></i></span>
+                      <div class="pd-node__label">Contrôleur</div>
+                      <div class="pd-node__sub">ProspectCtrl</div>
+                    </div>
                   </div>
-
-                  <div class="mvc-arrow">
-                    <div class="mvc-arrow-line"></div>
-                    <div class="mvc-arrow-label">GET/POST</div>
-                  </div>
-
-                  <!-- Routeur -->
-                  <div class="mvc-node">
-                    <span class="node-icon"><i class="bi bi-signpost-split"></i></span>
-                    <div class="node-label">Routeur</div>
-                    <div class="node-sub">index.php</div>
-                  </div>
-
-                  <div class="mvc-arrow">
-                    <div class="mvc-arrow-line"></div>
-                    <div class="mvc-arrow-label">dispatch</div>
-                  </div>
-
-                  <!-- Contrôleur -->
-                  <div class="mvc-node">
-                    <span class="node-icon"><i class="bi bi-cpu"></i></span>
-                    <div class="node-label">Contrôleur</div>
-                    <div class="node-sub">ProspectCtrl</div>
+                  <div class="pd-layers">
+                    <div class="pd-layer"><i class="bi bi-table"></i><div><div class="pd-layer__t">Modèle (Model)</div><div class="pd-layer__s">Prospect.php · ProspectDao.php</div></div></div>
+                    <div class="pd-layer"><i class="bi bi-database"></i><div><div class="pd-layer__t">Base de données</div><div class="pd-layer__s">MySQL — PDO sécurisé</div></div></div>
+                    <div class="pd-layer"><i class="bi bi-layout-text-window"></i><div><div class="pd-layer__t">Vue (View)</div><div class="pd-layer__s">Templates HTML / PHP</div></div></div>
                   </div>
                 </div>
+              </section>
 
-                <!-- 2ème rangée -->
-                <div class="row g-3 mt-1">
-                  <div class="col-md-4">
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-table"></i>
-                      <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Modèle (Model)</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">Prospect.php + ProspectDao.php</div>
-                      </div>
-                    </div>
+              <!-- Stack -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Technologies</span>
+                <h3 class="pd-section__title">Stack technique</h3>
+                <div class="pd-stack">
+                  <div>
+                    <h5>Backend — Couche logique</h5>
+                    <div class="pd-layer"><i class="bi bi-filetype-php"></i><span>PHP orienté objet — MVC pure</span></div>
+                    <div class="pd-layer"><i class="bi bi-shield-check"></i><span>Sécurité — FILTER_SANITIZE + htmlspecialchars</span></div>
+                    <div class="pd-layer"><i class="bi bi-person-lock"></i><span>Sessions sécurisées — messages flash</span></div>
                   </div>
-                  <div class="col-md-4">
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-database"></i>
-                      <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Base de Données</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">MySQL — PDO sécurisé</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-layout-text-window"></i>
-                      <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Vue (View)</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">Templates HTML/PHP</div>
-                      </div>
-                    </div>
+                  <div>
+                    <h5>Données — Couche persistance</h5>
+                    <div class="pd-layer"><i class="bi bi-database-gear"></i><span>MySQL — gestion relationnelle</span></div>
+                    <div class="pd-layer"><i class="bi bi-diagram-2"></i><span>Pattern DAO (ProspectDao.php)</span></div>
+                    <div class="pd-layer"><i class="bi bi-braces-asterisk"></i><span>Requêtes préparées PDO anti-injection</span></div>
                   </div>
                 </div>
-              </div>
-            </div>
+              </section>
 
-            <!-- ===== ARCHITECTURE TECHNIQUE ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="150">
-              <h3 class="mb-4">Stack Technique</h3>
-              <div style="background: var(--beige-light); border-radius: 20px; padding: 2rem; margin: 0;">
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <h5 class="mb-3 text-warm-grey">Backend — Couche Logique</h5>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-filetype-php"></i>
-                      <span>PHP Orienté Objet — Architecture MVC pure</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-shield-check"></i>
-                      <span>Sécurité — FILTER_SANITIZE + htmlspecialchars</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-person-lock"></i>
-                      <span>Sessions sécurisées — Messages flash</span>
-                    </div>
+              <!-- Features -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Fonctionnalités</span>
+                <h3 class="pd-section__title">Fonctionnalités principales</h3>
+                <div class="pd-features">
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-people"></i></div>
+                    <h4>Module CRM — Prospects</h4>
+                    <p>Système complet de <strong>CRUD</strong> pour la base de prospects B2B et B2C de l'agence. Conversion prospect → client intégrée.</p>
                   </div>
-                  <div class="col-md-6 mb-4">
-                    <h5 class="mb-3 text-warm-grey">Données — Couche Persistance</h5>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-database-gear"></i>
-                      <span>MySQL — Gestion relationnelle</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-diagram-2"></i>
-                      <span>Pattern DAO (ProspectDao.php)</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-braces-asterisk"></i>
-                      <span>Requêtes préparées PDO anti-injection</span>
-                    </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-search"></i></div>
+                    <h4>Recherche & pagination</h4>
+                    <p>Barre de recherche instantanée pour retrouver tout contact, couplée à une pagination fluide pour naviguer dans de grandes bases clients.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-speedometer2"></i></div>
+                    <h4>Tableau de bord</h4>
+                    <p>Calcul et affichage de statistiques globales en temps réel — prospects, conversions, clients actifs — pour piloter l'activité commerciale.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-bell"></i></div>
+                    <h4>Notifications flash</h4>
+                    <p>Messages flash via <code>$_SESSION['message']</code> informant l'utilisateur du succès ou de l'échec de ses actions (création, mise à jour, email invalide).</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-car-front"></i></div>
+                    <h4>Module flotte (à venir)</h4>
+                    <p>Architecture extensible pensée dès le départ pour intégrer la gestion de la flotte automobile, des contrats et de la facturation.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-shield-lock"></i></div>
+                    <h4>Données protégées</h4>
+                    <p>Validation rigoureuse des saisies et requêtes préparées PDO contre les injections SQL et XSS, pour des données commerciales fiables.</p>
                   </div>
                 </div>
-              </div>
-            </div>
+              </section>
 
-            <!-- ===== FEATURES SWIPER ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="180">
-              <h3 class="mb-4">Fonctionnalités Principales</h3>
-              <div class="swiper features-swiper mb-4">
-                <div class="swiper-wrapper">
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-people"></i></div>
-                      <h5 class="mb-2">Module CRM — Prospects</h5>
-                      <p class="text-warm-grey small">
-                        Système complet de <strong>CRUD</strong> (Création, Lecture, Modification, Suppression)
-                        pour la base de prospects B2B et B2C de l'agence. Conversion prospect → client intégrée.
-                      </p>
-                    </div>
+              <!-- Code snippet -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Extrait de code</span>
+                <h3 class="pd-section__title">Pattern DAO — accès aux données</h3>
+                <p style="color:var(--muted);margin-bottom:1.2rem;max-width:60ch">
+                  Séparation stricte entre accès aux données et logique métier,
+                  garantissant maintenabilité et évolutivité.
+                </p>
+                <div class="pd-code">
+                  <div class="pd-code__bar">
+                    <span class="d" style="background:#ff5f57"></span>
+                    <span class="d" style="background:#febc2e"></span>
+                    <span class="d" style="background:#28c840"></span>
+                    <span class="pd-code__name">ProspectDao.php</span>
                   </div>
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-search"></i></div>
-                      <h5 class="mb-2">Recherche &amp; Pagination</h5>
-                      <p class="text-warm-grey small">
-                        Barre de recherche instantanée pour retrouver tout contact, couplée à une
-                        pagination fluide pour naviguer dans de grandes bases de données clients.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-speedometer2"></i></div>
-                      <h5 class="mb-2">Tableau de Bord</h5>
-                      <p class="text-warm-grey small">
-                        Calcul et affichage de statistiques globales en temps réel — nombre de prospects,
-                        conversions, clients actifs — pour piloter l'activité commerciale.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-bell"></i></div>
-                      <h5 class="mb-2">Notifications Flash</h5>
-                      <p class="text-warm-grey small">
-                        Système de messages flash via <code>$_SESSION['message']</code> informant l'utilisateur
-                        du succès ou de l'échec de ses actions (création, mise à jour, format email invalide).
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-car-front"></i></div>
-                      <h5 class="mb-2">Module Flotte (à venir)</h5>
-                      <p class="text-warm-grey small">
-                        Architecture extensible pensée dès le départ pour intégrer la gestion de la flotte
-                        automobile, des contrats et de la facturation.
-                      </p>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="swiper-pagination mt-4"></div>
-              </div>
-            </div>
-
-            <!-- ===== CODE SNIPPET (originalité) ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="200">
-              <h3 class="mb-3">Extrait d'Architecture — Pattern DAO</h3>
-              <p class="text-warm-grey mb-3" style="font-size:0.9rem;">
-                Séparation stricte entre accès données et logique métier, garantissant maintenabilité et évolutivité.
-              </p>
-              <div class="code-snippet">
-                <div class="mb-3 d-flex align-items-center gap-1">
-                  <span class="code-dot" style="background:#ff5f57;"></span>
-                  <span class="code-dot" style="background:#febc2e;"></span>
-                  <span class="code-dot" style="background:#28c840;"></span>
-                  <span class="ms-2" style="color:rgba(250,249,247,0.3); font-size:0.75rem;">ProspectDao.php</span>
-                </div>
-<span class="code-comment">// DAO — Couche d'accès aux données (Data Access Object)</span>
+<pre><span class="code-comment">// DAO — Couche d'accès aux données (Data Access Object)</span>
 <span class="code-keyword">class</span> <span class="code-class">ProspectDao</span> {
 
   <span class="code-keyword">private</span> PDO <span class="code-method">$pdo</span>;
 
   <span class="code-keyword">public function</span> <span class="code-method">findAll</span>(<span class="code-keyword">int</span> <span class="code-method">$limit</span>, <span class="code-keyword">int</span> <span class="code-method">$offset</span>): <span class="code-keyword">array</span> {
     <span class="code-comment">// Requête préparée → protection contre les injections SQL</span>
-    <span class="code-method">$stmt</span> = <span class="code-method">$this</span>->pdo->prepare(
+    <span class="code-method">$stmt</span> = <span class="code-method">$this</span>-&gt;pdo-&gt;prepare(
       <span class="code-string">"SELECT * FROM prospects LIMIT :limit OFFSET :offset"</span>
     );
-    <span class="code-method">$stmt</span>->execute([<span class="code-string">'limit'</span> => <span class="code-method">$limit</span>, <span class="code-string">'offset'</span> => <span class="code-method">$offset</span>]);
-    <span class="code-keyword">return</span> <span class="code-method">$stmt</span>->fetchAll(PDO::FETCH_CLASS, <span class="code-class">Prospect</span>::class);
+    <span class="code-method">$stmt</span>-&gt;execute([<span class="code-string">'limit'</span> =&gt; <span class="code-method">$limit</span>, <span class="code-string">'offset'</span> =&gt; <span class="code-method">$offset</span>]);
+    <span class="code-keyword">return</span> <span class="code-method">$stmt</span>-&gt;fetchAll(PDO::FETCH_CLASS, <span class="code-class">Prospect</span>::class);
   }
 
   <span class="code-keyword">public function</span> <span class="code-method">save</span>(<span class="code-class">Prospect</span> <span class="code-method">$p</span>): <span class="code-keyword">bool</span> {
     <span class="code-comment">// Validation email avant toute persistance</span>
-    <span class="code-method">$email</span> = filter_var(<span class="code-method">$p</span>->getEmail(), FILTER_SANITIZE_EMAIL);
+    <span class="code-method">$email</span> = filter_var(<span class="code-method">$p</span>-&gt;getEmail(), FILTER_SANITIZE_EMAIL);
     <span class="code-keyword">if</span> (!filter_var(<span class="code-method">$email</span>, FILTER_VALIDATE_EMAIL)) <span class="code-keyword">return false</span>;
     <span class="code-comment">// INSERT préparé...</span>
   }
-}
+}</pre>
+                </div>
+              </section>
+
+              <!-- Challenges -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Ingénierie</span>
+                <h3 class="pd-section__title">Défis techniques relevés</h3>
+                <div class="pd-challenges">
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">01</div>
+                    <div>
+                      <h4>Architecture logicielle MVC stricte</h4>
+                      <p>Séparation nette entre requêtes en base (DAO), logique métier (Contrôleurs) et affichage HTML (Vues) — un code maintenable, prêt à évoluer pour l'ajout du module Flotte.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">02</div>
+                    <div>
+                      <h4>Fiabilité & intégrité des données</h4>
+                      <p>Validation rigoureuse des saisies avec <code>FILTER_SANITIZE_EMAIL</code> et <code>htmlspecialchars</code> pour contrer les injections XSS et garantir l'intégrité des informations commerciales.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">03</div>
+                    <div>
+                      <h4>Gestion d'état via sessions PHP</h4>
+                      <p>Système de notifications flash basé sur <code>$_SESSION['message']</code>, offrant un feedback utilisateur immédiat sans rechargement de page supplémentaire.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">04</div>
+                    <div>
+                      <h4>Pagination & performance des requêtes</h4>
+                      <p>Pagination dynamique côté serveur (LIMIT / OFFSET) maintenant des performances constantes quelle que soit la taille de la base de prospects.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Tech badges -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Stack technologique</span>
+                <h3 class="pd-section__title">Outils & technologies</h3>
+                <div class="pd-techs">
+                  <span class="pd-tech">PHP 8 OO</span><span class="pd-tech">MySQL</span>
+                  <span class="pd-tech">PDO</span><span class="pd-tech">Architecture MVC</span>
+                  <span class="pd-tech">Pattern DAO</span><span class="pd-tech">Sessions PHP</span>
+                  <span class="pd-tech">HTML5 / CSS3</span><span class="pd-tech">Bootstrap 5</span>
+                  <span class="pd-tech">FILTER_SANITIZE</span><span class="pd-tech">Requêtes préparées</span>
+                </div>
+              </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="pd-aside">
+              <div class="pd-card" data-reveal>
+                <h3>Informations du projet</h3>
+                <div class="pd-info">
+                  <div><span class="pd-info__k">Secteur</span><span class="pd-info__v">Transport / Location de véhicules</span></div>
+                  <div><span class="pd-info__k">Rôle</span><span class="pd-info__v">Développeur backend PHP</span></div>
+                  <div><span class="pd-info__k">Architecture</span><span class="pd-info__v">Modèle-Vue-Contrôleur (MVC)</span></div>
+                  <div><span class="pd-info__k">Base de données</span><span class="pd-info__v">MySQL + PDO</span></div>
+                  <div><span class="pd-info__k">Statut</span><span class="pd-info__v">En développement actif</span></div>
+                  <div><span class="pd-info__k">Objectif</span><span class="pd-info__v">Digitalisation & centralisation métier</span></div>
+                </div>
               </div>
-            </div>
 
-            <!-- ===== TECHNICAL CHALLENGES ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="220">
-              <h3 class="mb-4">Défis Techniques Relevés</h3>
-              <div class="minimal-card">
-                <div class="challenge-item">
-                  <div class="challenge-num">01</div>
-                  <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Architecture Logicielle MVC Stricte</h6>
-                    <p class="text-warm-grey small mb-0">
-                      Mise en place d'une séparation nette entre requêtes en base de données (DAO), logique
-                      métier (Contrôleurs) et affichage HTML (Vues) — rendant le code maintenable et
-                      prêt à évoluer pour l'ajout du module Flotte de véhicules.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="challenge-item">
-                  <div class="challenge-num">02</div>
-                  <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Fiabilité &amp; Intégrité des Données</h6>
-                    <p class="text-warm-grey small mb-0">
-                      Implémentation d'une validation rigoureuse des saisies avec
-                      <code>FILTER_SANITIZE_EMAIL</code> et <code>htmlspecialchars</code> pour
-                      contrer les injections XSS et garantir l'intégrité des informations commerciales
-                      (nom, prénom, format d'email obligatoires).
-                    </p>
-                  </div>
-                </div>
-
-                <div class="challenge-item">
-                  <div class="challenge-num">03</div>
-                  <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Gestion d'État via Sessions PHP</h6>
-                    <p class="text-warm-grey small mb-0">
-                      Mise en œuvre d'un système de notifications flash basé sur
-                      <code>$_SESSION['message']</code>, offrant un feedback utilisateur immédiat
-                      sans rechargement de page supplémentaire.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="challenge-item">
-                  <div class="challenge-num">04</div>
-                  <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Pagination &amp; Performance des Requêtes</h6>
-                    <p class="text-warm-grey small mb-0">
-                      Conception d'un système de pagination dynamique côté serveur (LIMIT/OFFSET)
-                      maintenant des performances constantes quelle que soit la taille de la base
-                      de prospects.
-                    </p>
-                  </div>
-                </div>
+              <div class="pd-card" data-reveal>
+                <h4>Bénéfices métier</h4>
+                <ul class="pd-benefits">
+                  <li><i class="bi bi-check-circle"></i><span>Zéro fichier Excel dispersé</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>CRM centralisé prospects / clients</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Suivi en temps réel de l'activité</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Saisies protégées et validées</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Architecture extensible (flotte)</span></li>
+                </ul>
               </div>
-            </div>
 
-            <!-- ===== STACK ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="240">
-              <h4 class="mb-3">Stack Technologique</h4>
-              <div class="mb-5">
-                <span class="tech-badge-minimal">PHP 8 OO</span>
-                <span class="tech-badge-minimal">MySQL</span>
-                <span class="tech-badge-minimal">PDO</span>
-                <span class="tech-badge-minimal">Architecture MVC</span>
-                <span class="tech-badge-minimal">Pattern DAO</span>
-                <span class="tech-badge-minimal">Sessions PHP</span>
-                <span class="tech-badge-minimal">HTML5 / CSS3</span>
-                <span class="tech-badge-minimal">Bootstrap 5</span>
-                <span class="tech-badge-minimal">FILTER_SANITIZE</span>
-                <span class="tech-badge-minimal">Requêtes Préparées</span>
-              </div>
-            </div>
-
-          </div><!-- /col-lg-8 -->
-
-          <!-- ===== SIDEBAR ===== -->
-          <div class="col-lg-3">
-
-            <!-- Infos Projet -->
-            <div class="sidebar-minimal" data-aos="fade-up" data-aos-delay="100">
-              <h3>Informations du Projet</h3>
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Secteur</strong>
-                  <span class="text-warm-grey">Transport / Location de véhicules</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Rôle</strong>
-                  <span class="text-warm-grey">Développeur Backend PHP</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Architecture</strong>
-                  <span class="text-warm-grey">Modèle-Vue-Contrôleur (MVC)</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Base de données</strong>
-                  <span class="text-warm-grey">MySQL + PDO</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Statut</strong>
-                  <span class="text-warm-grey">En développement actif</span>
-                </li>
-                <li>
-                  <strong class="d-block text-anthracite mb-1">Objectif</strong>
-                  <span class="text-warm-grey">Digitalisation &amp; centralisation métier</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Impact Business -->
-            <div class="sidebar-minimal" data-aos="fade-up" data-aos-delay="150">
-              <h5 class="mb-3">Bénéfices Métier</h5>
-              <ul class="impact-list">
-                <li><i class="bi bi-check-circle"></i><span>Zéro fichier Excel dispersé</span></li>
-                <li><i class="bi bi-check-circle"></i><span>CRM centralisé prospects/clients</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Suivi en temps réel de l'activité</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Saisies protégées et validées</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Architecture extensible (flotte)</span></li>
-              </ul>
-            </div>
-
-            <!-- CTA retour -->
-            <div data-aos="fade-up" data-aos-delay="200">
-              <a href="index.html#portfolio" class="btn-minimal w-100 justify-content-center">
-                <i class="bi bi-arrow-left"></i> Tous les projets
-              </a>
-            </div>
-
-          </div><!-- /sidebar -->
-
-        </div><!-- /row -->
-      </div><!-- /container -->
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer id="footer" class="footer position-relative light-background">
-    <div class="container">
-      <h3 class="sitename">Dramé Aly</h3>
-      <p>Étudiant en BTS SIO (Services Informatiques aux Organisations), en alternance chez Assystem, passionné par l'innovation et le développement de solutions numériques.</p>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/"><i class="bi bi-linkedin"></i></a>
+              <a href="index.html#projects" class="btn btn--primary" style="width:100%;justify-content:center"><i class="bi bi-arrow-left"></i> Tous les projets</a>
+            </aside>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </main>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-  </a>
-  <div id="preloader"></div>
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer__top">
+          <h2 class="footer__big">Un projet<br />en <em>tête</em> ?</h2>
+          <div class="footer__cta">
+            <a href="index.html#contact" class="btn btn--primary">Me contacter <i class="bi bi-arrow-up-right"></i></a>
+            <span style="color:rgba(243,241,234,0.6);font-family:var(--font-mono);font-size:0.8rem">Réponse sous 24–48 h</span>
+          </div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h5>Navigation</h5>
+            <a href="index.html#about">À propos</a>
+            <a href="index.html#skills">Compétences</a>
+            <a href="index.html#parcours">Parcours</a>
+            <a href="index.html#projects">Projets</a>
+          </div>
+          <div class="footer__col">
+            <h5>Contact</h5>
+            <a href="mailto:dramealyba@gmail.com">dramealyba@gmail.com</a>
+            <a href="tel:+33782306535">+33 7 82 30 65 35</a>
+            <p>Cormeilles-en-Parisis, France</p>
+          </div>
+          <div class="footer__col">
+            <h5>Réseaux</h5>
+            <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>© <span id="year"></span> Aly-Ba Dramé — Tous droits réservés.</span>
+          <span>Conçu & développé avec soin · Paris</span>
+        </div>
+      </div>
+    </footer>
 
-  <!-- Vendor JS -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+    <a href="#" class="scroll-top" id="scroll-top" aria-label="Remonter en haut"><i class="bi bi-arrow-up"></i></a>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-      // ===== FEATURES SWIPER =====
-      new Swiper('.features-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        speed: 600,
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        breakpoints: {
-          768: { slidesPerView: 2 },
-          992: { slidesPerView: 3 }
-        }
-      });
-
-      // ===== STAGGERED ENTRANCE ANIMATIONS =====
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            entry.target.style.animation = `fade-in-up 0.55s cubic-bezier(0.4, 0, 0.2, 1) ${i * 0.07}s both`;
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-      document.querySelectorAll(
-        '.minimal-card, .metric-card-minimal, .feature-card-minimal, .layer-item-minimal, .challenge-item'
-      ).forEach(el => observer.observe(el));
-
-      // ===== MVC NODES CLICK RIPPLE =====
-      document.querySelectorAll('.mvc-node').forEach(node => {
-        node.addEventListener('click', function () {
-          this.style.transform = 'scale(0.95)';
-          setTimeout(() => this.style.transform = '', 150);
-        });
-      });
-
-      // ===== TECH BADGES INTERACTIVE TILT =====
-      document.querySelectorAll('.tech-badge-minimal').forEach(badge => {
-        badge.addEventListener('mousemove', function (e) {
-          const rect = this.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
-          const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
-          this.style.transform = `translateY(-2px) rotateX(${-y}deg) rotateY(${x}deg)`;
-        });
-        badge.addEventListener('mouseleave', function () {
-          this.style.transform = '';
-        });
-      });
-
-      // ===== SIDEBAR SMOOTH REVEAL =====
-      document.querySelectorAll('.sidebar-minimal').forEach((el, i) => {
-        el.style.animationDelay = `${i * 0.1}s`;
-      });
-
-    });
-  </script>
-</body>
+    <script src="assets/js/portfolio-details.js"></script>
+  </body>
 </html>

@@ -1,1131 +1,345 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>ASKILLS — Plateforme de gestion des compétences</title>
-  <meta content="Plateforme React/Node.js de gestion des compétences et ressources humaines — Dramé Aly" name="description">
-
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <style>
-    /* ===== DESIGN TOKENS ===== */
-    :root {
-      --beige-ivory: #faf9f7;
-      --beige-light: #f5f3f0;
-      --warm-grey-light: #e8e6e1;
-      --warm-grey-medium: #a8a59e;
-      --anthracite-dark: #2c2c2c;
-      --anthracite-medium: #4a4a4a;
-      --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-      /* Accent subtil pour ce projet */
-      --askills-accent: #3a3a3a;
-      --askills-accent-soft: #6b6b6b;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background-color: var(--beige-ivory);
-      color: var(--anthracite-medium);
-      line-height: 1.6;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 600;
-      color: var(--anthracite-dark);
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    h1 { font-size: 3.5rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1rem; }
-    h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
-    h3 { font-size: 1.75rem; margin-bottom: 1rem; }
-
-    .lead {
-      font-size: 1.25rem;
-      font-weight: 400;
-      color: var(--anthracite-medium);
-      line-height: 1.7;
-    }
-
-    /* ===== ANIMATIONS KEYFRAMES ===== */
-    @keyframes fade-in-up {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @keyframes subtle-float {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-6px); }
-    }
-
-    @keyframes slide-in-left {
-      from { opacity: 0; transform: translateX(-30px); }
-      to   { opacity: 1; transform: translateX(0); }
-    }
-
-    @keyframes counter-pop {
-      0%   { transform: scale(0.8); opacity: 0; }
-      60%  { transform: scale(1.05); }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    @keyframes draw-line {
-      from { width: 0; }
-      to   { width: 100%; }
-    }
-
-    @keyframes pulse-border {
-      0%, 100% { border-color: var(--warm-grey-light); }
-      50%       { border-color: var(--warm-grey-medium); }
-    }
-
-    @keyframes typewriter-cursor {
-      0%, 100% { opacity: 1; }
-      50%       { opacity: 0; }
-    }
-
-    @keyframes flow-right {
-      0%   { left: -30%; opacity: 0; }
-      20%  { opacity: 1; }
-      80%  { opacity: 1; }
-      100% { left: 110%; opacity: 0; }
-    }
-
-    @keyframes pulse-dot {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.5; transform: scale(1.4); }
-    }
-
-    /* ===== HERO BANNER ===== */
-    .project-hero-banner {
-      background: var(--anthracite-dark);
-      color: var(--beige-ivory);
-      padding: 4.5rem 0 3.5rem;
-      margin-bottom: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .project-hero-banner::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 70% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
-      pointer-events: none;
-    }
-
-    .project-hero-banner::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-      pointer-events: none;
-    }
-
-    .project-hero-banner h1 { color: var(--beige-ivory); }
-
-    .project-hero-banner .lead {
-      color: rgba(250,249,247,0.65);
-      font-size: 1.15rem;
-    }
-
-    .hero-breadcrumb a { color: rgba(250,249,247,0.45); text-decoration: none; font-size: 0.9rem; }
-    .hero-breadcrumb span { color: rgba(250,249,247,0.7); font-size: 0.9rem; margin: 0 0.4rem; }
-    .hero-breadcrumb .current { color: rgba(250,249,247,0.85); font-size: 0.9rem; font-weight: 500; }
-
-    .hero-tag {
-      display: inline-block;
-      padding: 0.3rem 0.8rem;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 20px;
-      font-size: 0.8rem;
-      color: rgba(250,249,247,0.6);
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    /* Typewriter title effect */
-    .typewriter-title {
-      position: relative;
-      display: inline-block;
-    }
-
-    .typewriter-title::after {
-      content: '';
-      display: inline-block;
-      width: 3px;
-      height: 0.85em;
-      background: rgba(250,249,247,0.6);
-      margin-left: 4px;
-      vertical-align: middle;
-      animation: typewriter-cursor 1s step-end infinite;
-      border-radius: 2px;
-    }
-
-    /* ===== STATUS BADGE ===== */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.8rem;
-      border-radius: 20px;
-      font-size: 0.78rem;
-      font-weight: 500;
-    }
-
-    .status-badge.in-production {
-      background: rgba(44,44,44,0.08);
-      color: var(--anthracite-dark);
-    }
-
-    .status-badge .dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: var(--anthracite-dark);
-      animation: pulse-dot 2s ease-in-out infinite;
-    }
-
-    /* ===== MINIMAL CARD ===== */
-    .minimal-card {
-      background: var(--beige-light);
-      border-radius: 24px;
-      padding: 2.5rem;
-      margin-bottom: 2rem;
-      border: none;
-      transition: var(--transition-smooth);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .minimal-card:hover {
-      transform: translateY(-4px);
-      background: var(--warm-grey-light);
-    }
-
-    .minimal-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, var(--warm-grey-medium) 50%, transparent 100%);
-      opacity: 0.3;
-    }
-
-    /* ===== METRIC CARDS ===== */
-    .metric-card-minimal {
-      background: transparent;
-      padding: 1.5rem;
-      text-align: center;
-      border-radius: 20px;
-      border: 1px solid var(--warm-grey-light);
-      transition: var(--transition-smooth);
-      animation: subtle-float 6s ease-in-out infinite;
-    }
-
-    .metric-card-minimal:hover { border-color: var(--warm-grey-medium); }
-
-    .metric-value-minimal {
-      font-size: 2.5rem;
-      font-weight: 600;
-      color: var(--anthracite-dark);
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      animation: counter-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-    }
-
-    /* ===== ARCHITECTURE DIAGRAM (React/Node Flow) ===== */
-    .arch-diagram {
-      background: var(--beige-light);
-      border-radius: 24px;
-      padding: 2.5rem;
-      margin: 2rem 0;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .arch-diagram-title {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--warm-grey-medium);
-      margin-bottom: 2rem;
-    }
-
-    .arch-flow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0;
-      flex-wrap: wrap;
-    }
-
-    .arch-node {
-      background: var(--beige-ivory);
-      border: 1px solid var(--warm-grey-light);
-      border-radius: 16px;
-      padding: 1.25rem 1.5rem;
-      text-align: center;
-      min-width: 130px;
-      transition: var(--transition-smooth);
-      position: relative;
-      cursor: default;
-    }
-
-    .arch-node:hover {
-      border-color: var(--anthracite-dark);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    }
-
-    .arch-node .node-icon {
-      font-size: 1.75rem;
-      color: var(--warm-grey-medium);
-      margin-bottom: 0.5rem;
-      display: block;
-      transition: var(--transition-smooth);
-    }
-
-    .arch-node:hover .node-icon { color: var(--anthracite-dark); }
-
-    .arch-node .node-label {
-      font-weight: 600;
-      font-size: 0.875rem;
-      color: var(--anthracite-dark);
-      font-family: 'Space Grotesk', sans-serif;
-    }
-
-    .arch-node .node-sub {
-      font-size: 0.725rem;
-      color: var(--warm-grey-medium);
-      margin-top: 0.2rem;
-    }
-
-    /* Flèche entre nodes */
-    .arch-arrow {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0 0.5rem;
-      gap: 2px;
-    }
-
-    .arch-arrow-line {
-      width: 40px;
-      height: 1px;
-      background: linear-gradient(90deg, var(--warm-grey-medium), var(--warm-grey-light));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .arch-arrow-line::after {
-      content: '';
-      position: absolute;
-      top: -1px;
-      left: -100%;
-      width: 30%;
-      height: 3px;
-      background: var(--anthracite-dark);
-      border-radius: 2px;
-      animation: flow-right 2s ease-in-out infinite;
-    }
-
-    .arch-arrow-label {
-      font-size: 0.65rem;
-      color: var(--warm-grey-medium);
-      white-space: nowrap;
-    }
-
-    /* ===== FEATURE CARDS ===== */
-    .feature-card-minimal {
-      height: 100%;
-      padding: 2rem;
-      border-radius: 20px;
-      background: var(--beige-light);
-      border: 1px solid transparent;
-      transition: var(--transition-smooth);
-      display: flex;
-      flex-direction: column;
-    }
-
-    .feature-card-minimal:hover {
-      border-color: var(--warm-grey-light);
-      transform: translateY(-3px);
-    }
-
-    .feature-icon-minimal {
-      width: 56px;
-      height: 56px;
-      border-radius: 16px;
-      background: var(--beige-ivory);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 1.5rem;
-      color: var(--anthracite-dark);
-      font-size: 1.5rem;
-      border: 1px solid var(--warm-grey-light);
-      transition: var(--transition-smooth);
-    }
-
-    .feature-card-minimal:hover .feature-icon-minimal {
-      background: var(--warm-grey-light);
-      border-color: var(--warm-grey-medium);
-    }
-
-    /* ===== LAYER ITEMS ===== */
-    .layer-item-minimal {
-      padding: 0.875rem 1.25rem;
-      margin: 0.4rem 0;
-      background: var(--beige-ivory);
-      border-radius: 14px;
-      border-left: 3px solid var(--warm-grey-medium);
-      display: flex;
-      align-items: center;
-      transition: var(--transition-smooth);
-    }
-
-    .layer-item-minimal:hover {
-      transform: translateX(8px);
-      border-left-color: var(--anthracite-dark);
-    }
-
-    .layer-item-minimal i {
-      color: var(--warm-grey-medium);
-      margin-right: 1rem;
-      font-size: 1.1rem;
-      min-width: 20px;
-    }
-
-    .layer-item-minimal:hover i { color: var(--anthracite-dark); }
-
-    /* ===== TECH BADGES ===== */
-    .tech-badge-minimal {
-      display: inline-block;
-      padding: 0.45rem 0.9rem;
-      margin: 0.25rem;
-      background: var(--beige-light);
-      color: var(--anthracite-medium);
-      border-radius: 12px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      border: 1px solid var(--warm-grey-light);
-      transition: var(--transition-smooth);
-    }
-
-    .tech-badge-minimal:hover {
-      background: var(--warm-grey-light);
-      color: var(--anthracite-dark);
-      transform: translateY(-2px);
-    }
-
-    /* ===== SIDEBAR ===== */
-    .sidebar-minimal {
-      background: var(--beige-light);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border: 1px solid var(--warm-grey-light);
-    }
-
-    .sidebar-minimal h3 {
-      font-size: 1.4rem;
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--warm-grey-light);
-    }
-
-    /* ===== IMPACT LIST ===== */
-    .impact-list { list-style: none; padding: 0; }
-
-    .impact-list li {
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--warm-grey-light);
-      display: flex;
-      align-items: center;
-    }
-
-    .impact-list li:last-child { border-bottom: none; }
-
-    .impact-list i {
-      color: var(--anthracite-medium);
-      margin-right: 1rem;
-      font-size: 1.1rem;
-    }
-
-    /* ===== CODE SNIPPET BLOCK ===== */
-    .code-snippet {
-      background: var(--anthracite-dark);
-      border-radius: 16px;
-      padding: 1.5rem;
-      font-family: 'Courier New', monospace;
-      font-size: 0.82rem;
-      line-height: 1.7;
-      color: rgba(250,249,247,0.8);
-      overflow-x: auto;
-      position: relative;
-    }
-
-    .code-snippet .code-comment { color: rgba(250,249,247,0.3); }
-    .code-snippet .code-keyword { color: #a8c7fa; }
-    .code-snippet .code-class   { color: #e8c77a; }
-    .code-snippet .code-method  { color: #b3e0a0; }
-    .code-snippet .code-string  { color: #f0a98b; }
-
-    .code-dot {
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      display: inline-block;
-      margin-right: 5px;
-    }
-
-    /* ===== CHALLENGE ITEMS ===== */
-    .challenge-item {
-      display: flex;
-      align-items: flex-start;
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--warm-grey-light);
-      transition: var(--transition-smooth);
-    }
-
-    .challenge-item:last-child { border-bottom: none; }
-
-    .challenge-item:hover { padding-left: 0.5rem; }
-
-    .challenge-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--warm-grey-light);
-      line-height: 1;
-      min-width: 3rem;
-      transition: var(--transition-smooth);
-    }
-
-    .challenge-item:hover .challenge-num { color: var(--warm-grey-medium); }
-
-    /* ===== PORTFOLIO SLIDER ===== */
-    .portfolio-details-slider {
-      border-radius: 24px;
-      overflow: hidden;
-      margin-bottom: 3rem;
-    }
-
-    /* ===== SECTION SPACINGS ===== */
-    .section-spacing { margin: 4rem 0; }
-    .content-spacing { margin: 3rem 0; }
-
-    /* ===== BACK BUTTON ===== */
-    .btn-minimal {
-      padding: 0.7rem 1.4rem;
-      background: var(--beige-light);
-      border: 1px solid var(--warm-grey-light);
-      color: var(--anthracite-dark);
-      border-radius: 12px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      transition: var(--transition-smooth);
-    }
-
-    .btn-minimal:hover {
-      background: var(--warm-grey-light);
-      border-color: var(--warm-grey-medium);
-      transform: translateY(-2px);
-      color: var(--anthracite-dark);
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media (max-width: 992px) {
-      h1 { font-size: 2.5rem; }
-      h2 { font-size: 2rem; }
-      .minimal-card { padding: 1.5rem; }
-      .metric-value-minimal { font-size: 2rem; }
-      .section-spacing { margin: 2rem 0; }
-      .project-hero-banner { padding: 3rem 0 2.5rem; }
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 2rem; }
-      h2 { font-size: 1.75rem; }
-      .lead { font-size: 1.1rem; }
-      .arch-flow { gap: 0.25rem; }
-      .arch-arrow-line { width: 20px; }
-      .typewriter-title::after { display: none; }
-    }
-
-    /* Texte helpers */
-    .text-warm-grey  { color: var(--warm-grey-medium); }
-    .text-anthracite { color: var(--anthracite-dark); }
-    .text-beige      { color: var(--beige-ivory); }
-  </style>
-</head>
-
-<body class="portfolio-details-page">
-
-  <!-- Header -->
-  <header id="header" class="header d-flex flex-column justify-content-center">
-    <i class="header-toggle d-xl-none bi bi-list"></i>
-    <nav id="navmenu" class="navmenu">
-      <ul>
-        <li><a href="index.html#hero"><i class="bi bi-house navicon"></i><span>Accueil</span></a></li>
-        <li><a href="index.html#about"><i class="bi bi-person navicon"></i><span>À propos</span></a></li>
-        <li><a href="index.html#resume"><i class="bi bi-file-earmark-text navicon"></i><span>Expérience</span></a></li>
-        <li><a href="index.html#portfolio"><i class="bi bi-images navicon"></i><span>Portfolio</span></a></li>
-        <li><a href="index.html#services"><i class="bi bi-hdd-stack navicon"></i><span>Services</span></a></li>
-        <li><a href="index.html#contact"><i class="bi bi-envelope navicon"></i><span>Contact</span></a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="main">
-
-    <!-- ===== HERO BANNER ===== -->
-    <div class="project-hero-banner">
-      <div class="container" data-aos="fade-up">
-        <div class="hero-breadcrumb mb-3">
-          <a href="index.html">Accueil</a>
-          <span>/</span>
-          <a href="index.html#portfolio">Portfolio</a>
-          <span>/</span>
-          <span class="current">ASKILLS</span>
-        </div>
-
-        <div class="mb-3">
-          <span class="hero-tag"><i class="bi bi-braces me-1"></i>React 18 + TypeScript</span>
-          <span class="hero-tag"><i class="bi bi-server me-1"></i>Node.js / Express</span>
-          <span class="hero-tag"><i class="bi bi-people me-1"></i>Gestion des Compétences</span>
-        </div>
-
-        <h1 class="typewriter-title" data-aos="fade-up" data-aos-delay="80">ASKILLS</h1>
-        <p class="lead" data-aos="fade-up" data-aos-delay="150">
-          Plateforme harmonisant le suivi des compétences, projets et ressources humaines
-          en environnement technique complexe — développée sur 12 mois pour Assystem.
-        </p>
-
-        <div class="d-flex align-items-center gap-3 mt-3" data-aos="fade-up" data-aos-delay="200">
-          <span class="status-badge in-production" style="background:rgba(255,255,255,0.1); color:rgba(250,249,247,0.85);">
-            <span class="dot" style="background:rgba(250,249,247,0.85);"></span>
-            En Production
-          </span>
-          <a href="index.html#portfolio" class="btn-minimal" style="background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.15); color:rgba(250,249,247,0.8);">
-            <i class="bi bi-arrow-left"></i> Retour au portfolio
-          </a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Askills — Plateforme de gestion des compétences · Aly-Ba Dramé</title>
+    <meta name="description" content="Askills : plateforme full-stack React/TypeScript & Node.js de gestion des compétences et ressources humaines, développée pour Assystem par Aly-Ba Dramé." />
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300..700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Icons + styles -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+    <link rel="stylesheet" href="assets/css/portfolio-details.css" />
+  </head>
+
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Nav -->
+    <header class="nav nav--on-dark" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="brand">Aly-Ba Dramé<span class="dot">.</span></a>
+        <nav class="nav__links" aria-label="Navigation principale">
+          <a href="index.html#about">À propos</a>
+          <a href="index.html#skills">Compétences</a>
+          <a href="index.html#parcours">Parcours</a>
+          <a href="index.html#projects">Projets</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="nav__cta">
+          <a href="index.html#projects" class="btn btn--ghost"><i class="bi bi-arrow-left"></i> Projets</a>
         </div>
       </div>
-    </div>
+    </header>
 
-    <!-- ===== DETAILS SECTION ===== -->
-    <section id="portfolio-details" class="portfolio-details section">
-      <div class="container">
+    <main>
+      <!-- Hero -->
+      <section class="pd-hero">
+        <span class="pd-hero__num">01</span>
+        <div class="container">
+          <nav class="pd-breadcrumb" aria-label="Fil d'Ariane">
+            <a href="index.html">Accueil</a><span class="sep">/</span>
+            <a href="index.html#projects">Projets</a><span class="sep">/</span>
+            <span class="current">Askills</span>
+          </nav>
+          <div class="pd-hero__tags">
+            <span class="pd-hero__tag"><i class="bi bi-braces"></i> React 18 + TypeScript</span>
+            <span class="pd-hero__tag"><i class="bi bi-server"></i> Node.js / Express</span>
+            <span class="pd-hero__tag"><i class="bi bi-people"></i> Gestion des compétences</span>
+          </div>
+          <h1 class="pd-hero__title">Askills</h1>
+          <p class="pd-hero__lead">
+            Plateforme full-stack harmonisant le suivi des compétences, des projets
+            et des ressources humaines en environnement technique complexe —
+            développée sur 12 mois pour <em>Assystem</em>.
+          </p>
+          <div class="pd-hero__actions">
+            <span class="pd-status"><span class="dot"></span> En production</span>
+            <a href="index.html#projects" class="btn btn--ghost"><i class="bi bi-arrow-left"></i> Retour aux projets</a>
+          </div>
+        </div>
+      </section>
 
-        <!-- Gallery Swiper -->
-        <div class="portfolio-details-slider swiper init-swiper" data-aos="fade-up">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 700,
-              "autoplay": { "delay": 5000, "disableOnInteraction": false },
-              "slidesPerView": "auto",
-              "navigation": { "nextEl": ".swiper-button-next", "prevEl": ".swiper-button-prev" },
-              "pagination": { "el": ".swiper-pagination", "type": "bullets", "clickable": true }
-            }
-          </script>
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/app-1.png" alt="Dashboard ASKILLS">
+      <div class="pd-main">
+        <div class="container">
+          <!-- Gallery -->
+          <div class="pd-gallery-wrap" data-gallery data-reveal>
+            <div class="pd-window">
+              <div class="pd-window__bar">
+                <div class="pd-window__dots"><span></span><span></span><span></span></div>
+                <span class="pd-window__title">askills · dashboard</span>
+              </div>
+              <div class="pd-window__body">
+                <img class="active" src="assets/img/portfolio/app-1.png" alt="Tableau de bord Askills" />
+                <img src="assets/img/portfolio/product-1.png" alt="Gestion des compétences" />
+                <img src="assets/img/portfolio/branding-1.png" alt="Profils utilisateurs" />
+                <img src="assets/img/portfolio/books-1.png" alt="Interface d'administration" />
+              </div>
             </div>
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/product-1.png" alt="Gestion des compétences">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/branding-1.png" alt="Profils utilisateurs">
-            </div>
-            <div class="swiper-slide">
-              <img src="assets/img/portfolio/books-1.png" alt="Interface d'administration">
+            <div class="pd-thumbs">
+              <button class="pd-thumb active" data-title="askills · dashboard"><img src="assets/img/portfolio/app-1.png" alt="" /></button>
+              <button class="pd-thumb" data-title="askills · compétences"><img src="assets/img/portfolio/product-1.png" alt="" /></button>
+              <button class="pd-thumb" data-title="askills · profils"><img src="assets/img/portfolio/branding-1.png" alt="" /></button>
+              <button class="pd-thumb" data-title="askills · administration"><img src="assets/img/portfolio/books-1.png" alt="" /></button>
             </div>
           </div>
-          <div class="swiper-button-prev"></div>
-          <div class="swiper-button-next"></div>
-          <div class="swiper-pagination"></div>
+
+          <div class="pd-layout">
+            <!-- Main column -->
+            <div class="pd-content">
+              <!-- Overview -->
+              <section class="pd-section" data-reveal>
+                <div class="pd-overview">
+                  <h2>Transformation digitale pour Assystem</h2>
+                  <p class="pd-lead">
+                    Application moderne conçue pour centraliser la gestion des
+                    compétences, des projets et des utilisateurs dans un
+                    environnement technique complexe.
+                  </p>
+                  <p>
+                    Développée sur <strong>12 mois</strong>, Askills modernise la
+                    gestion des talents au sein d'un leader mondial de l'ingénierie
+                    en créant une source de vérité unique pour les compétences
+                    techniques. Avec une interface fluide et réactive pensée pour
+                    simplifier le quotidien des équipes, elle s'appuie sur une stack
+                    <strong>React 18 / TypeScript</strong> côté client et un backend
+                    <strong>Node.js + Express</strong> exposant une API REST
+                    sécurisée par JWT, le tout orchestré via <strong>Docker</strong>.
+                  </p>
+                </div>
+              </section>
+
+              <!-- Metrics -->
+              <section class="pd-section" data-reveal>
+                <div class="pd-metrics">
+                  <div class="pd-metric"><div class="pd-metric__v">−75%</div><div class="pd-metric__k">Temps de gestion</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">&lt;200ms</div><div class="pd-metric__k">Réponse API</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">100%</div><div class="pd-metric__k">Données centralisées</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">RBAC</div><div class="pd-metric__k">3 niveaux d'accès</div></div>
+                </div>
+              </section>
+
+              <!-- Architecture -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Architecture</span>
+                <h3 class="pd-section__title">Architecture fullstack illustrée</h3>
+                <div class="pd-arch">
+                  <p class="pd-arch__title">Flux de données — Requête utilisateur → Réponse UI</p>
+                  <div class="pd-flow">
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-person-circle"></i></span>
+                      <div class="pd-node__label">Navigateur</div>
+                      <div class="pd-node__sub">React 18 + Vite</div>
+                    </div>
+                    <div class="pd-arrow"><div class="pd-arrow__line"></div><div class="pd-arrow__label">Context API</div></div>
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-cpu"></i></span>
+                      <div class="pd-node__label">API REST</div>
+                      <div class="pd-node__sub">Express + JWT</div>
+                    </div>
+                    <div class="pd-arrow"><div class="pd-arrow__line"></div><div class="pd-arrow__label">Prisma ORM</div></div>
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-database"></i></span>
+                      <div class="pd-node__label">Base de données</div>
+                      <div class="pd-node__sub">PostgreSQL</div>
+                    </div>
+                  </div>
+                  <div class="pd-layers">
+                    <div class="pd-layer"><i class="bi bi-braces"></i><div><div class="pd-layer__t">Frontend (Client)</div><div class="pd-layer__s">React 18 · TypeScript · Vite</div></div></div>
+                    <div class="pd-layer"><i class="bi bi-server"></i><div><div class="pd-layer__t">Backend (Serveur)</div><div class="pd-layer__s">Node.js · Express · JWT</div></div></div>
+                    <div class="pd-layer"><i class="bi bi-box-seam"></i><div><div class="pd-layer__t">Déploiement</div><div class="pd-layer__s">Docker · Caddy reverse proxy</div></div></div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Stack -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Technologies</span>
+                <h3 class="pd-section__title">Stack technique</h3>
+                <div class="pd-stack">
+                  <div>
+                    <h5>Frontend — Couche présentation</h5>
+                    <div class="pd-layer"><i class="bi bi-braces"></i><span>React 18 + TypeScript — SPA moderne</span></div>
+                    <div class="pd-layer"><i class="bi bi-lightning"></i><span>Vite — build ultra-rapide + HMR</span></div>
+                    <div class="pd-layer"><i class="bi bi-layers"></i><span>Context API — gestion d'état globale</span></div>
+                  </div>
+                  <div>
+                    <h5>Backend — Logique & données</h5>
+                    <div class="pd-layer"><i class="bi bi-server"></i><span>Node.js + Express — API REST</span></div>
+                    <div class="pd-layer"><i class="bi bi-database-gear"></i><span>PostgreSQL + Prisma ORM</span></div>
+                    <div class="pd-layer"><i class="bi bi-shield-check"></i><span>JWT — authentification sécurisée</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Features -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Fonctionnalités</span>
+                <h3 class="pd-section__title">Fonctionnalités principales</h3>
+                <div class="pd-features">
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-person-badge"></i></div>
+                    <h4>Gestion des compétences</h4>
+                    <p>Création, validation et hiérarchisation des compétences techniques avec un workflow à deux niveaux (Manager → Admin).</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-diagram-3"></i></div>
+                    <h4>Profils utilisateurs</h4>
+                    <p>Profils enrichis avec auto-évaluation et validation par les pairs, offrant une vue complète des expertises de chaque collaborateur.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-kanban"></i></div>
+                    <h4>Gestion de projets</h4>
+                    <p>Matching automatique compétences/projets et affectation optimisée des ressources humaines selon les besoins opérationnels.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-graph-up"></i></div>
+                    <h4>Tableaux de bord</h4>
+                    <p>Analytics et reporting en temps réel sur les compétences disponibles pour piloter les décisions RH et opérationnelles.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-shield-lock"></i></div>
+                    <h4>Sécurité multi-niveaux</h4>
+                    <p>RBAC avec 3 niveaux de permissions distincts (Admin, Manager, Collaborateur) garantissant une séparation stricte des droits.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-arrow-repeat"></i></div>
+                    <h4>Temps réel</h4>
+                    <p>Rafraîchissement automatique des données via hooks React personnalisés et Context API, sans rechargement de page.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Challenges -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Ingénierie</span>
+                <h3 class="pd-section__title">Défis techniques relevés</h3>
+                <div class="pd-challenges">
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">01</div>
+                    <div>
+                      <h4>Synchronisation temps réel</h4>
+                      <p>Système de rafraîchissement automatique via des hooks React personnalisés et le Context API — garantissant la cohérence des données entre tous les composants sans rechargement de page.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">02</div>
+                    <div>
+                      <h4>Sécurité & contrôle d'accès</h4>
+                      <p>Système RBAC à 3 niveaux (Admin, Manager, Collaborateur) avec validation JWT côté serveur et protection des routes côté client, assurant une séparation stricte des droits.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">03</div>
+                    <div>
+                      <h4>Performance optimisée</h4>
+                      <p>Code splitting automatique avec Vite et lazy loading des routes React, réduisant le bundle initial et maintenant des temps de réponse API inférieurs à 200 ms même sous charge.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">04</div>
+                    <div>
+                      <h4>Déploiement containerisé</h4>
+                      <p>Architecture Docker multi-conteneurs (frontend, backend, base de données) derrière un reverse proxy Caddy, pour des mises en production reproductibles et un HTTPS automatique.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Tech badges -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Stack technologique</span>
+                <h3 class="pd-section__title">Outils & technologies</h3>
+                <div class="pd-techs">
+                  <span class="pd-tech">React 18</span><span class="pd-tech">TypeScript</span>
+                  <span class="pd-tech">Vite</span><span class="pd-tech">Context API</span>
+                  <span class="pd-tech">Node.js</span><span class="pd-tech">Express</span>
+                  <span class="pd-tech">PostgreSQL</span><span class="pd-tech">Prisma ORM</span>
+                  <span class="pd-tech">JWT</span><span class="pd-tech">Docker</span>
+                  <span class="pd-tech">Caddy</span><span class="pd-tech">Bootstrap 5</span>
+                </div>
+              </section>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="pd-aside">
+              <div class="pd-card" data-reveal>
+                <h3>Informations du projet</h3>
+                <div class="pd-info">
+                  <div><span class="pd-info__k">Client</span><span class="pd-info__v">Assystem</span></div>
+                  <div><span class="pd-info__k">Durée</span><span class="pd-info__v">12+ mois</span></div>
+                  <div><span class="pd-info__k">Rôle</span><span class="pd-info__v">Développeur full-stack</span></div>
+                  <div><span class="pd-info__k">Architecture</span><span class="pd-info__v">SPA React + API REST</span></div>
+                  <div><span class="pd-info__k">Statut</span><span class="pd-info__v">En production</span></div>
+                  <div><span class="pd-info__k">Méthodologie</span><span class="pd-info__v">Mentorat + autoformation</span></div>
+                </div>
+              </div>
+
+              <div class="pd-card" data-reveal>
+                <h4>Impact business</h4>
+                <ul class="pd-benefits">
+                  <li><i class="bi bi-check-circle"></i><span>Centralisation des données compétences</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Optimisation des affectations projets</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Visibilité accrue sur les talents</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Décisionnel RH amélioré</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Formation minimale nécessaire</span></li>
+                </ul>
+              </div>
+
+              <a href="index.html#projects" class="btn btn--primary" style="width:100%;justify-content:center"><i class="bi bi-arrow-left"></i> Tous les projets</a>
+            </aside>
+          </div>
         </div>
-
-        <!-- Main Content + Sidebar -->
-        <div class="row justify-content-between gy-5">
-
-          <!-- ===== MAIN COL ===== -->
-          <div class="col-lg-8">
-
-            <!-- Overview -->
-            <div class="minimal-card" data-aos="fade-up">
-              <h2>Transformation Digitale pour Assystem</h2>
-              <p class="lead mb-4">
-                Application moderne conçue pour centraliser la gestion des compétences,
-                des projets et des utilisateurs dans un environnement technique complexe.
-              </p>
-              <p>
-                Développée sur <strong class="text-anthracite">12 mois</strong>, ASKILLS modernise la gestion
-                des talents au sein d'un leader mondial de l'ingénierie, créant une source
-                de vérité unique pour les compétences techniques. Avec une interface fluide
-                et réactive pensée pour simplifier le quotidien des équipes, elle s'appuie sur
-                une stack <strong class="text-anthracite">React 18 / TypeScript</strong> côté client et
-                un backend <strong class="text-anthracite">Node.js + Express</strong> exposant une API REST
-                sécurisée par JWT, le tout orchestré via <strong class="text-anthracite">Docker</strong>.
-              </p>
-            </div>
-
-            <!-- Metrics -->
-            <div class="row mb-5" data-aos="fade-up" data-aos-delay="100">
-              <div class="col-md-3 col-6 mb-4">
-                <div class="metric-card-minimal" style="animation-delay: 0s;">
-                  <div class="metric-value-minimal">-75%</div>
-                  <p class="text-warm-grey small">Temps de gestion</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-6 mb-4">
-                <div class="metric-card-minimal" style="animation-delay: 0.8s;">
-                  <div class="metric-value-minimal">&lt;200ms</div>
-                  <p class="text-warm-grey small">Réponse API</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-6 mb-4">
-                <div class="metric-card-minimal" style="animation-delay: 1.6s;">
-                  <div class="metric-value-minimal">100%</div>
-                  <p class="text-warm-grey small">Données centralisées</p>
-                </div>
-              </div>
-              <div class="col-md-3 col-6 mb-4">
-                <div class="metric-card-minimal" style="animation-delay: 2.4s;">
-                  <div class="metric-value-minimal">RBAC</div>
-                  <p class="text-warm-grey small">3 niveaux d'accès</p>
-                </div>
-              </div>
-            </div>
-
-            <!-- ===== ARCHITECTURE DIAGRAM ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="120">
-              <h3 class="mb-4">Architecture Fullstack Illustrée</h3>
-              <div class="arch-diagram">
-                <p class="arch-diagram-title">Flux de données — Requête utilisateur → Réponse UI</p>
-
-                <div class="arch-flow mb-4">
-                  <!-- Utilisateur -->
-                  <div class="arch-node">
-                    <span class="node-icon"><i class="bi bi-person-circle"></i></span>
-                    <div class="node-label">Navigateur</div>
-                    <div class="node-sub">React 18 + Vite</div>
-                  </div>
-
-                  <div class="arch-arrow">
-                    <div class="arch-arrow-line"></div>
-                    <div class="arch-arrow-label">Context API</div>
-                  </div>
-
-                  <!-- API -->
-                  <div class="arch-node">
-                    <span class="node-icon"><i class="bi bi-cpu"></i></span>
-                    <div class="node-label">API REST</div>
-                    <div class="node-sub">Express + JWT</div>
-                  </div>
-
-                  <div class="arch-arrow">
-                    <div class="arch-arrow-line"></div>
-                    <div class="arch-arrow-label">Prisma ORM</div>
-                  </div>
-
-                  <!-- Base de données -->
-                  <div class="arch-node">
-                    <span class="node-icon"><i class="bi bi-database"></i></span>
-                    <div class="node-label">Base de Données</div>
-                    <div class="node-sub">PostgreSQL</div>
-                  </div>
-                </div>
-
-                <!-- 2ème rangée -->
-                <div class="row g-3 mt-1">
-                  <div class="col-md-4">
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-braces"></i>
-                      <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Frontend (Client)</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">React 18 + TypeScript + Vite</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-server"></i>
-                      <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Backend (Serveur)</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">Node.js — Express + JWT</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-box-seam"></i>
-                      <div>
-                        <div style="font-weight:600; font-size:0.875rem;">Déploiement</div>
-                        <div class="text-warm-grey" style="font-size:0.75rem;">Docker — Caddy reverse proxy</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- ===== STACK TECHNIQUE ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="150">
-              <h3 class="mb-4">Stack Technique</h3>
-              <div style="background: var(--beige-light); border-radius: 20px; padding: 2rem; margin: 0;">
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <h5 class="mb-3 text-warm-grey">Frontend — Couche Présentation</h5>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-braces"></i>
-                      <span>React 18 + TypeScript — SPA moderne</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-lightning"></i>
-                      <span>Vite — Build ultra-rapide + HMR</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-layers"></i>
-                      <span>Context API — Gestion d'état globale</span>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <h5 class="mb-3 text-warm-grey">Backend — Couche Logique & Données</h5>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-server"></i>
-                      <span>Node.js + Express — API REST</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-database-gear"></i>
-                      <span>PostgreSQL + Prisma ORM</span>
-                    </div>
-                    <div class="layer-item-minimal">
-                      <i class="bi bi-shield-check"></i>
-                      <span>JWT — Authentification sécurisée</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- ===== FEATURES SWIPER ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="180">
-              <h3 class="mb-4">Fonctionnalités Principales</h3>
-              <div class="swiper features-swiper mb-4">
-                <div class="swiper-wrapper">
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-person-badge"></i></div>
-                      <h5 class="mb-2">Gestion des Compétences</h5>
-                      <p class="text-warm-grey small">
-                        Création, validation et hiérarchisation des compétences techniques
-                        avec un workflow à deux niveaux (Manager → Admin).
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-diagram-3"></i></div>
-                      <h5 class="mb-2">Profils Utilisateurs</h5>
-                      <p class="text-warm-grey small">
-                        Profils enrichis avec auto-évaluation et validation par les pairs,
-                        offrant une vue complète des expertises de chaque collaborateur.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-kanban"></i></div>
-                      <h5 class="mb-2">Gestion de Projets</h5>
-                      <p class="text-warm-grey small">
-                        Matching automatique compétences/projets et affectation optimisée
-                        des ressources humaines selon les besoins opérationnels.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-graph-up"></i></div>
-                      <h5 class="mb-2">Tableaux de Bord</h5>
-                      <p class="text-warm-grey small">
-                        Analytics et reporting en temps réel sur les compétences disponibles
-                        pour piloter les décisions RH et opérationnelles.
-                      </p>
-                    </div>
-                  </div>
-
-                  <div class="swiper-slide">
-                    <div class="feature-card-minimal">
-                      <div class="feature-icon-minimal"><i class="bi bi-shield-lock"></i></div>
-                      <h5 class="mb-2">Sécurité Multi-niveaux</h5>
-                      <p class="text-warm-grey small">
-                        RBAC avec 3 niveaux de permissions distincts (Admin, Manager, Collaborateur)
-                        garantissant une séparation stricte des droits d'accès.
-                      </p>
-                    </div>
-                  </div>
-
-                </div>
-                <div class="swiper-pagination mt-4"></div>
-              </div>
-            </div>
-
-            <!-- ===== TECHNICAL CHALLENGES ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="220">
-              <h3 class="mb-4">Défis Techniques Relevés</h3>
-              <div class="minimal-card">
-
-                <div class="challenge-item">
-                  <div class="challenge-num">01</div>
-                  <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Synchronisation Temps Réel</h6>
-                    <p class="text-warm-grey small mb-0">
-                      Implémentation d'un système de rafraîchissement automatique via des hooks
-                      React personnalisés et le Context API — garantissant la cohérence des données
-                      affichées entre tous les composants sans rechargement de page.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="challenge-item">
-                  <div class="challenge-num">02</div>
-                  <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Sécurité &amp; Contrôle d'Accès</h6>
-                    <p class="text-warm-grey small mb-0">
-                      Mise en place d'un système RBAC à 3 niveaux (Admin, Manager, Collaborateur)
-                      avec validation JWT côté serveur et protections de routes côté client,
-                      assurant une séparation stricte des droits selon le rôle de chaque utilisateur.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="challenge-item">
-                  <div class="challenge-num">03</div>
-                  <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Performance Optimisée</h6>
-                    <p class="text-warm-grey small mb-0">
-                      Code splitting automatique avec Vite et lazy loading des routes React,
-                      réduisant drastiquement le bundle initial et maintenant des temps de réponse
-                      API inférieurs à 200 ms même sous charge.
-                    </p>
-                  </div>
-                </div>
-
-                <div class="challenge-item">
-                  <div class="challenge-num">04</div>
-                  <div class="ps-3">
-                    <h6 class="mb-1 text-anthracite">Déploiement Containerisé</h6>
-                    <p class="text-warm-grey small mb-0">
-                      Architecture Docker multi-conteneurs (frontend, backend, base de données)
-                      orchestrée derrière un reverse proxy Caddy, permettant des mises en production
-                      reproductibles et un passage en environnement HTTPS automatique.
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-            <!-- ===== STACK TECHNOLOGIQUE ===== -->
-            <div class="section-spacing" data-aos="fade-up" data-aos-delay="240">
-              <h4 class="mb-3">Stack Technologique</h4>
-              <div class="mb-5">
-                <span class="tech-badge-minimal">React 18</span>
-                <span class="tech-badge-minimal">TypeScript</span>
-                <span class="tech-badge-minimal">Vite</span>
-                <span class="tech-badge-minimal">Context API</span>
-                <span class="tech-badge-minimal">Node.js</span>
-                <span class="tech-badge-minimal">Express</span>
-                <span class="tech-badge-minimal">PostgreSQL</span>
-                <span class="tech-badge-minimal">Prisma ORM</span>
-                <span class="tech-badge-minimal">JWT</span>
-                <span class="tech-badge-minimal">Docker</span>
-                <span class="tech-badge-minimal">Caddy</span>
-                <span class="tech-badge-minimal">Bootstrap 5</span>
-              </div>
-            </div>
-
-          </div><!-- /col-lg-8 -->
-
-          <!-- ===== SIDEBAR ===== -->
-          <div class="col-lg-3">
-
-            <!-- Infos Projet -->
-            <div class="sidebar-minimal" data-aos="fade-up" data-aos-delay="100">
-              <h3>Informations du Projet</h3>
-              <ul class="list-unstyled">
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Client</strong>
-                  <span class="text-warm-grey">Assystem</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Durée</strong>
-                  <span class="text-warm-grey">12+ mois</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Rôle</strong>
-                  <span class="text-warm-grey">Développeur Full-Stack</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Architecture</strong>
-                  <span class="text-warm-grey">SPA React + API REST</span>
-                </li>
-                <li class="mb-3">
-                  <strong class="d-block text-anthracite mb-1">Statut</strong>
-                  <span class="text-warm-grey">En Production</span>
-                </li>
-                <li>
-                  <strong class="d-block text-anthracite mb-1">Méthodologie</strong>
-                  <span class="text-warm-grey">Mentorat + Autoformation</span>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Impact Business -->
-            <div class="sidebar-minimal" data-aos="fade-up" data-aos-delay="150">
-              <h5 class="mb-3">Impact Business</h5>
-              <ul class="impact-list">
-                <li><i class="bi bi-check-circle"></i><span>Centralisation des données compétences</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Optimisation des affectations projets</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Visibilité accrue sur les talents</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Décisionnel RH amélioré</span></li>
-                <li><i class="bi bi-check-circle"></i><span>Formation minimale nécessaire</span></li>
-              </ul>
-            </div>
-
-            <!-- CTA retour -->
-            <div data-aos="fade-up" data-aos-delay="200">
-              <a href="index.html#portfolio" class="btn-minimal w-100 justify-content-center">
-                <i class="bi bi-arrow-left"></i> Tous les projets
-              </a>
-            </div>
-
-          </div><!-- /sidebar -->
-
-        </div><!-- /row -->
-      </div><!-- /container -->
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer id="footer" class="footer position-relative light-background">
-    <div class="container">
-      <h3 class="sitename">Dramé Aly</h3>
-      <p>Étudiant en BTS SIO (Services Informatiques aux Organisations), en alternance chez Assystem, passionné par l'innovation et le développement de solutions numériques.</p>
-      <div class="social-links d-flex justify-content-center">
-        <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/"><i class="bi bi-linkedin"></i></a>
       </div>
-    </div>
-  </footer>
+    </main>
 
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-  </a>
-  <div id="preloader"></div>
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer__top">
+          <h2 class="footer__big">Un projet<br />en <em>tête</em> ?</h2>
+          <div class="footer__cta">
+            <a href="index.html#contact" class="btn btn--primary">Me contacter <i class="bi bi-arrow-up-right"></i></a>
+            <span style="color:rgba(243,241,234,0.6);font-family:var(--font-mono);font-size:0.8rem">Réponse sous 24–48 h</span>
+          </div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h5>Navigation</h5>
+            <a href="index.html#about">À propos</a>
+            <a href="index.html#skills">Compétences</a>
+            <a href="index.html#parcours">Parcours</a>
+            <a href="index.html#projects">Projets</a>
+          </div>
+          <div class="footer__col">
+            <h5>Contact</h5>
+            <a href="mailto:dramealyba@gmail.com">dramealyba@gmail.com</a>
+            <a href="tel:+33782306535">+33 7 82 30 65 35</a>
+            <p>Cormeilles-en-Parisis, France</p>
+          </div>
+          <div class="footer__col">
+            <h5>Réseaux</h5>
+            <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>© <span id="year"></span> Aly-Ba Dramé — Tous droits réservés.</span>
+          <span>Conçu & développé avec soin · Paris</span>
+        </div>
+      </div>
+    </footer>
 
-  <!-- Vendor JS -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+    <a href="#" class="scroll-top" id="scroll-top" aria-label="Remonter en haut"><i class="bi bi-arrow-up"></i></a>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-
-      // ===== FEATURES SWIPER =====
-      new Swiper('.features-swiper', {
-        slidesPerView: 1,
-        spaceBetween: 20,
-        loop: true,
-        speed: 600,
-        autoplay: { delay: 4000, disableOnInteraction: false },
-        pagination: { el: '.swiper-pagination', clickable: true },
-        breakpoints: {
-          768: { slidesPerView: 2 },
-          992: { slidesPerView: 3 }
-        }
-      });
-
-      // ===== STAGGERED ENTRANCE ANIMATIONS =====
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            entry.target.style.animation = `fade-in-up 0.55s cubic-bezier(0.4, 0, 0.2, 1) ${i * 0.07}s both`;
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-      document.querySelectorAll(
-        '.minimal-card, .metric-card-minimal, .feature-card-minimal, .layer-item-minimal, .challenge-item'
-      ).forEach(el => observer.observe(el));
-
-      // ===== ARCH NODES CLICK RIPPLE =====
-      document.querySelectorAll('.arch-node').forEach(node => {
-        node.addEventListener('click', function () {
-          this.style.transform = 'scale(0.95)';
-          setTimeout(() => this.style.transform = '', 150);
-        });
-      });
-
-      // ===== TECH BADGES INTERACTIVE TILT =====
-      document.querySelectorAll('.tech-badge-minimal').forEach(badge => {
-        badge.addEventListener('mousemove', function (e) {
-          const rect = this.getBoundingClientRect();
-          const x = ((e.clientX - rect.left) / rect.width - 0.5) * 10;
-          const y = ((e.clientY - rect.top) / rect.height - 0.5) * 10;
-          this.style.transform = `translateY(-2px) rotateX(${-y}deg) rotateY(${x}deg)`;
-        });
-        badge.addEventListener('mouseleave', function () {
-          this.style.transform = '';
-        });
-      });
-
-      // ===== SIDEBAR SMOOTH REVEAL =====
-      document.querySelectorAll('.sidebar-minimal').forEach((el, i) => {
-        el.style.animationDelay = `${i * 0.1}s`;
-      });
-
-    });
-  </script>
-</body>
+    <script src="assets/js/portfolio-details.js"></script>
+  </body>
 </html>
