@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Icône SysTrack</title>
+  <defs>
+    <linearGradient id="blue" x1="92" y1="72" x2="420" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2F69C7"/>
+      <stop offset="1" stop-color="#173F88"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="240" fill="url(#blue)"/>
+  <g transform="translate(40 105) scale(.45)">
+    <path fill="#FFFFFF" d="M218 60h482v106H218c-40 0-64 24-64 66s24 66 64 66h172c102 0 170 68 170 162s-68 152-170 152H74V506h316c40 0 64-22 64-56s-24-56-64-56H218C116 394 48 326 48 232S116 60 218 60Z"/>
+    <path fill="#FFFFFF" d="M650 60h262v106H810v446H704V166h-54Z"/>
+  </g>
+</svg>

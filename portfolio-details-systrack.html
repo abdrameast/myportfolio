@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SysTrack — ERP de gestion de stock (React / Node / PostgreSQL) · Aly-Ba Dramé</title>
+    <meta name="description" content="SysTrack : ERP métier de gestion de stock, de préparation de matériel et de suivi des consommations par projet. React 19, TypeScript, Node/Express, Prisma, PostgreSQL, Logto OIDC, Docker. Démo interactive MiniTrack jouable en ligne." />
+    <meta name="keywords" content="SysTrack, MiniTrack, gestion de stock, ERP, React, TypeScript, Node.js, Prisma, PostgreSQL, Docker, Logto, OIDC, Aly-Ba Dramé" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="SysTrack — ERP métier de gestion de stock · Aly-Ba Dramé" />
+    <meta property="og:description" content="Application web complète de gestion de stock par projet, avec une démo interactive (MiniTrack) jouable directement dans le navigateur." />
+    <meta property="og:type" content="article" />
+    <meta property="og:image" content="assets/img/systrack-icon.svg" />
+
+    <!-- Favicons -->
+    <link rel="icon" href="assets/img/favicon.png" />
+    <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Inter:wght@300..800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- Icons + styles -->
+    <link rel="stylesheet" href="assets/vendor/bootstrap-icons/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="assets/css/portfolio.css" />
+    <link rel="stylesheet" href="assets/css/portfolio-details.css" />
+    <link rel="stylesheet" href="assets/css/minitrack.css" />
+  </head>
+
+  <body>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <!-- Nav -->
+    <header class="nav nav--on-dark" id="nav">
+      <div class="nav__inner">
+        <a href="index.html" class="brand">Aly-Ba Dramé<span class="dot">.</span></a>
+        <nav class="nav__links" aria-label="Navigation principale">
+          <a href="index.html#about">À propos</a>
+          <a href="index.html#skills">Compétences</a>
+          <a href="index.html#parcours">Parcours</a>
+          <a href="index.html#projects">Projets</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
+        <div class="nav__cta">
+          <a href="index.html#projects" class="btn btn--ghost"><i class="bi bi-arrow-left"></i> Projets</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===================== HERO ===================== -->
+      <section class="pd-hero">
+        <span class="pd-hero__num">01</span>
+        <div class="container">
+          <nav class="pd-breadcrumb" aria-label="Fil d'Ariane">
+            <a href="index.html">Accueil</a><span class="sep">/</span>
+            <a href="index.html#projects">Projets</a><span class="sep">/</span>
+            <span class="current">SysTrack</span>
+          </nav>
+
+          <img src="assets/img/systrack-logo-white.svg" alt="Logo SysTrack" style="width:132px;margin-bottom:1.4rem" />
+
+          <div class="pd-hero__tags">
+            <span class="pd-hero__tag"><i class="bi bi-boxes"></i> Gestion de stock</span>
+            <span class="pd-hero__tag"><i class="bi bi-diagram-3"></i> Multi-projets</span>
+            <span class="pd-hero__tag"><i class="bi bi-shield-lock"></i> RBAC &amp; OIDC</span>
+            <span class="pd-hero__tag"><i class="bi bi-box"></i> Docker</span>
+          </div>
+
+          <h1 class="pd-hero__title">Sys<em>Track</em></h1>
+          <p class="pd-hero__lead">
+            Un ERP métier complet de <strong>gestion de stock</strong>, de
+            <strong>préparation de matériel</strong> et de suivi des consommations
+            <strong>par projet</strong> : du catalogue d'équipements aux bons de
+            livraison Excel, en passant par les kits métier, les RMA et un journal
+            d'audit intégral. Conçu, développé et conteneurisé de bout en bout.
+          </p>
+
+          <div class="pd-hero__actions">
+            <a href="#minitrack" class="btn btn--primary"><i class="bi bi-play-circle"></i> Tester la démo MiniTrack</a>
+            <span class="pd-status"><span class="dot"></span> Projet d'entreprise · Assystem, 2024 – 2026</span>
+            <a href="index.html#projects" class="btn btn--ghost"><i class="bi bi-arrow-left"></i> Retour aux projets</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== DÉMO MINITRACK ===================== -->
+      <section class="demo-band" id="minitrack">
+        <div class="demo-wrap">
+          <div class="demo-head">
+            <div>
+              <span class="pd-eyebrow">Démo interactive</span>
+              <h2>Mini<em>Track</em> — SysTrack, en miniature</h2>
+            </div>
+            <div>
+              <p>
+                Plutôt que des captures d'écran, voici une <strong>réplique jouable</strong>
+                de SysTrack, embarquée directement dans cette page. Mêmes écrans, mêmes
+                mécaniques métier, mêmes règles de stock — en version condensée et sans
+                serveur. Cliquez, filtrez, retirez, préparez : tout réagit pour de vrai.
+              </p>
+              <div class="demo-tour">
+                <span><i class="bi bi-1-circle"></i> Changez de projet en haut</span>
+                <span><i class="bi bi-2-circle"></i> Ajoutez au panier &amp; validez</span>
+                <span><i class="bi bi-3-circle"></i> Dépliez un kit métier</span>
+                <span><i class="bi bi-4-circle"></i> Clôturez une préparation</span>
+                <span><i class="bi bi-5-circle"></i> Ouvrez un ticket RMA</span>
+                <span><i class="bi bi-6-circle"></i> Relisez le journal d'audit</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-stage">
+            <!-- L'application de démonstration est injectée ici par minitrack.js -->
+            <div class="mt" id="minitrack-app" data-theme="dark" role="application" aria-label="MiniTrack — démonstration interactive de SysTrack"></div>
+          </div>
+
+          <div class="demo-caption">
+            <span><b>MiniTrack</b> · démo hors-ligne — aucune donnée n'est envoyée, tout vit dans votre navigateur.</span>
+            <span>Thème clair / sombre, plein écran et réinitialisation dans la barre du haut.</span>
+          </div>
+
+          <div class="demo-excl">
+            <i class="bi bi-file-earmark-excel"></i>
+            <div>
+              <b>Ce que la démo ne fait pas (volontairement).</b> Dans SysTrack, valider un
+              panier génère un <b>Bon de Livraison Excel</b> conforme au modèle de
+              l'entreprise, et clôturer une préparation produit un <b>Bon de Retrait</b> — le
+              tout numéroté séquentiellement sur une seule série partagée
+              (<span style="font-family:var(--font-mono)">26-034</span>,
+              <span style="font-family:var(--font-mono)">26-035</span>…), avec préfixe
+              paramétrable, modèle importable et historique re-téléchargeable. Cette brique
+              documentaire, très liée aux gabarits internes, reste hors de MiniTrack : ici, la
+              validation se contente de sortir le matériel du stock et d'historiser le mouvement.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONTENU ===================== -->
+      <div class="pd-main">
+        <div class="container">
+          <div class="pd-layout">
+            <!-- Colonne principale -->
+            <div class="pd-content">
+              <!-- Vue d'ensemble -->
+              <section class="pd-section" data-reveal>
+                <div class="pd-overview">
+                  <h2>Le problème : un stock qui vit dans des fichiers Excel</h2>
+                  <p class="pd-lead">
+                    Suivre du matériel technique réparti sur plusieurs projets, plusieurs
+                    magasins et plusieurs équipes est un exercice où le tableur atteint vite
+                    ses limites : pas d'historique fiable, pas de seuils d'alerte, pas de
+                    traçabilité, et des bons de livraison ressaisis à la main.
+                  </p>
+                  <p>
+                    SysTrack répond à ce besoin par un <strong>catalogue d'équipements
+                    global</strong> dont le <strong>stock est suivi projet par projet</strong> :
+                    deux projets partagent la même fiche produit, mais disposent de quantités,
+                    de seuils, de kits et d'historiques totalement indépendants. Chaque
+                    mouvement — retrait, retour, ajustement, RMA — est transactionnel et
+                    historisé (utilisateur, date, quantité, motif, IP, navigateur).
+                  </p>
+                </div>
+              </section>
+
+              <!-- Chiffres -->
+              <section class="pd-section" data-reveal>
+                <div class="pd-metrics">
+                  <div class="pd-metric"><div class="pd-metric__v">3</div><div class="pd-metric__k">Rôles RBAC</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">15+</div><div class="pd-metric__k">Modules métier</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">100%</div><div class="pd-metric__k">TypeScript</div></div>
+                  <div class="pd-metric"><div class="pd-metric__v">1 cmd</div><div class="pd-metric__k">Déploiement Docker</div></div>
+                </div>
+              </section>
+
+              <!-- Architecture -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Architecture</span>
+                <h3 class="pd-section__title">Une architecture en couches, du navigateur à la base</h3>
+                <div class="pd-arch">
+                  <p class="pd-arch__title">Flux d'une requête — du clic à la donnée</p>
+                  <div class="pd-flow">
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-window"></i></span>
+                      <div class="pd-node__label">React SPA</div>
+                      <div class="pd-node__sub">TanStack Query</div>
+                    </div>
+                    <div class="pd-arrow"><div class="pd-arrow__line"></div><div class="pd-arrow__label">HTTP / JSON</div></div>
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-shield-lock"></i></span>
+                      <div class="pd-node__label">Middlewares</div>
+                      <div class="pd-node__sub">Auth · RBAC · Zod</div>
+                    </div>
+                    <div class="pd-arrow"><div class="pd-arrow__line"></div><div class="pd-arrow__label">Bearer</div></div>
+                    <div class="pd-node">
+                      <span class="pd-node__icon"><i class="bi bi-cpu"></i></span>
+                      <div class="pd-node__label">Services</div>
+                      <div class="pd-node__sub">Règles métier</div>
+                    </div>
+                  </div>
+                  <div class="pd-layers">
+                    <div class="pd-layer"><i class="bi bi-diagram-2"></i><div><div class="pd-layer__t">Repositories</div><div class="pd-layer__s">Accès données isolé (Prisma)</div></div></div>
+                    <div class="pd-layer"><i class="bi bi-database"></i><div><div class="pd-layer__t">PostgreSQL</div><div class="pd-layer__s">Volume persistant · transactions</div></div></div>
+                    <div class="pd-layer"><i class="bi bi-person-badge"></i><div><div class="pd-layer__t">Logto (OIDC)</div><div class="pd-layer__s">SSO · jeton vérifié côté serveur</div></div></div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Stack -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Technologies</span>
+                <h3 class="pd-section__title">Stack technique</h3>
+                <div class="pd-stack">
+                  <div>
+                    <h5>Frontend — Expérience utilisateur</h5>
+                    <div class="pd-layer"><i class="bi bi-filetype-tsx"></i><span>React 19 · TypeScript · Vite</span></div>
+                    <div class="pd-layer"><i class="bi bi-lightning-charge"></i><span>TanStack Query — cache &amp; synchronisation</span></div>
+                    <div class="pd-layer"><i class="bi bi-palette"></i><span>TailwindCSS · Shadcn/UI (Radix) · Framer Motion</span></div>
+                    <div class="pd-layer"><i class="bi bi-clipboard-check"></i><span>React Hook Form + Zod — validation partagée</span></div>
+                  </div>
+                  <div>
+                    <h5>Backend — Logique &amp; données</h5>
+                    <div class="pd-layer"><i class="bi bi-hdd-network"></i><span>Node.js · Express · TypeScript</span></div>
+                    <div class="pd-layer"><i class="bi bi-database-gear"></i><span>Prisma ORM · PostgreSQL</span></div>
+                    <div class="pd-layer"><i class="bi bi-shield-check"></i><span>Helmet · CORS · rate limiting · Zod</span></div>
+                    <div class="pd-layer"><i class="bi bi-box"></i><span>Docker Compose · healthchecks · Caddy</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Fonctionnalités -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Fonctionnalités</span>
+                <h3 class="pd-section__title">Ce que fait SysTrack au quotidien</h3>
+                <div class="pd-features">
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-diagram-3"></i></div>
+                    <h4>Stock suivi par projet</h4>
+                    <p>Catalogue d'équipements <strong>global</strong>, quantités et seuils <strong>par projet</strong>. Un sélecteur global pilote l'ensemble de l'application : équipements, tableau de bord, panier, kits, historique.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-person-lock"></i></div>
+                    <h4>Authentification OIDC &amp; RBAC</h4>
+                    <p>Connexion par redirection <strong>Logto</strong> (SSO), jeton vérifié côté serveur, provisionnement automatique du compte. Trois rôles : <code>ADMIN</code>, <code>MANAGER</code>, <code>USER</code> — ce dernier limité à ses projets.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-file-earmark-excel"></i></div>
+                    <h4>Bons de livraison &amp; de retrait</h4>
+                    <p>Génération automatique de documents <strong>Excel</strong> au modèle de l'entreprise, numérotation séquentielle commune BL / BR, préfixe paramétrable, modèle personnalisable et historique re-téléchargeable.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-clipboard-check"></i></div>
+                    <h4>Préparations &amp; kits métier</h4>
+                    <p>Préparation de commande ligne par ligne avec indicateur d'avancement, et <strong>kits métier</strong> propres au projet, dépliables en un clic et duplicables d'un projet à l'autre.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-qr-code-scan"></i></div>
+                    <h4>QR codes &amp; scan caméra</h4>
+                    <p>Chaque équipement porte un <strong>code interne</strong>, un <strong>code-barres</strong> et un <strong>QR code</strong> généré, lisibles à la caméra depuis un mobile pour ouvrir la fiche et enchaîner un mouvement.</p>
+                  </div>
+                  <div class="pd-feature">
+                    <div class="pd-feature__icon"><i class="bi bi-graph-up-arrow"></i></div>
+                    <h4>Tableau de bord &amp; audit</h4>
+                    <p>Widgets temps réel, évolution des mouvements sur 14 jours, répartition par catégorie, alertes de stock — et un <strong>journal d'audit</strong> couvrant chaque action de chaque utilisateur.</p>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Extrait de code -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Extrait de code</span>
+                <h3 class="pd-section__title">Un retrait de stock transactionnel</h3>
+                <p style="color:var(--muted);margin-bottom:1.2rem;max-width:62ch">
+                  Décrémenter le stock, écrire le mouvement et tracer l'action doivent
+                  réussir ou échouer ensemble : la transaction Prisma garantit qu'aucun
+                  stock ne peut diverger de son historique.
+                </p>
+                <div class="pd-code">
+                  <div class="pd-code__bar">
+                    <span class="d" style="background:#ff5f57"></span>
+                    <span class="d" style="background:#febc2e"></span>
+                    <span class="d" style="background:#28c840"></span>
+                    <span class="pd-code__name">stock.service.ts</span>
+                  </div>
+<pre><span class="code-comment">// Retrait de stock — atomique : stock, mouvement et audit ou rien.</span>
+<span class="code-keyword">async</span> <span class="code-method">withdraw</span>(dto: <span class="code-class">WithdrawDto</span>, ctx: <span class="code-class">AuthContext</span>) {
+  <span class="code-keyword">return</span> prisma.<span class="code-method">$transaction</span>(<span class="code-keyword">async</span> (tx) =&gt; {
+
+    <span class="code-comment">// 1. Le stock est porté par le couple (équipement, projet)</span>
+    <span class="code-keyword">const</span> stock = <span class="code-keyword">await</span> tx.equipmentStock.<span class="code-method">findUniqueOrThrow</span>({
+      where: { equipmentId_projectId: { equipmentId: dto.equipmentId, projectId: ctx.projectId } },
+    });
+
+    <span class="code-keyword">if</span> (stock.quantity &lt; dto.quantity) {
+      <span class="code-keyword">throw new</span> <span class="code-class">AppError</span>(<span class="code-string">'Stock insuffisant'</span>, <span class="code-string">409</span>);
+    }
+
+    <span class="code-comment">// 2. Décrément puis historisation du mouvement</span>
+    <span class="code-keyword">await</span> tx.equipmentStock.<span class="code-method">update</span>({
+      where: { id: stock.id },
+      data: { quantity: { decrement: dto.quantity } },
+    });
+
+    <span class="code-keyword">const</span> movement = <span class="code-keyword">await</span> tx.movement.<span class="code-method">create</span>({
+      data: { type: <span class="code-string">'WITHDRAWAL'</span>, quantity: dto.quantity, reason: dto.reason,
+              equipmentId: dto.equipmentId, projectId: ctx.projectId, userId: ctx.userId },
+    });
+
+    <span class="code-comment">// 3. Journal d'audit : qui, quoi, quand, depuis où</span>
+    <span class="code-keyword">await</span> auditRepository.<span class="code-method">log</span>(tx, { action: <span class="code-string">'WITHDRAWAL'</span>, ctx, target: movement.id });
+
+    <span class="code-keyword">return</span> movement;
+  });
+}</pre>
+                </div>
+              </section>
+
+              <!-- Défis -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Ingénierie</span>
+                <h3 class="pd-section__title">Défis techniques relevés</h3>
+                <div class="pd-challenges">
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">01</div>
+                    <div>
+                      <h4>Un catalogue global, des stocks cloisonnés</h4>
+                      <p>Modéliser une référence unique partagée par plusieurs projets tout en gardant des quantités, seuils, kits et historiques indépendants : une table <code>EquipmentStock</code> pivot, et un périmètre projet propagé du sélecteur global jusqu'aux requêtes SQL.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">02</div>
+                    <div>
+                      <h4>Intégrité des mouvements de stock</h4>
+                      <p>Chaque retrait ou retour touche trois tables. Les transactions Prisma garantissent l'atomicité, et les contrôles métier (stock disponible, motif obligatoire, statut de l'équipement) sont centralisés dans la couche service, jamais dupliqués dans les contrôleurs.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">03</div>
+                    <div>
+                      <h4>Génération de documents au modèle de l'entreprise</h4>
+                      <p>Produire un Bon de Livraison Excel qui reste <strong>strictement conforme</strong> au gabarit interne — feuille de paramètres, références nommées, logo conservé — tout en injectant un tableau d'articles de taille variable et une numérotation séquentielle partagée entre BL et BR.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">04</div>
+                    <div>
+                      <h4>Authentification déléguée, prête pour le SSO</h4>
+                      <p>Reproduire le flux OIDC complet avec un Logto auto-hébergé en développement, tout en gardant la possibilité de pointer vers le SSO d'entreprise en production <strong>sans changer une ligne de code</strong> — seulement des variables d'environnement.</p>
+                    </div>
+                  </div>
+                  <div class="pd-challenge">
+                    <div class="pd-challenge__n">05</div>
+                    <div>
+                      <h4>Une interface qui tient sur le terrain</h4>
+                      <p>PWA installable, mode sombre/clair, squelettes de chargement, recherche instantanée, tri multi-colonnes et pagination serveur : l'application doit rester utilisable en magasin, sur mobile, une main occupée par le matériel.</p>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- MiniTrack, côté technique -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Cette page</span>
+                <h3 class="pd-section__title">Et MiniTrack, comment est-ce fait ?</h3>
+                <p style="color:var(--muted);max-width:64ch;margin-bottom:1.4rem">
+                  La démo ci-dessus n'est ni une vidéo, ni une iframe, ni un build React
+                  embarqué : c'est une application écrite en <strong>JavaScript vanilla</strong>,
+                  sans dépendance, sans réseau et sans stockage. Le jeu de données est
+                  scripté en dur et l'historique de mouvements est généré par un
+                  <strong>générateur pseudo-aléatoire déterministe</strong>, pour que les
+                  graphiques soient crédibles et identiques à chaque visite.
+                </p>
+                <div class="pd-stack">
+                  <div>
+                    <h5>Ce qui est reproduit fidèlement</h5>
+                    <div class="pd-layer"><i class="bi bi-check2"></i><span>Sélecteur de projet global &amp; stocks cloisonnés</span></div>
+                    <div class="pd-layer"><i class="bi bi-check2"></i><span>Recherche, filtres, tri, pagination, favoris</span></div>
+                    <div class="pd-layer"><i class="bi bi-check2"></i><span>Panier, préparations, kits, RMA, audit</span></div>
+                    <div class="pd-layer"><i class="bi bi-check2"></i><span>Thème sombre / clair et exports CSV réels</span></div>
+                  </div>
+                  <div>
+                    <h5>Ce qui est simplifié</h5>
+                    <div class="pd-layer"><i class="bi bi-dash-lg"></i><span>Génération des bons de livraison / retrait</span></div>
+                    <div class="pd-layer"><i class="bi bi-dash-lg"></i><span>Authentification réelle (Logto / SSO)</span></div>
+                    <div class="pd-layer"><i class="bi bi-dash-lg"></i><span>Persistance : tout est en mémoire</span></div>
+                    <div class="pd-layer"><i class="bi bi-dash-lg"></i><span>Lecture de codes-barres à la caméra (simulée)</span></div>
+                  </div>
+                </div>
+              </section>
+
+              <!-- Techs -->
+              <section class="pd-section" data-reveal>
+                <span class="pd-eyebrow">Stack technologique</span>
+                <h3 class="pd-section__title">Outils &amp; technologies</h3>
+                <div class="pd-techs">
+                  <span class="pd-tech">React 19</span><span class="pd-tech">TypeScript</span>
+                  <span class="pd-tech">Vite</span><span class="pd-tech">TanStack Query</span>
+                  <span class="pd-tech">TailwindCSS</span><span class="pd-tech">Shadcn/UI</span>
+                  <span class="pd-tech">Framer Motion</span><span class="pd-tech">Recharts</span>
+                  <span class="pd-tech">Node.js</span><span class="pd-tech">Express</span>
+                  <span class="pd-tech">Prisma ORM</span><span class="pd-tech">PostgreSQL</span>
+                  <span class="pd-tech">Zod</span><span class="pd-tech">Logto (OIDC)</span>
+                  <span class="pd-tech">Docker Compose</span><span class="pd-tech">Caddy</span>
+                  <span class="pd-tech">PWA</span><span class="pd-tech">Vitest</span>
+                </div>
+              </section>
+            </div>
+
+            <!-- Colonne latérale -->
+            <aside class="pd-aside">
+              <div class="pd-card" data-reveal>
+                <h3>Informations du projet</h3>
+                <div class="pd-info">
+                  <div><span class="pd-info__k">Contexte</span><span class="pd-info__v">Projet d'entreprise · alternance Assystem</span></div>
+                  <div><span class="pd-info__k">Rôle</span><span class="pd-info__v">Conception &amp; développement full-stack</span></div>
+                  <div><span class="pd-info__k">Architecture</span><span class="pd-info__v">Couches · Repository · Service · DTO</span></div>
+                  <div><span class="pd-info__k">Base de données</span><span class="pd-info__v">PostgreSQL + Prisma</span></div>
+                  <div><span class="pd-info__k">Authentification</span><span class="pd-info__v">Logto (OIDC) · RBAC 3 rôles</span></div>
+                  <div><span class="pd-info__k">Déploiement</span><span class="pd-info__v">Docker Compose · une commande</span></div>
+                </div>
+              </div>
+
+              <div class="pd-card" data-reveal>
+                <h4>Bénéfices métier</h4>
+                <ul class="pd-benefits">
+                  <li><i class="bi bi-check-circle"></i><span>Fin des inventaires sous Excel</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Stock fiable, projet par projet</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Bons de livraison générés, plus ressaisis</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Alertes de réapprovisionnement automatiques</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Traçabilité intégrale des mouvements</span></li>
+                  <li><i class="bi bi-check-circle"></i><span>Préparations et kits standardisés</span></li>
+                </ul>
+              </div>
+
+              <div class="pd-card" data-reveal>
+                <h4>Essayer la démo</h4>
+                <p style="color:var(--muted);font-size:0.9rem;margin-bottom:1rem">
+                  MiniTrack tourne entièrement dans votre navigateur. Aucune inscription,
+                  aucune donnée envoyée.
+                </p>
+                <a href="#minitrack" class="btn btn--primary" style="width:100%;justify-content:center"><i class="bi bi-play-circle"></i> Ouvrir MiniTrack</a>
+              </div>
+
+              <a href="index.html#projects" class="btn btn--ghost" style="width:100%;justify-content:center"><i class="bi bi-arrow-left"></i> Tous les projets</a>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer">
+      <div class="container">
+        <div class="footer__top">
+          <h2 class="footer__big">Un projet<br />en <em>tête</em> ?</h2>
+          <div class="footer__cta">
+            <a href="index.html#contact" class="btn btn--primary">Me contacter <i class="bi bi-arrow-up-right"></i></a>
+            <span style="color:rgba(243,241,234,0.6);font-family:var(--font-mono);font-size:0.8rem">Réponse sous 24–48 h</span>
+          </div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h5>Navigation</h5>
+            <a href="index.html#about">À propos</a>
+            <a href="index.html#skills">Compétences</a>
+            <a href="index.html#parcours">Parcours</a>
+            <a href="index.html#projects">Projets</a>
+          </div>
+          <div class="footer__col">
+            <h5>Contact</h5>
+            <a href="mailto:dramealyba@gmail.com">dramealyba@gmail.com</a>
+            <a href="tel:+33782306535">+33 7 82 30 65 35</a>
+            <p>Cormeilles-en-Parisis, France</p>
+          </div>
+          <div class="footer__col">
+            <h5>Réseaux</h5>
+            <a href="https://www.linkedin.com/in/aly-ba-drame-282735309/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <span>© <span id="year"></span> Aly-Ba Dramé — Tous droits réservés.</span>
+          <span>Conçu &amp; développé avec soin · Paris</span>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#" class="scroll-top" id="scroll-top" aria-label="Remonter en haut"><i class="bi bi-arrow-up"></i></a>
+
+    <script src="assets/js/portfolio-details.js"></script>
+    <script src="assets/js/minitrack.js"></script>
+  </body>
+</html>
