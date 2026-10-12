@@ -1,0 +1,11 @@
+{
+  "name": "aly-ba-drame-portfolio",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test",
+    "preview": "node scripts/preview.mjs"
+  },
+  "engines": { "node": ">=22" }
+}

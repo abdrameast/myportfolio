@@ -11,6 +11,8 @@
    Tout l'état vit en mémoire : rien n'est envoyé nulle part, et le
    bouton « Réinitialiser » remet le jeu de données d'origine.
    ===================================================================== */
+import { serializeCSV } from "./csv.js";
+
 (function () {
   "use strict";
 
@@ -1229,9 +1231,7 @@
 
   /* --- Export CSV ------------------------------------------------------ */
   function downloadCSV(filename, rows) {
-    var csv = rows.map(function (r) {
-      return r.map(function (c) { return '"' + String(c == null ? "" : c).replace(/"/g, '""') + '"'; }).join(";");
-    }).join("\r\n");
+    var csv = serializeCSV(rows);
     var blob = new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8;" });
     var url = URL.createObjectURL(blob);
     var a = document.createElement("a");

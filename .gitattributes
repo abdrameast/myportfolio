@@ -1,0 +1,4 @@
+# Preserve the exact upstream bytes used by the integrity checks on every OS.
+assets/vendor/gsap-3.12.5/** -text
+assets/vendor/lenis-1.0.42/** -text
+assets/vendor/three-0.160.0/** -text

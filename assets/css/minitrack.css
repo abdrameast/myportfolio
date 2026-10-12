@@ -768,3 +768,5 @@ textarea.mt-input { height: auto; min-height: 74px; padding: 0.55em 0.7em; resiz
 @media (prefers-reduced-motion: reduce) {
   .mt *, .mt *::before, .mt *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
+
+.demo-notice { margin: 1.5rem 0; padding: 1rem 1.25rem; border: 1px solid var(--line); border-radius: 12px; line-height: 1.6; }

@@ -232,42 +232,6 @@ body.cursor-hover .cursor--ring { width: 64px; height: 64px; border-color: var(-
 @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
 
 /* ------------------------------------------------------------------ */
-/*  Preloader                                                          */
-/* ------------------------------------------------------------------ */
-#preloader {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: var(--paper);
-  display: grid;
-  place-items: center;
-  transition: opacity 0.7s var(--ease), visibility 0.7s;
-}
-#preloader.done { opacity: 0; visibility: hidden; }
-.preloader__inner { text-align: center; overflow: hidden; }
-.preloader__name {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 7vw, 4rem);
-  color: var(--ink);
-  letter-spacing: -0.03em;
-}
-.preloader__bar {
-  height: 2px;
-  width: min(280px, 60vw);
-  margin: 1.4rem auto 0;
-  background: var(--line);
-  position: relative;
-  overflow: hidden;
-}
-.preloader__bar span {
-  position: absolute;
-  inset: 0;
-  width: 0;
-  background: var(--accent);
-  transition: width 0.3s linear;
-}
-
-/* ------------------------------------------------------------------ */
 /*  Scroll progress                                                    */
 /* ------------------------------------------------------------------ */
 .scroll-progress {
@@ -1216,3 +1180,6 @@ html.anim [data-reveal="scale"] { transform: scale(0.94); }
   html.anim [data-reveal] { opacity: 1 !important; transform: none !important; }
   .hero__fallback { opacity: 0.85; }
 }
+
+/* Contact form disclosure */
+.form__privacy { margin: 0 0 1.5rem; color: var(--muted); font-size: 0.875rem; line-height: 1.6; }

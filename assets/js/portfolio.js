@@ -12,26 +12,6 @@
   const $$ = (s, c = document) => Array.from(c.querySelectorAll(s));
 
   /* ------------------------------------------------------------ */
-  /*  Preloader                                                    */
-  /* ------------------------------------------------------------ */
-  const preloader = $("#preloader");
-  const bar = $("#preloader .preloader__bar span");
-  let progress = 0;
-  const tick = setInterval(() => {
-    progress = Math.min(progress + Math.random() * 18, 100);
-    if (bar) bar.style.width = progress + "%";
-    if (progress >= 100) clearInterval(tick);
-  }, 120);
-
-  function hidePreloader() {
-    if (bar) bar.style.width = "100%";
-    setTimeout(() => preloader && preloader.classList.add("done"), 350);
-  }
-  window.addEventListener("load", hidePreloader);
-  // Safety net: never let the preloader trap the page.
-  setTimeout(hidePreloader, 3500);
-
-  /* ------------------------------------------------------------ */
   /*  Year                                                         */
   /* ------------------------------------------------------------ */
   const yearEl = $("#year");

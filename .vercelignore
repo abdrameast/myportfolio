@@ -1,0 +1,13 @@
+.git/
+.claude/
+.kilo/
+.DS_Store
+**/.DS_Store
+*.bak
+**/*.bak
+.env
+.env.*
+node_modules/
+dist/
+tests/
+api/

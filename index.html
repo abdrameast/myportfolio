@@ -37,14 +37,6 @@
   </head>
 
   <body>
-    <!-- Preloader -->
-    <div id="preloader">
-      <div class="preloader__inner">
-        <div class="preloader__name">Aly-Ba Dramé</div>
-        <div class="preloader__bar"><span></span></div>
-      </div>
-    </div>
-
     <!-- Custom cursor -->
     <div class="cursor" aria-hidden="true"></div>
     <div class="cursor cursor--ring" aria-hidden="true"></div>
@@ -751,7 +743,8 @@
             </div>
 
             <div data-reveal="right">
-              <form id="contact-form" class="form" action="https://formspree.io/f/xnjowgel" method="POST">
+              <form id="contact-form" class="form" action="https://formspree.io/f/xnjowgel" method="POST" aria-describedby="contact-privacy">
+                <p id="contact-privacy" class="form__privacy">Vos nom, adresse e-mail, objet et message sont transmis à Formspree pour me permettre de vous répondre. Vous pouvez aussi me contacter directement par e-mail.</p>
                 <div class="form__grid">
                   <div class="field">
                     <label for="name">Votre nom</label>
@@ -824,20 +817,13 @@
 
     <a href="#hero" class="scroll-top" id="scroll-top" aria-label="Remonter en haut"><i class="bi bi-arrow-up"></i></a>
 
-    <!-- Libraries (CDN) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
-        }
-      }
-    </script>
+    <!-- Libraries served locally -->
+    <script defer src="assets/vendor/gsap-3.12.5/gsap.min.js"></script>
+    <script defer src="assets/vendor/gsap-3.12.5/ScrollTrigger.min.js"></script>
+    <script defer src="assets/vendor/lenis-1.0.42/lenis.min.js"></script>
 
     <!-- Main script -->
-    <script src="assets/js/portfolio.js"></script>
+    <script defer src="assets/js/portfolio.js"></script>
     <script type="module" src="assets/js/hero3d.js"></script>
   </body>
 </html>

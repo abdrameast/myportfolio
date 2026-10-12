@@ -3,7 +3,7 @@
    A subtle, editorial floating object (Three.js).
    Degrades gracefully: no WebGL / reduced-motion / errors → CSS fallback.
    ===================================================================== */
-import * as THREE from "three";
+import * as THREE from "../vendor/three-0.160.0/three.module.js";
 
 const canvas = document.getElementById("hero-canvas");
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

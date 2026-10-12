@@ -1,0 +1,9 @@
+dist/
+node_modules/
+.vercel/
+.claude/
+.kilo/
+.DS_Store
+*.bak
+.env
+.env.*
